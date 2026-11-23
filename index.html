@@ -1,0 +1,1361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cardora Maldives — PlayStation & Xbox gift cards (concept redesign)</title>
+<meta name="description" content="Concept redesign for Cardora Maldives: PlayStation and Xbox gift cards for US and UK accounts, priced in MVR.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cardora-concept.netlify.app/">
+<meta property="og:title" content="Cardora Maldives — a fresh look (concept)">
+<meta property="og:description" content="PlayStation and Xbox gift cards for US and UK accounts, priced in MVR. A concept redesign of the Cardora store.">
+<meta property="og:image" content="https://cardora-concept.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#05090f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2305090f'/%3E%3Cpath d='M8 13l8-5 8 5-8 5z' fill='%23fff'/%3E%3Cpath d='M8 19l8 5 8-5-3-2-5 3-5-3z' fill='%237cf2dc'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  // Hide animated elements before first paint only when motion is allowed.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
+  // Apply the saved theme before first paint (dark is the default).
+  try { if (localStorage.getItem('cardora-concept-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
+</script>
+<style>
+:root{
+  --bg:#05090f; --bg2:#080e18; --surface:#0c1522; --surface2:#122031;
+  --line:rgba(170,225,235,.10); --line2:rgba(170,225,235,.20);
+  --text:#e9f3f3; --muted:#8fa3ad; --dim:#5d717c;
+  --accent:#7cf2dc; --accent-ink:#04211d; --accent-soft:rgba(124,242,220,.12);
+  --warn:#f2b27c; --accent-hover:#a3f7e8; --chip-bg:rgba(10,18,30,.82); --orbit:rgba(124,242,220,.22);
+  --gc-shadow:0 30px 60px -18px rgba(0,0,0,.7),0 10px 22px rgba(0,0,0,.35);
+  --ps1:#16246f; --ps2:#4a6fd8; --xb1:#0a4f22; --xb2:#22a651;
+  --r-sm:12px; --r-md:18px; --r-lg:28px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",Consolas,monospace;
+  --pad:clamp(16px,4vw,48px);
+}
+/* light theme: cream + deep teal, as on the current Cardora site */
+:root[data-theme="light"]{
+  --bg:#fbf9f3; --bg2:#ffffff; --surface:#ffffff; --surface2:#e9f2ee;
+  --line:rgba(15,60,60,.12); --line2:rgba(15,60,60,.24);
+  --text:#0f2f2e; --muted:#51696a; --dim:#7b8f8f;
+  --accent:#0d6b5f; --accent-ink:#ffffff; --accent-soft:rgba(13,107,95,.10); --accent-hover:#0a564c;
+  --warn:#a85a14; --chip-bg:rgba(255,255,255,.94); --orbit:rgba(13,107,95,.3);
+  --gc-shadow:0 30px 50px -22px rgba(10,45,55,.5),0 8px 18px rgba(10,45,55,.18);
+}
+:root[data-theme="light"] .aurora{opacity:.55}
+:root[data-theme="light"] .grain{opacity:.05}
+:root[data-theme="light"] .nav-pill{background:rgba(8,16,26,.92)}
+:root[data-theme="light"] .cfg .seg img{filter:brightness(0);opacity:.75}
+:root[data-theme="light"] .ticket{box-shadow:inset 0 0 0 1px var(--line),0 40px 70px -34px rgba(10,45,55,.35)}
+/* the nav pill stays dark in both themes so the white logo always reads */
+.nav{--text:#e9f3f3;--muted:#8fa3ad;--line:rgba(170,225,235,.10);--line2:rgba(170,225,235,.20);--accent:#7cf2dc;--accent-ink:#04211d;--accent-soft:rgba(124,242,220,.12);color:var(--text)}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-padding-top:96px}
+html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:1rem;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;touch-action:manipulation}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1240px,100%);margin-inline:auto;padding-inline:var(--pad)}
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:10px;font-weight:600;transition:top .2s var(--ease)}
+.skip:focus{top:16px}
+.mono{font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ambient background */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;will-change:transform}
+.aurora .a1{width:70vmax;height:70vmax;left:-20vmax;top:-30vmax;background:radial-gradient(closest-side,rgba(32,150,160,.30),transparent)}
+.aurora .a2{width:60vmax;height:60vmax;right:-22vmax;top:10vh;background:radial-gradient(closest-side,rgba(40,80,190,.22),transparent)}
+.aurora .a3{width:55vmax;height:55vmax;left:20vw;top:120vh;background:radial-gradient(closest-side,rgba(60,210,170,.12),transparent)}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.progress{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:120}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:600;white-space:nowrap;transition:transform .16s var(--ease),background-color .2s,border-color .2s,color .2s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{border:1px solid var(--line2);background:rgba(255,255,255,.03)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+@media (hover:hover) and (pointer:fine){
+  .btn-primary:hover{background:var(--accent-hover)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .btn:hover .arr{transform:translate(3px,-3px)}
+}
+
+/* nav */
+.nav{position:fixed;inset:14px 0 auto 0;z-index:100;padding-inline:var(--pad);pointer-events:none}
+.nav-pill{pointer-events:auto;width:min(1144px,100%);margin-inline:auto;display:flex;align-items:center;gap:16px;padding:10px 10px 10px 20px;border-radius:999px;background:rgba(8,14,24,.72);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);box-shadow:inset 0 0 0 1px var(--line),0 12px 40px rgba(0,0,0,.35)}
+.brand{display:flex;align-items:center;flex:none}
+.brand img{height:30px;width:auto}
+.brand .wordmark{font-weight:700;letter-spacing:.22em;font-size:1.05rem}
+.nav-links{display:flex;gap:4px;margin-inline:auto}
+.nav-links a{padding:10px 16px;border-radius:999px;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s,background-color .2s}
+@media (hover:hover){.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}}
+.nav-actions{display:flex;gap:8px;margin-inline-start:auto}
+.icon-btn{position:relative;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line2);transition:transform .16s var(--ease),background-color .2s}
+.icon-btn:active{transform:scale(.94)}
+.icon-btn svg{width:20px;height:20px}
+.cart-btn{background:var(--accent-soft);color:var(--accent)}
+.badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:.72rem;font-weight:700;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.theme-btn .sun{display:none}
+:root[data-theme="light"] .theme-btn .sun{display:block}
+:root[data-theme="light"] .theme-btn .moon{display:none}
+@media (max-width:380px){.icon-btn{width:42px;height:42px}.nav-pill{gap:10px;padding-inline-start:16px}}
+.menu-btn{display:none}
+.menu-panel{pointer-events:auto;display:none}
+@media (max-width:820px){
+  .nav-links{display:none}
+  .menu-btn{display:grid}
+  .menu-panel{display:grid;gap:2px;width:min(1144px,100%);margin:8px auto 0;padding:10px;border-radius:24px;background:#080e18;box-shadow:inset 0 0 0 1px var(--line),0 20px 50px rgba(0,0,0,.5);opacity:0;transform:translateY(-8px) scale(.98);transform-origin:50% 0;visibility:hidden;transition:opacity .2s var(--ease),transform .25s var(--ease),visibility 0s .25s}
+  .nav.menu-open .menu-panel{opacity:1;transform:none;visibility:visible;transition:opacity .25s var(--ease),transform .3s var(--ease)}
+  .menu-panel a{padding:14px 16px;border-radius:14px;font-size:1.1rem;font-weight:500}
+  .menu-panel a:active{background:rgba(255,255,255,.06)}
+}
+
+/* hero */
+.hero{position:relative;overflow-x:clip;min-height:100svh;display:grid;align-items:center;padding-block:120px 40px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hero h1{font-size:clamp(2.1rem,4.7vw,4.5rem);line-height:1.02;letter-spacing:-.035em;font-weight:600}
+.line{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.line>span{display:block}
+.hero h1 .accent{color:var(--accent)}
+.hero-sub{margin-top:24px;max-width:46ch;color:var(--muted);font-size:clamp(1rem,1.3vw,1.15rem)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.facts{margin-top:clamp(40px,7vh,88px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.fact{padding:20px 20px 0 0}
+.fact+.fact{padding-inline-start:20px;border-inline-start:1px solid var(--line)}
+.fact b{display:block;font-weight:600}
+.fact span{color:var(--muted);font-size:.9rem}
+.stage{position:relative;aspect-ratio:1/1;perspective:1300px;max-height:72svh;justify-self:center;width:100%}
+.orbits{position:absolute;inset:-6%;width:112%;height:112%;overflow:visible}
+.orbits ellipse{fill:none;stroke:var(--orbit);stroke-width:1}
+.orbits .dot{fill:var(--accent)}
+.stage-tilt{position:absolute;inset:0;transform-style:preserve-3d}
+.gc-wrap{position:absolute;width:62%;transform-style:preserve-3d}
+.gc-wrap.xb{right:2%;top:14%}
+.gc-wrap.ps{left:2%;bottom:16%}
+.gc-float{transform-style:preserve-3d}
+.gc-wrap.xb .gc{transform:translateZ(-40px) rotate(14deg)}
+.gc-wrap.ps .gc{transform:translateZ(60px) rotate(-11deg)}
+
+/* gift card */
+.gc{position:relative;aspect-ratio:1.586;border-radius:clamp(12px,1.6vw,20px);overflow:hidden;color:#fff;isolation:isolate;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),var(--gc-shadow);container-type:inline-size}
+.gc.ps{background:linear-gradient(135deg,var(--ps1),var(--ps2) 62%,#2b3f9c)}
+.gc.xb{background:linear-gradient(135deg,var(--xb1),var(--xb2) 70%,#137a39)}
+.gc::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(118deg,rgba(255,255,255,.07) 0 1px,transparent 1px 22px)}
+.gc::after{content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 30%,rgba(255,255,255,.28) 48%,rgba(160,255,240,.12) 54%,transparent 68%);background-size:260% 100%;background-position:var(--sheen,30%) 0;mix-blend-mode:screen;pointer-events:none}
+.gc-brand{position:absolute;left:7%;top:8%;font-weight:600;font-size:5cqw}
+.gc-logo{position:absolute;left:50%;top:50%;width:17cqw;height:17cqw;transform:translate(-50%,-50%);object-fit:contain;filter:brightness(0) invert(1)}
+.gc-value{position:absolute;right:7%;bottom:7%;font-weight:700;font-size:11cqw;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.gc-region{position:absolute;left:7%;bottom:8%;font-family:var(--mono);font-size:3.2cqw;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.chip{position:absolute;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:var(--chip-bg);box-shadow:inset 0 0 0 1px var(--line2),0 12px 30px rgba(0,0,0,.25);font-size:.85rem;font-weight:600;white-space:nowrap}
+.chip svg{width:16px;height:16px;color:var(--accent)}
+.chip.c1{right:0;bottom:22%;transform:translateZ(110px)}
+.chip.c2{left:6%;top:12%;transform:translateZ(90px)}
+.scroll-cue{position:absolute;left:50%;bottom:18px;translate:-50% 0;width:1px;height:44px;background:linear-gradient(var(--accent),transparent);transform-origin:50% 0;animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+@media (max-width:900px){
+  .hero{padding-block:108px 56px;min-height:0}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .stage{max-width:440px;order:2;margin-top:8px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact:nth-child(3){padding-inline-start:0;border-inline-start:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line);margin-top:20px}
+  .scroll-cue{display:none}
+}
+
+/* marquee */
+.marquee{position:relative;border-block:1px solid var(--line);overflow:hidden;padding-block:22px;background:rgba(255,255,255,.015)}
+.marquee-track{display:flex;width:max-content;will-change:transform}
+.marquee-track span{display:flex;align-items:center;gap:36px;padding-inline-end:36px;font-size:clamp(1.2rem,2.4vw,2rem);font-weight:500;letter-spacing:-.02em;color:var(--muted);white-space:nowrap}
+.marquee-track span i{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.marquee-track span b{color:var(--text);font-weight:500}
+.mq-toggle{position:absolute;right:12px;top:50%;translate:0 -50%;width:36px;height:36px;border-radius:50%;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;color:var(--muted)}
+.mq-toggle svg{width:14px;height:14px}
+
+/* sections */
+section{position:relative}
+.sec{padding-block:clamp(88px,13vw,168px)}
+.sec-head{display:grid;gap:18px;max-width:780px;margin-bottom:clamp(40px,6vw,72px)}
+.sec-head h2,.contact h2{font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.06;letter-spacing:-.03em;font-weight:600}
+.sec-head p{color:var(--muted);font-size:1.08rem;max-width:56ch}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.w>span{display:inline-block}
+
+/* configurator */
+.cfg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:stretch}
+.cfg-stage{position:relative;border-radius:var(--r-lg);background:radial-gradient(120% 90% at 50% 0%,rgba(60,140,200,.16),transparent 60%),var(--surface);box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;padding:clamp(28px,5vw,64px);perspective:1200px;min-height:420px;overflow:hidden}
+.cfg-stage::before{content:"";position:absolute;inset:0;background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 56px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/56px 100%;-webkit-mask-image:radial-gradient(70% 70% at 50% 60%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 60%,#000,transparent)}
+.cfg-tilt{width:min(440px,100%);transform-style:preserve-3d;position:relative}
+.cfg-tilt .gc{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),0 50px 80px -24px rgba(0,0,0,.75),0 0 90px -20px var(--glow,rgba(74,111,216,.6))}
+.cfg-note{position:absolute;left:24px;right:24px;bottom:20px;display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.88rem}
+.cfg-note svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(--accent)}
+.cfg-panel{display:grid;gap:28px;align-content:start;padding:clamp(4px,1vw,12px) 0}
+.field{display:grid;gap:12px}
+.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);padding:5px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.seg::before{content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/2);border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line2);transform:translateX(calc(var(--i,0)*100%));transition:transform .45s var(--ease)}
+.seg button{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;border-radius:999px;font-weight:600;color:var(--muted);transition:color .25s}
+.seg button[aria-pressed="true"]{color:var(--text)}
+.seg img{width:20px;height:20px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85}
+.amounts{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+.amt{display:grid;gap:2px;text-align:start;padding:14px 14px 12px;border-radius:var(--r-md);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);transition:transform .16s var(--ease),box-shadow .25s,background-color .25s}
+.amt:active{transform:scale(.97)}
+.amt b{font-size:1.25rem;font-weight:600;letter-spacing:-.02em}
+.amt small{color:var(--muted);font-size:.78rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.amt[aria-pressed="true"]{background:var(--accent-soft);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.amt[aria-pressed="true"] small{color:var(--accent)}
+.amt[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.amt[disabled] b{text-decoration:line-through;text-decoration-thickness:1px}
+.amt[disabled] small{color:var(--warn)}
+@media (hover:hover){.amt:not([disabled]):hover{box-shadow:inset 0 0 0 1px var(--line2)}}
+.buy{display:grid;gap:20px;padding-top:28px;border-top:1px solid var(--line)}
+.price-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+.price{font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:600;letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums}
+.price small{font-size:.38em;font-weight:500;color:var(--muted);letter-spacing:0;margin-inline-end:8px}
+.stock{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted)}
+.stock i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.buy-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.ghost-fly{position:fixed;z-index:150;pointer-events:none;margin:0}
+.all-prices{margin-top:clamp(32px,5vw,56px);border-radius:var(--r-lg);box-shadow:inset 0 0 0 1px var(--line);background:rgba(255,255,255,.015)}
+.all-prices summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 26px;cursor:pointer;font-weight:600;list-style:none}
+.all-prices summary::-webkit-details-marker{display:none}
+.all-prices summary svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.all-prices[open] summary svg{transform:rotate(45deg)}
+.price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 28px;padding:4px 26px 26px}
+.price-col h3{font-size:.95rem;font-weight:600;padding-block:10px;border-bottom:1px solid var(--line)}
+.price-col button{display:flex;justify-content:space-between;gap:12px;width:100%;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem;font-variant-numeric:tabular-nums;color:var(--muted);transition:color .2s}
+.price-col button span:last-child{color:var(--text)}
+.price-col button[disabled]{opacity:.45;cursor:not-allowed}
+@media (hover:hover){.price-col button:not([disabled]):hover{color:var(--accent)}}
+@media (max-width:900px){
+  .cfg{grid-template-columns:minmax(0,1fr)}
+  .cfg-stage{min-height:0;padding-bottom:124px}
+  .price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:460px){.buy-actions,.price-grid{grid-template-columns:minmax(0,1fr)}}
+
+.restock{font-size:.88rem;color:var(--muted)}
+.restock a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.cfg-note a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+
+/* sticky buy bar (phones) */
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:95;display:none;align-items:center;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--surface);box-shadow:0 -1px 0 var(--line),0 -18px 40px rgba(0,0,0,.28);transform:translateY(110%);visibility:hidden;transition:transform .45s cubic-bezier(.32,.72,0,1),visibility 0s .45s}
+.buybar.is-on{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.32,.72,0,1)}
+.buybar div{min-width:0;flex:1}
+.buybar small{display:block;color:var(--muted);font-size:.78rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.buybar b{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.buybar .btn{min-height:48px;padding:0 22px}
+@media (max-width:900px){.buybar{display:flex}}
+
+/* help: region + redeem */
+.help-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,4vw,48px)}
+.help-top .sec-head{margin-bottom:0}
+.help-top .seg{min-width:min(340px,100%)}
+.help-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.help-card{border-radius:var(--r-lg);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);padding:clamp(22px,3vw,36px)}
+.help-card h3{font-size:1.3rem;font-weight:600;letter-spacing:-.015em;margin-bottom:6px}
+.help-card>p{color:var(--muted);margin-bottom:18px}
+.help-card ol{list-style:none;margin:0;padding:0;counter-reset:s;display:grid}
+.help-card li{counter-increment:s;display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px;padding-block:14px;border-top:1px solid var(--line)}
+.help-card li::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--mono);font-size:.8rem}
+.help-card li span{align-self:center}
+.help-card li b{font-weight:600}
+.help-foot{margin-top:18px;color:var(--muted);font-size:.9rem}
+@media (max-width:900px){.help-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* how it works */
+.how-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,6vw,96px)}
+.ticket-wrap{position:sticky;top:112px;align-self:start}
+.ticket{border-radius:var(--r-lg);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line),0 40px 80px -30px rgba(0,0,0,.6);padding:26px;overflow:hidden}
+.ticket-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.ticket-bar{height:3px;border-radius:3px;background:var(--line);margin-block:14px 8px;overflow:hidden}
+.ticket-bar i{display:block;height:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(var(--p,1));transition:transform .7s var(--ease)}
+.trow{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;align-items:center;padding-block:16px;border-bottom:1px dashed var(--line);transition:opacity .4s}
+.trow:last-child{border-bottom:0;padding-bottom:4px}
+.tdot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line2);color:var(--accent-ink);transition:background-color .4s,box-shadow .4s}
+.tdot svg{width:16px;height:16px;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .5s var(--ease) .1s}
+.trow b{display:block;font-weight:600}
+.trow span{display:block;color:var(--muted);font-size:.88rem;overflow-wrap:anywhere}
+.trow.is-done .tdot,.trow.is-active .tdot{background:var(--accent);box-shadow:none}
+.trow.is-done .tdot svg{stroke-dashoffset:0}
+.trow.is-active .tdot{box-shadow:0 0 0 6px var(--accent-soft)}
+.trow.is-active .tdot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent-ink);position:absolute}
+.tdot{position:relative}
+.trow.is-pending{opacity:.4}
+.code{font-family:var(--mono);letter-spacing:.12em;color:var(--accent)!important;font-size:.95rem!important}
+.steps{position:relative;display:grid}
+.steps-line{position:absolute;left:19px;top:20px;bottom:20px;width:1px;background:var(--line)}
+.steps-line i{position:absolute;inset:0;background:var(--accent);transform-origin:50% 0;transform:scaleY(1)}
+.step{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:24px;padding-block:clamp(28px,6vh,64px);transition:opacity .5s}
+.step-n{width:40px;height:40px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;font-family:var(--mono);font-size:.85rem;transition:background-color .4s,color .4s,box-shadow .4s}
+.step h3{font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.15;letter-spacing:-.02em;font-weight:600;margin-bottom:12px}
+.step p{color:var(--muted);max-width:48ch}
+.steps.is-live .step:not(.is-active){opacity:.38}
+.step.is-active .step-n{background:var(--accent);color:var(--accent-ink);box-shadow:none}
+@media (max-width:900px){
+  .how-grid{display:block}
+  .ticket-wrap{top:84px;z-index:2;margin-bottom:16px}
+  .ticket{padding:16px 18px}
+  .trow{padding-block:9px;grid-template-columns:28px minmax(0,1fr)}
+  .tdot{width:28px;height:28px}
+  .trow span{display:none}
+  .trow.is-active span{display:block}
+  .step{padding-block:44px}
+}
+
+/* why */
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.tile{--mx:50%;--my:50%;position:relative;border-radius:var(--r-lg);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);padding:clamp(22px,2.6vw,34px);display:grid;gap:10px;align-content:end;min-height:240px;overflow:hidden}
+.tile::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx) var(--my),var(--accent-soft),transparent 60%);opacity:0;transition:opacity .4s}
+@media (hover:hover){.tile:hover::before{opacity:1}}
+.tile>*{position:relative}
+.tile h3{font-size:1.3rem;font-weight:600;letter-spacing:-.015em}
+.tile p{color:var(--muted);max-width:40ch}
+.tile .ico{width:44px;height:44px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:auto}
+.tile .ico svg{width:22px;height:22px}
+.t1{grid-column:span 4;min-height:300px}.t2{grid-column:span 2}.t3,.t4,.t5{grid-column:span 2}
+.slots{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:auto;align-self:start}
+.slots i{width:clamp(18px,3vw,30px);aspect-ratio:3/4;border-radius:7px;box-shadow:inset 0 0 0 1px var(--line2);background:rgba(255,255,255,.02);display:grid;place-items:center;font-family:var(--mono);font-style:normal;font-size:.8rem;color:var(--accent)}
+.slots i.gap{box-shadow:none;background:none;width:8px}
+.js-motion .slots i:not(.gap){opacity:.25;transform:translateY(6px)}
+.js-motion .tile.in .slots i:not(.gap){animation:slot .5s var(--ease) forwards;animation-delay:calc(var(--n)*70ms + 200ms)}
+@keyframes slot{to{opacity:1;transform:none;background:var(--accent-soft)}}
+@media (max-width:900px){.t1,.t2,.t3,.t4,.t5{grid-column:span 6}.tile{min-height:0}.tile .ico,.slots{margin-bottom:28px}}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:start}
+.contact p.lead{color:var(--muted);font-size:1.08rem;margin-top:18px;max-width:44ch}
+.channels{display:grid;margin-top:36px;border-top:1px solid var(--line)}
+.channel{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 4px;border-bottom:1px solid var(--line);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:500;letter-spacing:-.01em;transition:color .25s,padding .35s var(--ease)}
+.channel small{display:block;font-size:.85rem;color:var(--muted);font-weight:400;letter-spacing:0}
+.channel svg{width:22px;height:22px;flex:none;transition:transform .35s var(--ease)}
+@media (hover:hover){.channel:hover{color:var(--accent);padding-inline:14px 4px}.channel:hover svg{transform:translate(4px,-4px)}}
+.form{border-radius:var(--r-lg);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);padding:clamp(22px,3vw,36px);display:grid;gap:18px}
+.form h3{font-size:1.3rem;font-weight:600}
+label{display:grid;gap:8px;font-size:.9rem;font-weight:500}
+input,textarea{font:inherit;font-size:1rem;color:var(--text);background:var(--bg2);border:1px solid var(--line2);border-radius:var(--r-sm);padding:14px 16px;width:100%;transition:border-color .2s,box-shadow .2s}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.form-status{color:var(--accent);font-size:.92rem;min-height:1.4em}
+@media (max-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:40px calc(40px + env(safe-area-inset-bottom))}
+.foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;color:var(--muted);font-size:.9rem}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.foot a:hover{color:var(--text)}
+.concept-note{margin-top:24px;color:var(--dim);font-size:.82rem}
+
+/* cart drawer */
+dialog.cart{margin:0 0 0 auto;height:100dvh;max-height:none;width:min(460px,100%);max-width:none;border:0;padding:0;background:var(--bg2);color:var(--text);box-shadow:-30px 0 80px rgba(0,0,0,.5),inset 1px 0 0 var(--line);transform:translateX(100%);transition:transform .32s cubic-bezier(.32,.72,0,1)}
+dialog.cart.is-open{transform:none;transition-duration:.5s}
+dialog.cart::backdrop{background:rgba(2,5,10,.6);opacity:0;transition:opacity .35s}
+dialog.cart.is-open::backdrop{opacity:1}
+.cart-inner{display:grid;grid-template-rows:auto minmax(0,1fr) auto;height:100%}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--line)}
+.cart-head h2{font-size:1.35rem;font-weight:600;letter-spacing:-.02em}
+.cart-body{overflow-y:auto;overscroll-behavior:contain;padding:8px 24px}
+.cart-empty{display:grid;gap:16px;justify-items:start;padding-block:40px;color:var(--muted)}
+.ci{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:14px;align-items:center;padding-block:18px;border-bottom:1px solid var(--line)}
+.ci .gc{border-radius:8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.ci b{display:block;font-weight:600}
+.ci small{color:var(--muted)}
+.ci .lp{font-weight:600;font-variant-numeric:tabular-nums;text-align:end;white-space:nowrap}
+.qty{display:inline-flex;align-items:center;gap:4px;margin-top:8px}
+.qty button{width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;font-size:1.1rem;line-height:1}
+.qty button:active{transform:scale(.92)}
+.qty span{min-width:28px;text-align:center;font-variant-numeric:tabular-nums;font-weight:600}
+.rm{display:block;margin-top:8px;margin-inline-start:auto;color:var(--muted);font-size:.82rem;text-decoration:underline;text-underline-offset:3px}
+.cart-foot{padding:20px 24px calc(20px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:grid;gap:14px;background:var(--surface)}
+.cart-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.cart-fields input{padding:12px 14px}
+.total{display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
+.total strong{font-size:1.6rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.cart-foot p{color:var(--muted);font-size:.82rem}
+.cart-foot .btn{width:100%}
+
+/* ===== v2 polish ===== */
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+.w.acc{color:var(--accent)}
+
+/* richer gift card art: light from the top corner, engraved rings, top edge highlight */
+.gc{box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 0 0 1px rgba(255,255,255,.2),var(--gc-shadow)}
+.gc.ps{background:radial-gradient(110% 90% at 88% -10%,rgba(150,180,255,.6),transparent 55%),radial-gradient(90% 90% at -10% 110%,rgba(8,12,60,.85),transparent 60%),linear-gradient(135deg,#1a2a7c,#3f62d2 60%,#2a409f)}
+.gc.xb{background:radial-gradient(110% 90% at 88% -10%,rgba(150,255,170,.5),transparent 55%),radial-gradient(90% 90% at -10% 110%,rgba(3,40,16,.85),transparent 60%),linear-gradient(135deg,#0c5a27,#21a04e 62%,#147a3a)}
+.gc::before{background:repeating-radial-gradient(circle at 92% 135%,rgba(255,255,255,.085) 0 1px,transparent 1px 13px)}
+
+/* hero stage: glowing pool and a perspective floor under the cards */
+.pool{position:absolute;left:6%;right:6%;bottom:4%;height:34%;background:radial-gradient(closest-side,var(--accent-soft),transparent);transform:scaleY(.6)}
+.floor{position:absolute;left:-25%;right:-25%;bottom:-4%;height:52%;background:linear-gradient(var(--orbit) 1px,transparent 1px) 0 0/100% 46px,linear-gradient(90deg,var(--orbit) 1px,transparent 1px) 50% 0/46px 100%;transform:perspective(520px) rotateX(66deg);transform-origin:50% 100%;-webkit-mask-image:radial-gradient(55% 75% at 50% 55%,#000 10%,transparent 72%);mask-image:radial-gradient(55% 75% at 50% 55%,#000 10%,transparent 72%);opacity:.7;animation:floor 3.2s linear infinite}
+@keyframes floor{to{background-position:0 46px,50% 0}}
+
+/* pointer light (desktop) */
+.cursor-glow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(closest-side,var(--accent-soft),transparent);pointer-events:none;z-index:-1;opacity:0;transition:opacity .6s}
+.cursor-glow.on{opacity:1}
+
+/* primary button: light sweep on hover */
+.btn-primary{position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-130%);transition:transform .8s var(--ease);pointer-events:none}
+@media (hover:hover) and (pointer:fine){.btn-primary:hover::after{transform:translateX(130%)}}
+
+.nav-links a.is-current{color:var(--text);background:rgba(255,255,255,.08)}
+
+/* section rule with index */
+.rule{position:relative;display:flex;justify-content:space-between;align-items:center;padding-top:16px;margin-bottom:clamp(28px,4vw,52px)}
+.rule::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line2);transform-origin:0 50%;transform:scaleX(var(--rule,1))}
+
+/* configurator halo */
+.halo{position:absolute;inset:0;margin:auto;width:min(80%,520px);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 50%,var(--glow,rgba(74,111,216,.6)) 76%,transparent);filter:blur(38px);opacity:.6;animation:spin 14s linear infinite;transition:opacity .5s}
+@keyframes spin{to{transform:rotate(360deg)}}
+:root[data-theme="light"] .halo{opacity:.4}
+
+/* benefit tiles with mini visuals */
+.tile{display:flex;flex-direction:column;gap:10px;min-height:300px}
+.viz{flex:1;display:flex;position:relative;min-height:124px;margin-bottom:18px}
+.viz-mail{flex-direction:column;justify-content:center;gap:16px}
+.mail-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line);max-width:400px}
+.mail-av{width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.mail-av svg{width:18px;height:18px}
+.mail-txt{flex:1;min-width:0;display:grid;line-height:1.3}
+.mail-txt b{font-size:.92rem;font-weight:600}
+.mail-txt small{color:var(--muted);font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.viz-mail .slots{margin:0}
+.viz-chat{flex-direction:column;justify-content:center;gap:8px}
+.bub{max-width:92%;padding:10px 14px;border-radius:18px;font-size:.88rem;line-height:1.35}
+.bub.me{align-self:flex-end;background:var(--accent);color:var(--accent-ink);border-bottom-right-radius:6px;transform-origin:100% 100%}
+.bub.them{align-self:flex-start;display:flex;gap:8px;align-items:center;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);border-bottom-left-radius:6px;transform-origin:0 100%}
+.bub svg{width:16px;height:16px;flex:none;color:var(--accent)}
+.viz-fx{align-items:center;gap:14px;flex-wrap:wrap}
+.fx-from{font-size:2.2rem;font-weight:600;letter-spacing:-.03em;line-height:1}
+.viz-fx svg{width:22px;height:22px;color:var(--muted);flex:none}
+.fx-to{font-size:clamp(1.25rem,1.9vw,1.7rem);font-weight:600;letter-spacing:-.02em;color:var(--accent);white-space:nowrap}
+.fx-clip{overflow:hidden;display:inline-block;padding-block:.1em}
+.fx-clip>span{display:inline-block}
+.viz-fan{min-height:150px}
+.viz-fan .gc{position:absolute;width:min(62%,230px);transition:transform .6s var(--ease)}
+.viz-fan .gc.ps{left:0;top:6px;transform:rotate(-8deg)}
+.viz-fan .gc.xb{right:0;top:30px;transform:rotate(8deg)}
+@media (hover:hover){.tile:hover .viz-fan .gc.ps{transform:translate(-6px,-6px) rotate(-13deg)}.tile:hover .viz-fan .gc.xb{transform:translate(6px,4px) rotate(13deg)}}
+.viz-tags{flex-wrap:wrap;align-content:center;gap:8px}
+.viz-tags span{padding:9px 15px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line2);background:var(--bg2);font-size:.88rem;font-weight:500}
+.viz-tags span:first-child{background:var(--accent-soft);color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.js-motion .tile .mail-row,.js-motion .tile .bub,.js-motion .tile .viz-tags span{opacity:0}
+.js-motion .tile.in .mail-row{animation:dropin .7s var(--ease) .15s forwards}
+.js-motion .tile.in .slots i:not(.gap){animation-delay:calc(var(--n)*70ms + 650ms)}
+.js-motion .tile.in .bub.me{animation:pop .55s var(--ease) .3s forwards}
+.js-motion .tile.in .bub.them{animation:pop .55s var(--ease) 1.1s forwards}
+.js-motion .tile.in .viz-tags span{animation:pop .5s var(--ease) forwards;animation-delay:calc(var(--n)*110ms + 250ms)}
+@keyframes dropin{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+@media (max-width:900px){.tile{min-height:0}.viz{min-height:112px}}
+
+/* closing call to action */
+.cta{padding-block:clamp(96px,15vw,210px);text-align:center;overflow:hidden;border-top:1px solid var(--line);background:radial-gradient(60% 90% at 50% 110%,var(--accent-soft),transparent 70%)}
+.cta-ghost{position:absolute;left:0;top:50%;translate:0 -50%;white-space:nowrap;font-size:clamp(7rem,23vw,21rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:transparent;-webkit-text-stroke:1px var(--line2);opacity:.55;pointer-events:none;user-select:none}
+.cta-ghost span{display:inline-block;will-change:transform}
+.cta-in{position:relative}
+.cta h2{font-size:clamp(2.2rem,6.2vw,5.2rem);line-height:1.03;letter-spacing:-.035em;font-weight:600;max-width:15ch;margin-inline:auto}
+.cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(28px,4vw,44px)}
+
+/* footer: always dark so the white logo reads in both themes */
+footer.footer{--text:#e9f3f3;--muted:#8fa3ad;--dim:#5d717c;--line:rgba(170,225,235,.10);--accent:#7cf2dc;background:#04070c;color:var(--text);border-top:1px solid var(--line);padding-block:clamp(48px,7vw,88px) calc(64px + env(safe-area-inset-bottom))}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.7fr) repeat(3,minmax(0,1fr));gap:36px}
+.foot-brand img{height:34px;width:auto}
+.foot-brand p{color:var(--muted);margin-top:18px;max-width:34ch}
+.foot-col{display:grid;gap:10px;align-content:start;font-size:.94rem}
+.foot-col b{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.foot-col a{color:var(--muted);transition:color .2s;width:fit-content}
+.foot-col a:hover{color:var(--accent)}
+footer.footer .concept-note{margin-top:clamp(36px,5vw,64px);padding-top:22px;border-top:1px solid var(--line)}
+@media (max-width:760px){.foot-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.foot-brand{grid-column:1/-1}}
+
+/* account button + panel */
+.nav-pill{position:relative}
+.acct-panel{position:absolute;right:0;top:calc(100% + 10px);width:min(320px,calc(100vw - 32px));padding:22px;border-radius:24px;background:rgba(8,14,24,.97);box-shadow:inset 0 0 0 1px var(--line2),0 24px 60px rgba(0,0,0,.5);display:grid;gap:12px;opacity:0;transform:translateY(-6px) scale(.96);transform-origin:calc(100% - 80px) 0;visibility:hidden;transition:opacity .16s var(--ease),transform .2s var(--ease),visibility 0s .2s}
+.nav.acct-open .acct-panel{opacity:1;transform:none;visibility:visible;transition:opacity .22s var(--ease),transform .3s var(--ease)}
+.acct-panel b{font-size:1.1rem;font-weight:600;letter-spacing:-.01em}
+.acct-panel p{color:var(--muted);font-size:.92rem;line-height:1.45}
+.acct-panel .btn{min-height:46px;width:100%}
+.acct-panel small{color:var(--muted);font-size:.8rem;text-align:center}
+.acct-btn[aria-expanded="true"]{background:rgba(255,255,255,.1)}
+.menu-sep{height:1px;background:var(--line);margin:8px 6px}
+.menu-panel a.menu-acct{display:flex;align-items:center;gap:12px}
+.menu-panel a.menu-acct svg{width:20px;height:20px;color:var(--accent)}
+.cart-acct{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--r-sm);background:var(--accent-soft);color:var(--text)!important;font-size:.88rem!important}
+.cart-acct svg{width:18px;height:18px;flex:none;color:var(--accent)}
+.cart-acct a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:820px){.acct-btn,.acct-panel{display:none}}
+
+/* pre-animation states (only with JS + motion allowed) */
+.js-motion [data-reveal],.js-motion [data-split],.js-motion .hero .line>span,.js-motion .hero-in,.js-motion .stage .gc,.js-motion .stage .chip{opacity:0}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#shop">Skip to the store</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div style="position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:90;padding:7px 12px;border-radius:999px;background:rgba(8,14,24,.85);box-shadow:inset 0 0 0 1px rgba(170,225,235,.2);font:500 .72rem/1 'Geist Mono',ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:#8fa3ad;pointer-events:none">Concept preview</div>
+<div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-pill">
+    <a class="brand" href="#top" aria-label="Cardora Maldives, back to top">
+      <img src="assets/cardora-logo.webp" alt="Cardora Maldives" width="116" height="30" onerror="this.outerHTML='<span class=&quot;wordmark&quot;>CARDORA</span>'">
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#shop">Store</a>
+      <a href="#how">How it works</a>
+      <a href="#why">Why Cardora</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-btn" id="themeBtn" aria-label="Switch to light mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.500A8 8 0 0 1 9.500 4a8 8 0 1 0 10.500 10.500Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600 7 7M17 17l1.400 1.400M5.600 18.400 7 17M17 7l1.400-1.400"/></svg>
+      </button>
+      <button class="icon-btn acct-btn" id="acctBtn" aria-label="Account" aria-expanded="false" aria-controls="acctPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></button>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+        <span class="badge num" id="cartCount" aria-hidden="true">0</span>
+      </button>
+    </div>
+    <div class="acct-panel" id="acctPanel" role="group" aria-label="Account">
+      <b>Your Cardora account</b>
+      <p>Sign in to see your past orders and find your gift codes again.</p>
+      <a class="btn btn-primary" href="login.html">Sign in</a>
+      <a class="btn btn-ghost" href="register.html">Create account</a>
+      <small>You can order without an account.</small>
+    </div>
+  </div>
+  <div class="menu-panel" id="menuPanel">
+    <a href="#shop">Store</a>
+    <a href="#how">How it works</a>
+    <a href="#why">Why Cardora</a>
+    <a href="#contact">Contact</a>
+    <div class="menu-sep" aria-hidden="true"></div>
+    <a class="menu-acct" href="login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Sign in</a>
+    <a class="menu-acct" href="register.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M2 21a8 8 0 0 1 14-5.300M19 14v6M16 17h6"/></svg>Create account</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 aria-label="PSN and Xbox credit, priced in rufiyaa.">
+            <span class="line" aria-hidden="true"><span>PSN &amp; Xbox credit,</span></span>
+            <span class="line" aria-hidden="true"><span class="accent">priced in rufiyaa.</span></span>
+          </h1>
+          <p class="hero-sub hero-in">US and UK gift cards for your PlayStation or Xbox account. Order online or on WhatsApp, and your code arrives by email after payment is confirmed.</p>
+          <div class="hero-cta hero-in">
+            <a class="btn btn-primary magnetic" href="#shop">Shop gift cards
+              <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#how">How it works</a>
+          </div>
+        </div>
+
+        <div class="stage" id="stage" aria-hidden="true">
+          <div class="pool"></div><div class="floor"></div>
+          <svg class="orbits" viewBox="0 0 500 500">
+            <ellipse cx="250" cy="260" rx="235" ry="92" transform="rotate(-16 250 260)" pathLength="1"/>
+            <ellipse cx="250" cy="260" rx="190" ry="60" transform="rotate(-16 250 260)" pathLength="1"/>
+            <circle class="dot" r="4" cx="0" cy="0"/>
+          </svg>
+          <div class="stage-tilt" id="stageTilt">
+            <div class="gc-wrap xb"><div class="gc-float">
+              <div class="gc xb">
+                <span class="gc-brand">Xbox</span>
+                <img class="gc-logo" src="assets/xbox.svg" alt="" onerror="this.remove()">
+                <span class="gc-region">United Kingdom</span>
+                <span class="gc-value">£40</span>
+              </div>
+            </div></div>
+            <div class="gc-wrap ps"><div class="gc-float">
+              <div class="gc ps">
+                <span class="gc-brand">PlayStation</span>
+                <img class="gc-logo" src="assets/playstation.svg" alt="" onerror="this.remove()">
+                <span class="gc-region">United States</span>
+                <span class="gc-value">$50</span>
+              </div>
+            </div></div>
+            <div class="chip c1 num">MVR 1,199.00</div>
+            <div class="chip c2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+              Code sent by email
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="fact hero-in"><b>Digital delivery</b><span>By email after payment confirmation</span></div>
+        <div class="fact hero-in"><b>Order confirmation</b><span>Availability checked on WhatsApp</span></div>
+        <div class="fact hero-in"><b>US and UK regions</b><span>PlayStation and Xbox</span></div>
+        <div class="fact hero-in"><b>Customer support</b><span>Help with orders and codes</span></div>
+      </div>
+    </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" id="marquee">
+    <div class="marquee-track" aria-hidden="true">
+      <span><b>PlayStation</b><i></i>Xbox<i></i><b>United States</b><i></i>United Kingdom<i></i><b>Priced in MVR</b><i></i>Delivered by email<i></i><b>Order on WhatsApp</b><i></i></span>
+      <span><b>PlayStation</b><i></i>Xbox<i></i><b>United States</b><i></i>United Kingdom<i></i><b>Priced in MVR</b><i></i>Delivered by email<i></i><b>Order on WhatsApp</b><i></i></span>
+    </div>
+    <button class="mq-toggle" id="mqToggle" aria-label="Pause moving text" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
+    </button>
+  </div>
+
+  <!-- STORE -->
+  <section class="sec" id="shop">
+    <div class="wrap">
+      <div class="rule" data-rule><span class="mono">01</span><span class="mono">Store</span></div>
+      <div class="sec-head">
+        <h2 data-split>Build your card in <em>three taps.</em></h2>
+        <p data-reveal>Pick your console, match your account region, choose an amount. The rufiyaa price updates as you go.</p>
+      </div>
+
+      <div class="cfg">
+        <div class="cfg-stage" id="cfgStage" data-reveal>
+          <div class="halo" aria-hidden="true"></div>
+          <div class="cfg-tilt" id="cfgTilt">
+            <div class="gc ps" id="cfgCard">
+              <span class="gc-brand" id="cBrand">PlayStation</span>
+              <img class="gc-logo" id="cLogo" src="assets/playstation.svg" alt="" onerror="this.style.visibility='hidden'">
+              <span class="gc-region" id="cRegion">United States</span>
+              <span class="gc-value" id="cValue">$50</span>
+            </div>
+          </div>
+          <p class="cfg-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+            <span><span id="regionNote">US cards only work on accounts set to the United States.</span> <a href="#help">How to check your region</a></span>
+          </p>
+        </div>
+
+        <div class="cfg-panel">
+          <div class="field" data-reveal="1">
+            <span class="mono" id="lblBrand">1 · Console</span>
+            <div class="seg" id="segBrand" role="group" aria-labelledby="lblBrand">
+              <button type="button" data-brand="ps" aria-pressed="true"><img src="assets/playstation.svg" alt="" onerror="this.remove()">PlayStation</button>
+              <button type="button" data-brand="xb" aria-pressed="false"><img src="assets/xbox.svg" alt="" onerror="this.remove()">Xbox</button>
+            </div>
+          </div>
+          <div class="field" data-reveal="2">
+            <span class="mono" id="lblRegion">2 · Account region</span>
+            <div class="seg" id="segRegion" role="group" aria-labelledby="lblRegion">
+              <button type="button" data-region="us" aria-pressed="true">United States</button>
+              <button type="button" data-region="uk" aria-pressed="false">United Kingdom</button>
+            </div>
+          </div>
+          <div class="field" data-reveal="3">
+            <span class="mono" id="lblAmount">3 · Amount</span>
+            <div class="amounts" id="amounts" role="group" aria-labelledby="lblAmount"></div>
+            <p class="restock" id="restock" hidden></p>
+          </div>
+          <div class="buy" data-reveal="4">
+            <div class="price-row">
+              <div class="price" aria-live="polite"><small>MVR</small><span id="price">1,199.00</span></div>
+              <span class="stock"><i></i><span id="stockText">Available · 50.00 USD face value</span></span>
+            </div>
+            <div class="buy-actions">
+              <button class="btn btn-primary magnetic" id="addBtn" type="button">Add to cart</button>
+              <a class="btn btn-ghost" id="waBtn" target="_blank" rel="noopener noreferrer" href="#">Order on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="all-prices" data-reveal>
+        <summary>See all 24 cards and prices
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <div class="price-grid" id="priceGrid"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="rule" data-rule><span class="mono">02</span><span class="mono">How it works</span></div>
+      <div class="sec-head">
+        <h2 data-split>From cart to code in <em>four steps.</em></h2>
+        <p data-reveal>You never pay before we have confirmed your card is in stock.</p>
+      </div>
+      <div class="how-grid">
+        <div class="ticket-wrap" data-reveal>
+          <div class="ticket" id="ticket" aria-hidden="true">
+            <div class="ticket-top"><span class="mono">Your order</span><span class="mono num" id="tStep">4 / 4</span></div>
+            <div class="ticket-bar"><i id="tBar"></i></div>
+            <div class="trow is-done"><div class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div><div><b>Card chosen</b><span id="tCard">PlayStation · 50.00 USD · United States</span></div></div>
+            <div class="trow is-done"><div class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div><div><b>Order sent on WhatsApp</b><span>To +960 922-2544</span></div></div>
+            <div class="trow is-done"><div class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div><div><b>Availability confirmed</b><span>Stock and final price checked</span></div></div>
+            <div class="trow is-done"><div class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div><div><b>Code emailed</b><span class="code" id="tCode">XXXX-XXXX-XXXX</span></div></div>
+          </div>
+        </div>
+
+        <ol class="steps" id="steps" style="list-style:none;margin:0;padding:0">
+          <div class="steps-line" aria-hidden="true"><i id="stepsLine"></i></div>
+          <li class="step"><span class="step-n">1</span><div><h3>Choose a card for your account</h3><p>Pick PlayStation or Xbox, then the US or UK region that matches your account. Check the face value and MVR price, and add it to your cart.</p></div></li>
+          <li class="step"><span class="step-n">2</span><div><h3>Send your order on WhatsApp</h3><p>Open your cart, check the quantities and total, and add your name and delivery email. Tap Send order on WhatsApp to share it with our team.</p></div></li>
+          <li class="step"><span class="step-n">3</span><div><h3>Wait for availability confirmation</h3><p>Our team confirms the stock and final price on WhatsApp before sharing payment details.</p></div></li>
+          <li class="step"><span class="step-n">4</span><div><h3>Complete your order</h3><p>Follow the payment instructions sent on WhatsApp. Your digital gift code is emailed after payment is confirmed. Keep your order reference handy if you contact us.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- HELP -->
+  <section class="sec" id="help" style="padding-top:0">
+    <div class="wrap">
+      <div class="rule" data-rule><span class="mono">03</span><span class="mono">Region and redeem</span></div>
+      <div class="help-top">
+        <div class="sec-head">
+          <h2 data-split>Check your region, <em>redeem your code.</em></h2>
+        </div>
+        <div class="seg" id="segHelp" role="group" aria-label="Console" data-reveal>
+          <button type="button" data-help="ps" aria-pressed="true">PlayStation</button>
+          <button type="button" data-help="xb" aria-pressed="false">Xbox</button>
+        </div>
+      </div>
+      <div class="help-grid" id="helpGrid" data-reveal>
+        <article class="help-card">
+          <h3>Before you buy: check your region</h3>
+          <p id="hRegionLead"></p>
+          <ol id="hRegion"></ol>
+        </article>
+        <article class="help-card">
+          <h3>After you buy: redeem your code</h3>
+          <p id="hRedeemLead"></p>
+          <ol id="hRedeem"></ol>
+        </article>
+      </div>
+      <p class="help-foot" data-reveal>Stuck on a step? <a href="#contact" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">Message the Cardora team</a> with your order reference.</p>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="sec" id="why">
+    <div class="wrap">
+      <div class="rule" data-rule><span class="mono">04</span><span class="mono">Why Cardora</span></div>
+      <div class="sec-head">
+        <h2 data-split>Made for gamers <em>in the Maldives.</em></h2>
+      </div>
+      <div class="bento">
+        <article class="tile t1" data-reveal>
+          <div class="viz viz-mail" aria-hidden="true">
+            <div class="mail-row">
+              <span class="mail-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span>
+              <span class="mail-txt"><b>Cardora Maldives</b><small>Your gift code is ready</small></span>
+              <span class="mono">now</span>
+            </div>
+            <div class="slots">
+              <i style="--n:0">•</i><i style="--n:1">•</i><i style="--n:2">•</i><i style="--n:3">•</i><i class="gap"></i>
+              <i style="--n:4">•</i><i style="--n:5">•</i><i style="--n:6">•</i><i style="--n:7">•</i><i class="gap"></i>
+              <i style="--n:8">•</i><i style="--n:9">•</i><i style="--n:10">•</i><i style="--n:11">•</i>
+            </div>
+          </div>
+          <h3>Digital delivery</h3>
+          <p>Your gift code arrives by email after payment is confirmed. No pickup, no waiting on a courier.</p>
+        </article>
+        <article class="tile t2" data-reveal="1">
+          <div class="viz viz-chat" aria-hidden="true">
+            <span class="bub me">1 × PlayStation $50 (US)</span>
+            <span class="bub them"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>In stock. Final price MVR 1,199.00</span>
+          </div>
+          <h3>Confirmed before you pay</h3>
+          <p>We check availability on WhatsApp first, then share payment details.</p>
+        </article>
+        <article class="tile t3" data-reveal id="fxTile">
+          <div class="viz viz-fx" aria-hidden="true">
+            <span class="fx-clip"><span class="fx-from" id="fxFrom">$50</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <span class="fx-clip"><span class="fx-to num" id="fxTo">MVR 1,199.00</span></span>
+          </div>
+          <h3>Priced in MVR</h3>
+          <p>See the rufiyaa price for every denomination before you order.</p>
+        </article>
+        <article class="tile t4" data-reveal="1">
+          <div class="viz viz-fan" aria-hidden="true">
+            <div class="gc ps"><span class="gc-brand">PlayStation</span><img class="gc-logo" src="assets/playstation.svg" alt=""><span class="gc-region">United States</span><span class="gc-value">$25</span></div>
+            <div class="gc xb"><span class="gc-brand">Xbox</span><img class="gc-logo" src="assets/xbox.svg" alt=""><span class="gc-region">United Kingdom</span><span class="gc-value">£20</span></div>
+          </div>
+          <h3>US and UK regions</h3>
+          <p>Choose the card that matches the region of your PlayStation or Xbox account.</p>
+        </article>
+        <article class="tile t5" data-reveal="2">
+          <div class="viz viz-tags" aria-hidden="true">
+            <span style="--n:0">Orders</span><span style="--n:1">Delivery</span><span style="--n:2">Redeeming codes</span><span style="--n:3">Account regions</span>
+          </div>
+          <h3>Help when you need it</h3>
+          <p>Support with orders, delivery and redeeming your code.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="cta" id="cta">
+    <div class="cta-ghost" aria-hidden="true"><span>CARDORA · PLAYSTATION · XBOX · CARDORA · PLAYSTATION · XBOX ·</span></div>
+    <div class="wrap cta-in">
+      <h2 data-split>Your next top-up is <em>three taps away.</em></h2>
+      <div class="cta-actions" data-reveal>
+        <a class="btn btn-primary magnetic" href="#shop">Shop gift cards <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a class="btn btn-ghost" href="https://wa.me/9609222544?text=Hi%20Cardora%20Maldives%2C%20I%20want%20to%20make%20an%20order." target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec contact" id="contact">
+    <div class="wrap">
+      <div class="rule" data-rule><span class="mono">05</span><span class="mono">Contact</span></div>
+      <div class="contact-grid">
+        <div>
+          <h2 data-split>Questions about an order?</h2>
+          <p class="lead" data-reveal>Message the Cardora team on the app you already use.</p>
+          <div class="channels" data-reveal="1">
+            <a class="channel" href="https://wa.me/9609222544?text=Hi%20Cardora%20Maldives%2C%20I%20want%20to%20make%20an%20order." target="_blank" rel="noopener noreferrer"><span>WhatsApp<small class="num">+960 922-2544</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <a class="channel" href="viber://chat?number=%2B9609823238"><span>Viber</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <a class="channel" href="https://t.me/+9609823238" target="_blank" rel="noopener noreferrer"><span>Telegram</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <a class="channel" href="https://www.instagram.com/cardoramdv" target="_blank" rel="noopener noreferrer"><span>Instagram<small>@cardoramdv</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </div>
+        <form class="form" id="contactForm" data-reveal="2" novalidate>
+          <h3>Send a message</h3>
+          <label>Name<input name="name" autocomplete="name" required></label>
+          <label>Email<input name="email" type="email" inputmode="email" autocomplete="email" required></label>
+          <label>Message<textarea name="message" required></textarea></label>
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/cardora-logo.webp" alt="Cardora Maldives" width="132" height="34" loading="lazy">
+        <p>PlayStation and Xbox gift cards for US and UK accounts, priced in MVR.</p>
+      </div>
+      <nav class="foot-col" aria-label="Store"><b>Store</b><a href="#shop">Gift cards</a><a href="#how">How it works</a><a href="#help">Redeem a code</a></nav>
+      <nav class="foot-col" aria-label="Contact"><b>Contact</b><a class="num" href="https://wa.me/9609222544" target="_blank" rel="noopener noreferrer">WhatsApp +960 922-2544</a><a href="viber://chat?number=%2B9609823238">Viber</a><a href="https://t.me/+9609823238" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.instagram.com/cardoramdv" target="_blank" rel="noopener noreferrer">Instagram</a></nav>
+      <nav class="foot-col" aria-label="Account"><b>Account</b><a href="login.html">Sign in</a><a href="register.html">Create account</a></nav>
+    </div>
+    <p class="concept-note">Concept redesign prepared for Cardora Maldives. Not the live store. Cards, prices and stock mirror cardoramdv.com as of 22 November 2026.</p>
+  </div>
+</footer>
+
+<!-- STICKY BUY BAR (phones) -->
+<div class="buybar" id="buybar">
+  <div><small id="bbLabel">PlayStation · $50 · US</small><b class="num" id="bbPrice">MVR 1,199.00</b></div>
+  <button class="btn btn-primary" id="bbAdd" type="button" tabindex="-1">Add to cart</button>
+</div>
+
+<!-- CART -->
+<dialog class="cart" id="cart" aria-labelledby="cartTitle">
+  <div class="cart-inner">
+    <div class="cart-head">
+      <h2 id="cartTitle">Your cart</h2>
+      <button class="icon-btn" id="cartClose" aria-label="Close cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="cart-body" id="cartBody" data-lenis-prevent></div>
+    <div class="cart-foot" id="cartFoot">
+      <p class="cart-acct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Have an account? <a href="login.html">Sign in to save this order</a></span></p>
+      <div class="cart-fields">
+        <label>Name<input id="oName" autocomplete="name" enterkeyhint="next"></label>
+        <label>Delivery email<input id="oEmail" type="email" inputmode="email" autocomplete="email" enterkeyhint="done"></label>
+      </div>
+      <div class="total"><span>Total</span><strong id="cartTotal">MVR 0.00</strong></div>
+      <a class="btn btn-primary" id="sendOrder" target="_blank" rel="noopener noreferrer" href="#">Send order on WhatsApp</a>
+      <p>We confirm availability and the final price on WhatsApp before sharing payment details.</p>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const motion = !!(window.gsap && window.ScrollTrigger) && !reduce;
+  if (!motion) root.classList.remove('js-motion');
+
+  /* ---------- catalogue (mirrors the live store) ---------- */
+  const WA = '9609222544';
+  const BRANDS = { ps: { name: 'PlayStation', logo: 'assets/playstation.svg', glow: 'rgba(74,111,216,.6)' },
+                   xb: { name: 'Xbox', logo: 'assets/xbox.svg', glow: 'rgba(34,166,81,.55)' } };
+  const REGIONS = { us: { name: 'United States', cur: 'USD', sym: '$', short: 'US' }, uk: { name: 'United Kingdom', cur: 'GBP', sym: '£', short: 'UK' } };
+  // [face value, MVR price, in stock]
+  const CARDS = {
+    ps: { us: [[10,249,0],[25,610,1],[50,1199,1],[75,1749,1],[80,1899,1],[100,2339,1]],
+          uk: [[10,339,1],[20,640,0],[40,1280,1],[50,1599,1],[100,3100,1]] },
+    xb: { us: [[10,249,1],[25,610,1],[50,1149,1],[75,1725,1],[80,1840,1],[100,2299,1]],
+          uk: [[10,339,1],[20,640,1],[40,1280,1],[50,1599,1],[70,2240,1],[90,2880,1],[100,3199,1]] }
+  };
+  const money = n => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const face = (v, r) => v.toFixed(2) + ' ' + REGIONS[r].cur;
+  const find = (b, r, a) => CARDS[b][r].find(c => c[0] === a);
+  const waLink = text => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+
+  /* ---------- configurator ---------- */
+  const state = { brand: 'ps', region: 'us', amount: 50 };
+  const el = { card: $('#cfgCard'), tilt: $('#cfgTilt'), cBrand: $('#cBrand'), cLogo: $('#cLogo'), cRegion: $('#cRegion'), cValue: $('#cValue'),
+    amounts: $('#amounts'), price: $('#price'), stock: $('#stockText'), add: $('#addBtn'), wa: $('#waBtn'), note: $('#regionNote'), tCard: $('#tCard') };
+  let shownPrice = 1199, flipTl = null;
+
+  function paintCard() {
+    const b = BRANDS[state.brand], r = REGIONS[state.region];
+    el.card.className = 'gc ' + state.brand;
+    el.cBrand.textContent = b.name;
+    el.cLogo.style.visibility = ''; el.cLogo.src = b.logo;
+    el.cRegion.textContent = r.name;
+    el.cValue.textContent = r.sym + state.amount;
+    $('#cfgStage').style.setProperty('--glow', b.glow);
+  }
+  function render(change) {
+    const list = CARDS[state.brand][state.region];
+    let cur = find(state.brand, state.region, state.amount);
+    if (!cur || !cur[2]) { cur = list.find(c => c[2] && c[0] >= state.amount) || list.filter(c => c[2]).pop(); state.amount = cur[0]; }
+    const b = BRANDS[state.brand], r = REGIONS[state.region];
+
+    $$('#segBrand button').forEach((btn, i) => { const on = btn.dataset.brand === state.brand; btn.setAttribute('aria-pressed', on); if (on) $('#segBrand').style.setProperty('--i', i); });
+    $$('#segRegion button').forEach((btn, i) => { const on = btn.dataset.region === state.region; btn.setAttribute('aria-pressed', on); if (on) $('#segRegion').style.setProperty('--i', i); });
+
+    el.amounts.innerHTML = list.map(([v, p, ok]) =>
+      `<button type="button" class="amt" data-amount="${v}" aria-pressed="${v === state.amount}" ${ok ? '' : 'disabled'} aria-label="${face(v, state.region)}, ${ok ? 'MVR ' + money(p) : 'out of stock'}">
+        <b>${r.sym}${v}</b><small>${ok ? 'MVR ' + money(p) : 'Out of stock'}</small></button>`).join('');
+    if (motion && change && change !== 'amount') gsap.from(el.amounts.children, { opacity: 0, y: 10, duration: .4, ease: 'power3.out', stagger: .035 });
+
+    // card art
+    if (flipTl) { flipTl.kill(); flipTl = null; gsap.set(el.card, { rotationY: 0 }); }
+    if (motion && change === 'brand') {
+      flipTl = gsap.timeline()
+        .to(el.card, { rotationY: 90, duration: .22, ease: 'power2.in' })
+        .add(paintCard).set(el.card, { rotationY: -90 })
+        .to(el.card, { rotationY: 0, duration: .6, ease: 'expo.out' });
+    } else {
+      paintCard();
+      if (motion && change) gsap.fromTo([el.cValue, change === 'region' ? el.cRegion : null].filter(Boolean), { yPercent: 45, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .45, ease: 'power3.out' });
+    }
+
+    // price
+    const target = cur[1];
+    if (motion && change) {
+      const o = { v: shownPrice };
+      gsap.to(o, { v: target, duration: .6, ease: 'power3.out', overwrite: true, onUpdate: () => { el.price.textContent = money(o.v); }, onComplete: () => { el.price.textContent = money(target); } });
+    } else el.price.textContent = money(target);
+    shownPrice = target;
+
+    el.stock.textContent = 'Available · ' + face(cur[0], state.region) + ' face value';
+    el.note.textContent = `${r.short} cards only work on accounts set to the ${r.name}.`;
+    $('#bbLabel').textContent = `${b.name} · ${r.sym}${cur[0]} · ${r.short}`;
+    $('#bbPrice').textContent = 'MVR ' + money(target);
+    const out = list.filter(c => !c[2]), rs = $('#restock');
+    rs.hidden = !out.length;
+    if (out.length) {
+      const names = out.map(c => r.sym + c[0]).join(' and ');
+      rs.innerHTML = `${names} ${out.length > 1 ? 'are' : 'is'} out of stock. <a target="_blank" rel="noopener noreferrer" href="${waLink(`Hi Cardora Maldives, please let me know when the ${b.name} Gift Card (${out.map(c => face(c[0], state.region)).join(', ')}, ${r.name}) is back in stock.`)}">Ask us when it's back</a>`;
+    }
+    el.wa.href = waLink(`Hi Cardora Maldives, I would like to order one ${b.name} Gift Card (${face(cur[0], state.region)} face value, ${r.name}, selling price MVR ${cur[1].toFixed(2)}).`);
+    el.tCard.textContent = `${b.name} · ${face(cur[0], state.region)} · ${r.name}`;
+  }
+  $('#segBrand').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.brand !== state.brand) { state.brand = b.dataset.brand; render('brand'); } });
+  $('#segRegion').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.region !== state.region) { state.region = b.dataset.region; render('region'); } });
+  el.amounts.addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.disabled) { state.amount = +b.dataset.amount; render('amount'); } });
+
+  // full price list
+  $('#priceGrid').innerHTML = Object.keys(CARDS).map(b => Object.keys(CARDS[b]).map(r =>
+    `<div class="price-col"><h3>${BRANDS[b].name} · ${REGIONS[r].short}</h3>${CARDS[b][r].map(([v, p, ok]) =>
+      `<button type="button" data-b="${b}" data-r="${r}" data-a="${v}" ${ok ? '' : 'disabled'}><span>${face(v, r)}</span><span>${ok ? 'MVR ' + money(p) : 'Out of stock'}</span></button>`).join('')}</div>`).join('')).join('');
+  $('#priceGrid').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b || b.disabled) return;
+    const brandChanged = state.brand !== b.dataset.b;
+    Object.assign(state, { brand: b.dataset.b, region: b.dataset.r, amount: +b.dataset.a });
+    render(brandChanged ? 'brand' : 'region');
+    scrollToEl($('#shop'));
+  });
+
+  /* ---------- cart ---------- */
+  const cartDlg = $('#cart'), cartBtn = $('#cartBtn'), countEl = $('#cartCount');
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem('cardora-concept-cart') || '[]'); } catch (e) {}
+  const save = () => { try { localStorage.setItem('cardora-concept-cart', JSON.stringify(cart)); } catch (e) {} };
+  const cartQty = () => cart.reduce((n, i) => n + i.qty, 0);
+
+  function renderCart() {
+    const n = cartQty();
+    countEl.textContent = n;
+    cartBtn.setAttribute('aria-label', `Open cart, ${n} ${n === 1 ? 'item' : 'items'}`);
+    const body = $('#cartBody');
+    $('#cartFoot').hidden = !cart.length;
+    if (!cart.length) {
+      body.innerHTML = `<div class="cart-empty"><p>Your cart is empty. Build a card and it will show up here, ready to send on WhatsApp.</p><button class="btn btn-ghost" type="button" data-act="browse">Browse gift cards</button></div>`;
+      return;
+    }
+    let total = 0;
+    body.innerHTML = cart.map((it, i) => {
+      const c = find(it.b, it.r, it.a), R = REGIONS[it.r]; total += c[1] * it.qty;
+      return `<div class="ci">
+        <div class="gc ${it.b}"><span class="gc-value">${R.sym}${it.a}</span></div>
+        <div><b>${BRANDS[it.b].name} Gift Card</b><small>${face(it.a, it.r)} · ${R.name}</small>
+          <div class="qty"><button type="button" data-act="dec" data-i="${i}" aria-label="Decrease quantity">−</button><span aria-live="polite">${it.qty}</span><button type="button" data-act="inc" data-i="${i}" aria-label="Increase quantity">+</button></div></div>
+        <div><span class="lp">MVR ${money(c[1] * it.qty)}</span><button type="button" class="rm" data-act="rm" data-i="${i}">Remove</button></div>
+      </div>`;
+    }).join('');
+    $('#cartTotal').textContent = 'MVR ' + money(total);
+  }
+  $('#cartBody').addEventListener('click', e => {
+    const b = e.target.closest('[data-act]'); if (!b) return;
+    const i = +b.dataset.i, act = b.dataset.act;
+    if (act === 'browse') { closeCart(); scrollToEl($('#shop')); return; }
+    if (act === 'inc') cart[i].qty++;
+    if (act === 'dec') { cart[i].qty--; if (cart[i].qty < 1) cart.splice(i, 1); }
+    if (act === 'rm') cart.splice(i, 1);
+    save(); renderCart();
+  });
+  $('#sendOrder').addEventListener('click', e => {
+    let total = 0;
+    const lines = cart.map(it => { const c = find(it.b, it.r, it.a); total += c[1] * it.qty; return `• ${it.qty} × ${BRANDS[it.b].name} Gift Card (${face(it.a, it.r)} face value, ${REGIONS[it.r].name}) — MVR ${(c[1] * it.qty).toFixed(2)}`; });
+    const name = $('#oName').value.trim(), email = $('#oEmail').value.trim();
+    e.currentTarget.href = waLink(['Hi Cardora Maldives, I would like to order:', ...lines, `Total: MVR ${total.toFixed(2)}`, name && `Name: ${name}`, email && `Delivery email: ${email}`].filter(Boolean).join('\n'));
+  });
+
+  function openCart() {
+    if (cartDlg.open) return;
+    renderCart(); cartDlg.showModal();
+    requestAnimationFrame(() => cartDlg.classList.add('is-open'));
+    if (lenis) lenis.stop();
+    if (motion) gsap.from('#cartBody .ci', { opacity: 0, x: 24, duration: .5, ease: 'power3.out', stagger: .06, delay: .12 });
+  }
+  function closeCart() {
+    if (!cartDlg.open) return;
+    cartDlg.classList.remove('is-open');
+    setTimeout(() => { cartDlg.close(); if (lenis) lenis.start(); cartBtn.focus({ preventScroll: true }); }, reduce ? 0 : 320);
+  }
+  cartBtn.addEventListener('click', openCart);
+  $('#cartClose').addEventListener('click', closeCart);
+  cartDlg.addEventListener('cancel', e => { e.preventDefault(); closeCart(); });
+  cartDlg.addEventListener('click', e => { if (e.target === cartDlg) closeCart(); });
+
+  el.add.addEventListener('click', () => {
+    const { brand: b, region: r, amount: a } = state;
+    const hit = cart.find(i => i.b === b && i.r === r && i.a === a);
+    hit ? hit.qty++ : cart.push({ b, r, a, qty: 1 });
+    save();
+    el.add.textContent = 'Added to cart';
+    clearTimeout(el.add._t); el.add._t = setTimeout(() => { el.add.textContent = 'Add to cart'; }, 1600);
+    if (!motion) { renderCart(); return; }
+    showNav();
+    const bump = () => { renderCart(); gsap.fromTo(countEl, { scale: 1.7 }, { scale: 1, duration: .5, ease: 'back.out(3)' }); gsap.fromTo(cartBtn, { scale: .88 }, { scale: 1, duration: .5, ease: 'back.out(2.5)' }); };
+    const from = el.card.getBoundingClientRect(), to = cartBtn.getBoundingClientRect();
+    if (from.bottom < 0 || from.top > innerHeight) { bump(); return; } // card is off screen: skip the flight
+    const ghost = el.card.cloneNode(true); ghost.removeAttribute('id'); ghost.classList.add('ghost-fly');
+    Object.assign(ghost.style, { left: from.left + 'px', top: from.top + 'px', width: from.width + 'px', height: from.height + 'px', transform: 'none' });
+    document.body.append(ghost);
+    gsap.to(ghost, { x: to.left + to.width / 2 - (from.left + from.width / 2), y: to.top + to.height / 2 - (from.top + from.height / 2), scale: .07, rotation: 14, duration: .8, ease: 'power3.inOut',
+      onComplete: () => { ghost.remove(); bump(); } });
+    gsap.to(ghost, { opacity: 0, duration: .25, delay: .58 });
+  });
+
+  /* ---------- sticky buy bar: shown on phones while the store is on screen but its own button is not ---------- */
+  const buybar = $('#buybar'), bbAdd = $('#bbAdd');
+  if ('IntersectionObserver' in window) {
+    const seen = { shop: false, buy: false };
+    const syncBar = () => { const on = seen.shop && !seen.buy; buybar.classList.toggle('is-on', on); bbAdd.tabIndex = on ? 0 : -1; };
+    const io = new IntersectionObserver(es => { es.forEach(e => { seen[e.target.id === 'shop' ? 'shop' : 'buy'] = e.isIntersecting; }); syncBar(); });
+    io.observe($('#shop')); io.observe($('.buy-actions'));
+  }
+  bbAdd.addEventListener('click', () => {
+    el.add.click(); bbAdd.textContent = 'Added';
+    clearTimeout(bbAdd._t); bbAdd._t = setTimeout(() => { bbAdd.textContent = 'Add to cart'; }, 1600);
+  });
+
+  /* ---------- help: region + redeem steps ---------- */
+  const HELP = {
+    ps: { regionLead: 'A PlayStation account keeps the region it was created with, and a card only works in that region.',
+          region: ['Sign in at <b>playstation.com</b> and open <b>Account settings</b>.', 'Find <b>Country/Region</b> in your account details.', 'Buy the <b>US</b> card for United States, or the <b>UK</b> card for United Kingdom.'],
+          redeemLead: 'Your code is 12 characters long.',
+          redeem: ['On your PS5, open <b>Settings</b>, then <b>Users and Accounts</b>.', 'Choose <b>Account</b>, then <b>Payment and Subscriptions</b>, then <b>Redeem Codes</b>.', 'Type the code from your email and confirm. The credit lands in your wallet.'] },
+    xb: { regionLead: 'Xbox cards follow the country of your Microsoft account.',
+          region: ['Sign in at <b>account.microsoft.com</b> and open <b>Your info</b>.', 'Check the <b>Country/region</b> shown on your profile.', 'Buy the <b>US</b> card for United States, or the <b>UK</b> card for United Kingdom.'],
+          redeemLead: 'Your code is 25 characters long.',
+          redeem: ['On your console, press the <b>Xbox button</b> and open the <b>Store</b>.', 'Choose <b>Redeem</b> from the Store menu. You can also use <b>redeem.microsoft.com</b>.', 'Type the code from your email and confirm. The credit is added to your Microsoft account.'] }
+  };
+  function renderHelp(k, animate) {
+    const h = HELP[k], li = a => a.map(t => `<li><span>${t}</span></li>`).join('');
+    $$('#segHelp button').forEach((b, i) => { const on = b.dataset.help === k; b.setAttribute('aria-pressed', on); if (on) $('#segHelp').style.setProperty('--i', i); });
+    $('#hRegionLead').textContent = h.regionLead; $('#hRegion').innerHTML = li(h.region);
+    $('#hRedeemLead').textContent = h.redeemLead; $('#hRedeem').innerHTML = li(h.redeem);
+    if (motion && animate) gsap.from('#helpGrid li, #helpGrid .help-card>p', { opacity: 0, y: 12, duration: .45, ease: 'power3.out', stagger: .04 });
+  }
+  $('#segHelp').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.getAttribute('aria-pressed') !== 'true') renderHelp(b.dataset.help, true); });
+  renderHelp('ps');
+
+  /* ---------- contact form (concept only) ---------- */
+  $('#contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.currentTarget, bad = $$('input,textarea', f).find(i => !i.checkValidity());
+    const s = $('#formStatus');
+    if (bad) { s.textContent = 'Fill in your name, a valid email and a message.'; bad.focus(); return; }
+    s.textContent = 'Concept preview: on the live site this message goes to the Cardora team.';
+  });
+
+  /* ---------- theme toggle ---------- */
+  const themeBtn = $('#themeBtn'), themeMeta = $('meta[name="theme-color"]');
+  const syncTheme = () => {
+    const light = root.dataset.theme === 'light';
+    themeBtn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+    themeMeta.content = light ? '#fbf9f3' : '#05090f';
+  };
+  syncTheme();
+  themeBtn.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    const apply = () => { if (next === 'light') root.dataset.theme = 'light'; else delete root.dataset.theme; syncTheme(); };
+    try { localStorage.setItem('cardora-concept-theme', next); } catch (e) {}
+    if (!document.startViewTransition || reduce) { apply(); return; }
+    // the new theme spreads out in a circle from the button
+    const r = themeBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(apply).ready.then(() => root.animate(
+      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${R}px at ${x}px ${y}px)`] },
+      { duration: 700, easing: 'cubic-bezier(.22,1,.36,1)', pseudoElement: '::view-transition-new(root)' })).catch(() => {});
+  });
+
+  /* ---------- menu ---------- */
+  const nav = $('#nav'), menuBtn = $('#menuBtn');
+  const setMenu = open => { nav.classList.toggle('menu-open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+  menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('menu-open')));
+  // account panel (desktop)
+  const acctBtn = $('#acctBtn'), acctPanel = $('#acctPanel');
+  const setAcct = open => { nav.classList.toggle('acct-open', open); acctBtn.setAttribute('aria-expanded', open); };
+  acctBtn.addEventListener('click', () => setAcct(!nav.classList.contains('acct-open')));
+  document.addEventListener('click', e => { if (nav.classList.contains('acct-open') && !acctPanel.contains(e.target) && !acctBtn.contains(e.target)) setAcct(false); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    setMenu(false);
+    if (nav.classList.contains('acct-open')) { setAcct(false); acctBtn.focus(); }
+  });
+
+  /* ---------- smooth scroll + anchors ---------- */
+  let lenis = null;
+  if (motion && window.Lenis) {
+    lenis = new Lenis({ lerp: .1 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+  function scrollToEl(target) {
+    if (lenis) lenis.scrollTo(target, { offset: -88, duration: 1.2 });
+    else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a || a.getAttribute('href') === '#') return;
+    const t = document.querySelector(a.getAttribute('href')); if (!t) return;
+    e.preventDefault(); setMenu(false); scrollToEl(t);
+  });
+
+  let navHidden = false;
+  function showNav() { if (motion && navHidden) { navHidden = false; gsap.to(nav, { yPercent: 0, duration: .5, ease: 'power3.out' }); } }
+
+  render(); renderCart();
+  if (!motion) return;
+
+  /* =====================  MOTION  ===================== */
+  gsap.registerPlugin(ScrollTrigger);
+  const EXPO = 'expo.out';
+
+  // nav hide on scroll down, show on scroll up
+  ScrollTrigger.create({ start: 200, end: 'max', onUpdate: self => {
+    if (nav.classList.contains('menu-open')) return;
+    if (self.direction === 1 && !navHidden) { setAcct(false); navHidden = true; gsap.to(nav, { yPercent: -160, duration: .5, ease: 'power3.inOut' }); }
+    else if (self.direction === -1) showNav();
+  }, onLeaveBack: showNav });
+  gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+
+  // ambient drift
+  gsap.to('.a1', { x: '12vw', y: '10vh', duration: 22, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  gsap.to('.a2', { x: '-10vw', y: '16vh', duration: 28, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  gsap.to('.aurora', { yPercent: -18, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: true } });
+
+  // hero entrance
+  const hero = gsap.timeline({ defaults: { ease: EXPO }, delay: .15 });
+  hero.from(nav, { y: -40, opacity: 0, duration: 1 }, 0)
+      .fromTo('.hero .line>span', { yPercent: 115, opacity: 1 }, { yPercent: 0, duration: 1.2, stagger: .1 }, .1)
+      .fromTo('.hero-in', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1, stagger: .07 }, .45)
+      .fromTo('.orbits ellipse', { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut', stagger: .2 }, .2)
+      .fromTo('.gc-wrap.xb .gc', { opacity: 0, y: 160, rotationX: -50, rotationZ: 40 }, { opacity: 1, y: 0, rotationX: 0, rotationZ: 14, duration: 1.5 }, .3)
+      .fromTo('.gc-wrap.ps .gc', { opacity: 0, y: 200, rotationX: -50, rotationZ: -40 }, { opacity: 1, y: 0, rotationX: 0, rotationZ: -11, duration: 1.5 }, .42)
+      .fromTo('.stage .chip', { opacity: 0, scale: .8 }, { opacity: 1, scale: 1, duration: .7, ease: 'back.out(2)', stagger: .12 }, 1.1)
+      .fromTo('.stage .gc', { '--sheen': '110%' }, { '--sheen': '-10%', duration: 1.6, ease: 'power2.inOut', stagger: .15, clearProps: '--sheen' }, .9);
+
+  // idle float + orbiting dot (paused while the hero is off screen)
+  const idle = gsap.timeline({ repeat: -1, yoyo: true, defaults: { ease: 'sine.inOut' } })
+    .to('.gc-wrap.xb .gc-float', { y: -14, rotationZ: 1.5, duration: 3.6 }, 0)
+    .to('.gc-wrap.ps .gc-float', { y: 12, rotationZ: -1.5, duration: 3.6 }, 0)
+    .to('.chip.c1', { y: -8, duration: 3.6 }, 0).to('.chip.c2', { y: 8, duration: 3.6 }, 0);
+  const dot = $('.orbits .dot'), orbit = { a: 0 };
+  const dotTween = gsap.to(orbit, { a: Math.PI * 2, duration: 14, ease: 'none', repeat: -1, onUpdate: () => {
+    const x = Math.cos(orbit.a) * 235, y = Math.sin(orbit.a) * 92, r = -16 * Math.PI / 180;
+    dot.setAttribute('cx', 250 + x * Math.cos(r) - y * Math.sin(r)); dot.setAttribute('cy', 260 + x * Math.sin(r) + y * Math.cos(r));
+  } });
+  ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: s => { idle.paused(!s.isActive); dotTween.paused(!s.isActive); } });
+
+  // hero scroll-away
+  gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: .6 } })
+    .to('.hero-copy', { y: -70, opacity: 0, ease: 'none' }, 0)
+    .to('.gc-wrap.ps', { x: -50, y: 90, rotationZ: -10, ease: 'none' }, 0)
+    .to('.gc-wrap.xb', { x: 60, y: -40, rotationZ: 12, ease: 'none' }, 0)
+    .to('.orbits', { rotation: 24, scale: 1.15, transformOrigin: '50% 50%', ease: 'none' }, 0);
+
+  // pointer tilt + sheen
+  function tilt(area, target, max) {
+    if (!fine) return;
+    const rx = gsap.quickTo(target, 'rotationX', { duration: .7, ease: 'power3' });
+    const ry = gsap.quickTo(target, 'rotationY', { duration: .7, ease: 'power3' });
+    area.addEventListener('pointermove', e => {
+      const r = area.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+      ry(px * max * 2); rx(-py * max * 2);
+      target.style.setProperty('--sheen', (100 - (px + .5) * 100) + '%');
+    });
+    area.addEventListener('pointerleave', () => { rx(0); ry(0); });
+  }
+  tilt($('#hero'), $('#stageTilt'), 9);
+  tilt($('#cfgStage'), el.tilt, 12);
+
+  // magnetic buttons
+  if (fine) $$('.magnetic').forEach(b => {
+    const x = gsap.quickTo(b, 'x', { duration: .5, ease: 'power3' }), y = gsap.quickTo(b, 'y', { duration: .5, ease: 'power3' });
+    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); x((e.clientX - r.left - r.width / 2) * .22); y((e.clientY - r.top - r.height / 2) * .3); });
+    b.addEventListener('pointerleave', () => { x(0); y(0); });
+  });
+
+  // marquee, speeds up with scroll velocity
+  let mqPaused = false;
+  const mq = gsap.to('.marquee-track', { xPercent: -50, duration: 38, ease: 'none', repeat: -1 });
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: self => {
+    const v = Math.min(Math.abs(self.getVelocity()) / 350, 5);
+    gsap.to(mq, { timeScale: 1 + v, duration: .25, overwrite: true, onComplete: () => gsap.to(mq, { timeScale: 1, duration: 1.2 }) });
+  } });
+  $('#mqToggle').addEventListener('click', e => {
+    mqPaused = !mqPaused; mq.paused(mqPaused);
+    const b = e.currentTarget; b.setAttribute('aria-pressed', mqPaused); b.setAttribute('aria-label', mqPaused ? 'Play moving text' : 'Pause moving text');
+    b.innerHTML = mqPaused ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>';
+  });
+
+  // headings: word-by-word mask reveal
+  $$('[data-split]').forEach(h => {
+    h.setAttribute('aria-label', h.textContent.trim().replace(/\s+/g, ' '));
+    const out = [];
+    h.childNodes.forEach(nd => nd.textContent.trim().split(/\s+/).filter(Boolean).forEach(w =>
+      out.push(`<span class="w${nd.nodeType === 1 ? ' acc' : ''}" aria-hidden="true"><span>${w}</span></span>`)));
+    h.innerHTML = out.join(' ');
+    gsap.set(h, { opacity: 1 });
+    gsap.from($$('.w>span', h), { yPercent: 115, duration: 1.1, ease: EXPO, stagger: .055, scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
+  });
+  // generic reveals
+  $$('[data-reveal]').forEach(node => {
+    gsap.fromTo(node, { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 1, ease: EXPO, delay: (+node.dataset.reveal || 0) * .09,
+      scrollTrigger: { trigger: node, start: 'top 90%', once: true, onEnter: () => node.classList.add('in') } });
+  });
+  // configurator card drifts in with scroll
+  gsap.fromTo(el.tilt, { y: 50, scale: .9 }, { y: 0, scale: 1, ease: 'none', scrollTrigger: { trigger: '#cfgStage', start: 'top 95%', end: 'top 35%', scrub: .6 } });
+
+  // how it works: ticket follows the steps
+  const rows = $$('#ticket .trow'), steps = $$('#steps .step'), codeEl = $('#tCode');
+  let scr = null;
+  function scramble() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', final = 'XXXX-XXXX-XXXX'; let f = 0;
+    clearInterval(scr);
+    scr = setInterval(() => {
+      f++;
+      codeEl.textContent = final.split('').map((c, i) => c === '-' ? '-' : (i < f - 8 ? c : chars[Math.random() * chars.length | 0])).join('');
+      if (f > 8 + final.length) clearInterval(scr);
+    }, 45);
+  }
+  function setStep(i) {
+    rows.forEach((r, n) => { r.classList.toggle('is-done', n < i); r.classList.toggle('is-active', n === i); r.classList.toggle('is-pending', n > i); });
+    steps.forEach((s, n) => s.classList.toggle('is-active', n === i));
+    $('#tBar').style.setProperty('--p', (i + 1) / 4); $('#tStep').textContent = (i + 1) + ' / 4';
+    if (i === 3) scramble(); else { clearInterval(scr); codeEl.textContent = 'Sent after payment is confirmed'; }
+  }
+  $('#steps').classList.add('is-live'); setStep(0);
+  steps.forEach((s, i) => ScrollTrigger.create({ trigger: s, start: 'top 58%', end: 'bottom 58%', onToggle: self => { if (self.isActive) setStep(i); } }));
+  gsap.fromTo('#stepsLine', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#steps', start: 'top 58%', end: 'bottom 58%', scrub: .4 } });
+
+  // bento spotlight
+  if (fine) $$('.tile').forEach(t => t.addEventListener('pointermove', e => { const r = t.getBoundingClientRect(); t.style.setProperty('--mx', e.clientX - r.left + 'px'); t.style.setProperty('--my', e.clientY - r.top + 'px'); }));
+
+  // section rules draw in
+  $$('[data-rule]').forEach(r => gsap.fromTo(r, { '--rule': 0 }, { '--rule': 1, duration: 1.4, ease: 'expo.inOut', scrollTrigger: { trigger: r, start: 'top 92%', once: true } }));
+  gsap.from('[data-rule] span', { opacity: 0, duration: .8, stagger: .05, scrollTrigger: { trigger: '#shop', start: 'top 92%', once: true } });
+
+  // nav shows which section you are in
+  $$('.nav-links a').forEach(a => {
+    const sec = document.querySelector(a.getAttribute('href'));
+    if (sec) ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 55%', onToggle: self => a.classList.toggle('is-current', self.isActive) });
+  });
+
+  // pointer light
+  if (fine) {
+    const glow = $('#cursorGlow'), gx = gsap.quickTo(glow, 'x', { duration: .9, ease: 'power3' }), gy = gsap.quickTo(glow, 'y', { duration: .9, ease: 'power3' });
+    addEventListener('pointermove', e => { gx(e.clientX); gy(e.clientY); glow.classList.add('on'); }, { passive: true });
+  }
+
+  // "Priced in MVR" tile cycles through real prices while it is on screen
+  const fxList = CARDS.ps.us.filter(c => c[2]), fxFrom = $('#fxFrom'), fxTo = $('#fxTo'); let fxI = 2, fxTimer = null;
+  const fxNext = () => {
+    fxI = (fxI + 1) % fxList.length; const [v, p] = fxList[fxI];
+    gsap.timeline().to([fxFrom, fxTo], { yPercent: -110, duration: .35, ease: 'power2.in', stagger: .06 })
+      .add(() => { fxFrom.textContent = '$' + v; fxTo.textContent = 'MVR ' + money(p); })
+      .set([fxFrom, fxTo], { yPercent: 110 }).to([fxFrom, fxTo], { yPercent: 0, duration: .6, ease: EXPO, stagger: .06 });
+  };
+  ScrollTrigger.create({ trigger: '#fxTile', start: 'top bottom', end: 'bottom top', onToggle: self => { clearInterval(fxTimer); if (self.isActive) fxTimer = setInterval(fxNext, 2400); } });
+
+  // closing call to action: giant outlined words drift with the scroll
+  gsap.fromTo('.cta-ghost span', { xPercent: 4 }, { xPercent: -42, ease: 'none', scrollTrigger: { trigger: '#cta', start: 'top bottom', end: 'bottom top', scrub: .5 } });
+  // hero floor only moves while the hero is on screen
+  ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: self => { $('.floor').style.animationPlayState = self.isActive ? 'running' : 'paused'; } });
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
