@@ -3,905 +3,605 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cardora Maldives — PlayStation & Xbox gift cards (concept redesign)</title>
-<meta name="description" content="Concept redesign for Cardora Maldives: PlayStation and Xbox gift cards for US and UK accounts, priced in MVR.">
+<title>Cardora Maldives — Gift cards, game keys and game credits (redesign concept)</title>
+<meta name="description" content="Gift cards, game keys and game credits, paid in MVR. Redesign concept for Cardora Maldives.">
 <meta name="robots" content="noindex,nofollow">
 <meta property="og:type" content="website">
+<meta property="og:title" content="Cardora Maldives — cards, keys and credits (concept)">
+<meta property="og:description" content="Gift cards, game keys and game credits for gamers in the Maldives, paid in MVR. A redesign concept for the Cardora store.">
 <meta property="og:url" content="https://cardora-concept.netlify.app/">
-<meta property="og:title" content="Cardora Maldives — a fresh look (concept)">
-<meta property="og:description" content="PlayStation and Xbox gift cards for US and UK accounts, priced in MVR. A concept redesign of the Cardora store.">
-<meta property="og:image" content="https://cardora-concept.netlify.app/og.png">
+<meta property="og:image" content="https://cardora-concept.netlify.app/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#05090f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2305090f'/%3E%3Cpath d='M8 13l8-5 8 5-8 5z' fill='%23fff'/%3E%3Cpath d='M8 19l8 5 8-5-3-2-5 3-5-3z' fill='%237cf2dc'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#050607">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050607'/%3E%3Cpath d='M8 13l8-5 8 5-8 5z' fill='%23fff'/%3E%3Cpath d='M8 19l8 5 8-5-3-2-5 3-5-3z' fill='%237cf2dc'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
-  // Hide animated elements before first paint only when motion is allowed.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
-  // Apply the saved theme before first paint (dark is the default).
-  try { if (localStorage.getItem('cardora-concept-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
+  try { if (localStorage.getItem('cardora-v2-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
 </script>
 <style>
 :root{
-  --bg:#05090f; --bg2:#080e18; --surface:#0c1522; --surface2:#122031;
-  --line:rgba(170,225,235,.10); --line2:rgba(170,225,235,.20);
-  --text:#e9f3f3; --muted:#8fa3ad; --dim:#5d717c;
-  --accent:#7cf2dc; --accent-ink:#04211d; --accent-soft:rgba(124,242,220,.12);
-  --warn:#f2b27c; --accent-hover:#a3f7e8; --chip-bg:rgba(10,18,30,.82); --orbit:rgba(124,242,220,.22);
-  --gc-shadow:0 30px 60px -18px rgba(0,0,0,.7),0 10px 22px rgba(0,0,0,.35);
-  --ps1:#16246f; --ps2:#4a6fd8; --xb1:#0a4f22; --xb2:#22a651;
-  --r-sm:12px; --r-md:18px; --r-lg:28px;
-  --ease:cubic-bezier(.22,1,.36,1);
-  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"Geist Mono",ui-monospace,"SF Mono",Consolas,monospace;
-  --pad:clamp(16px,4vw,48px);
+  --bg:#050607; --bg-2:#0b0c0e; --surface:#101114; --surface-2:#1a1b1f;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.16);
+  --text:#f5f5f7; --muted:#8e8e93; --dim:#5c5c61;
+  --accent:#7cf2dc; --accent-ink:#04211d; --accent-soft:rgba(124,242,220,.11); --accent-hover:#a5f7e9;
+  --warn:#f2b27c;
+  --r-sm:12px; --r-md:20px; --r-lg:32px;
+  --ease:cubic-bezier(.22,1,.36,1); --ease-drawer:cubic-bezier(.32,.72,0,1);
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"Geist Mono",ui-monospace,Consolas,monospace;
+  --pad:clamp(16px,4vw,40px);
+  color-scheme:dark;
 }
-/* light theme: cream + deep teal, as on the current Cardora site */
 :root[data-theme="light"]{
-  --bg:#fbf9f3; --bg2:#ffffff; --surface:#ffffff; --surface2:#e9f2ee;
-  --line:rgba(15,60,60,.12); --line2:rgba(15,60,60,.24);
-  --text:#0f2f2e; --muted:#51696a; --dim:#7b8f8f;
-  --accent:#0d6b5f; --accent-ink:#ffffff; --accent-soft:rgba(13,107,95,.10); --accent-hover:#0a564c;
-  --warn:#a85a14; --chip-bg:rgba(255,255,255,.94); --orbit:rgba(13,107,95,.3);
-  --gc-shadow:0 30px 50px -22px rgba(10,45,55,.5),0 8px 18px rgba(10,45,55,.18);
+  --bg:#f5f5f7; --bg-2:#ffffff; --surface:#ffffff; --surface-2:#e9e9ed;
+  --line:rgba(0,0,0,.08); --line-2:rgba(0,0,0,.2);
+  --text:#101114; --muted:#6a6a70; --dim:#98989e;
+  --accent:#0c6c60; --accent-ink:#ffffff; --accent-soft:rgba(12,108,96,.1); --accent-hover:#0a574d;
+  --warn:#a85a14; color-scheme:light;
 }
-:root[data-theme="light"] .aurora{opacity:.55}
-:root[data-theme="light"] .grain{opacity:.05}
-:root[data-theme="light"] .nav-pill{background:rgba(8,16,26,.92)}
-:root[data-theme="light"] .cfg .seg img{filter:brightness(0);opacity:.75}
-:root[data-theme="light"] .ticket{box-shadow:inset 0 0 0 1px var(--line),0 40px 70px -34px rgba(10,45,55,.35)}
-/* the nav pill stays dark in both themes so the white logo always reads */
-.nav{--text:#e9f3f3;--muted:#8fa3ad;--line:rgba(170,225,235,.10);--line2:rgba(170,225,235,.20);--accent:#7cf2dc;--accent-ink:#04211d;--accent-soft:rgba(124,242,220,.12);color:var(--text)}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-padding-top:96px}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-padding-top:84px}
 html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:1rem;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;touch-action:manipulation}
-h1,h2,h3,p{margin:0}
-h1,h2,h3{text-wrap:balance}
+h1,h2,h3,p,ul,ol{margin:0;padding:0}
+ul,ol{list-style:none}
+h1,h2,h3{text-wrap:balance;font-weight:600;letter-spacing:-.035em}
 p{text-wrap:pretty}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.wrap{width:min(1240px,100%);margin-inline:auto;padding-inline:var(--pad)}
-.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:10px;font-weight:600;transition:top .2s var(--ease)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1180px,100%);margin-inline:auto;padding-inline:var(--pad)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:10px;font-weight:600;transition:top .2s}
 .skip:focus{top:16px}
-.mono{font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.num{font-variant-numeric:tabular-nums}
-
-/* ambient background */
-.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
-.aurora i{position:absolute;border-radius:50%;will-change:transform}
-.aurora .a1{width:70vmax;height:70vmax;left:-20vmax;top:-30vmax;background:radial-gradient(closest-side,rgba(32,150,160,.30),transparent)}
-.aurora .a2{width:60vmax;height:60vmax;right:-22vmax;top:10vh;background:radial-gradient(closest-side,rgba(40,80,190,.22),transparent)}
-.aurora .a3{width:55vmax;height:55vmax;left:20vw;top:120vh;background:radial-gradient(closest-side,rgba(60,210,170,.12),transparent)}
-.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.icon{width:20px;height:20px;flex:none}
 .progress{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:120}
 
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:600;white-space:nowrap;transition:transform .16s var(--ease),background-color .2s,border-color .2s,color .2s}
+/* buttons: pills */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font-weight:600;white-space:nowrap;transition:transform .14s var(--ease),background-color .2s,box-shadow .2s,color .2s}
 .btn:active{transform:scale(.97)}
-.btn-primary{background:var(--accent);color:var(--accent-ink)}
-.btn-ghost{border:1px solid var(--line2);background:rgba(255,255,255,.03)}
-.btn svg{width:18px;height:18px;flex:none}
-.btn .arr{transition:transform .3s var(--ease)}
-.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
-@media (hover:hover) and (pointer:fine){
-  .btn-primary:hover{background:var(--accent-hover)}
-  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
-  .btn:hover .arr{transform:translate(3px,-3px)}
-}
-
-/* nav */
-.nav{position:fixed;inset:14px 0 auto 0;z-index:100;padding-inline:var(--pad);pointer-events:none}
-.nav-pill{pointer-events:auto;width:min(1144px,100%);margin-inline:auto;display:flex;align-items:center;gap:16px;padding:10px 10px 10px 20px;border-radius:999px;background:rgba(8,14,24,.72);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);box-shadow:inset 0 0 0 1px var(--line),0 12px 40px rgba(0,0,0,.35)}
-.brand{display:flex;align-items:center;flex:none}
-.brand img{height:30px;width:auto}
-.brand .wordmark{font-weight:700;letter-spacing:.22em;font-size:1.05rem}
-.nav-links{display:flex;gap:4px;margin-inline:auto}
-.nav-links a{padding:10px 16px;border-radius:999px;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s,background-color .2s}
-@media (hover:hover){.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}}
-.nav-actions{display:flex;gap:8px;margin-inline-start:auto}
-.icon-btn{position:relative;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line2);transition:transform .16s var(--ease),background-color .2s}
+.btn-primary{background:var(--accent);color:var(--accent-ink);overflow:hidden}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);transform:translateX(-130%);transition:transform .8s var(--ease);pointer-events:none}
+.btn-quiet{background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.btn .arr{width:18px;height:18px;transition:transform .3s var(--ease)}
+@media (hover:hover) and (pointer:fine){.btn-primary:hover{background:var(--accent-hover)}.btn-primary:hover::after{transform:translateX(130%)}.btn-quiet:hover{box-shadow:inset 0 0 0 1px var(--line-2)}.btn:hover .arr{transform:translateX(4px)}}
+.icon-btn{position:relative;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:background-color .2s,color .2s,transform .14s var(--ease)}
 .icon-btn:active{transform:scale(.94)}
-.icon-btn svg{width:20px;height:20px}
-.cart-btn{background:var(--accent-soft);color:var(--accent)}
-.badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:.72rem;font-weight:700;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+@media (hover:hover){.icon-btn:hover{background:var(--surface-2);color:var(--text)}}
+.badge{position:absolute;top:0;right:-2px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:.68rem;font-weight:700;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.badge[data-n="0"]{display:none}
+
+/* top bar */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;gap:6px;min-height:56px}
+.brand{display:flex;align-items:center;margin-inline-end:20px}
+.brand img{height:24px;width:auto}
+:root[data-theme="light"] .brand img,:root[data-theme="light"] .foot-brand img{filter:brightness(0)}
+.top-links{display:flex;gap:2px;margin-inline:auto}
+.top-links a{padding:8px 14px;border-radius:999px;font-size:.88rem;color:var(--muted);transition:color .2s,background-color .2s}
+@media (hover:hover){.top-links a:hover{color:var(--text)}}
+.top-links a.is-current{color:var(--text);background:var(--surface-2)}
+.top-actions{display:flex;align-items:center;gap:2px;margin-inline-start:auto}
 .theme-btn .sun{display:none}
 :root[data-theme="light"] .theme-btn .sun{display:block}
 :root[data-theme="light"] .theme-btn .moon{display:none}
-@media (max-width:380px){.icon-btn{width:42px;height:42px}.nav-pill{gap:10px;padding-inline-start:16px}}
-.menu-btn{display:none}
-.menu-panel{pointer-events:auto;display:none}
-@media (max-width:820px){
-  .nav-links{display:none}
-  .menu-btn{display:grid}
-  .menu-panel{display:grid;gap:2px;width:min(1144px,100%);margin:8px auto 0;padding:10px;border-radius:24px;background:#080e18;box-shadow:inset 0 0 0 1px var(--line),0 20px 50px rgba(0,0,0,.5);opacity:0;transform:translateY(-8px) scale(.98);transform-origin:50% 0;visibility:hidden;transition:opacity .2s var(--ease),transform .25s var(--ease),visibility 0s .25s}
-  .nav.menu-open .menu-panel{opacity:1;transform:none;visibility:visible;transition:opacity .25s var(--ease),transform .3s var(--ease)}
-  .menu-panel a{padding:14px 16px;border-radius:14px;font-size:1.1rem;font-weight:500}
-  .menu-panel a:active{background:rgba(255,255,255,.06)}
-}
+@media (max-width:900px){.top-links{display:none}}
 
-/* hero */
-.hero{position:relative;overflow-x:clip;min-height:100svh;display:grid;align-items:center;padding-block:120px 40px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
-.hero h1{font-size:clamp(2.1rem,4.7vw,4.5rem);line-height:1.02;letter-spacing:-.035em;font-weight:600}
-.line{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+/* ---------- the card: one premium object for every brand ---------- */
+.gc{--sx:30%;position:relative;display:block;aspect-ratio:1.586;border-radius:5.6%/8.9%;overflow:hidden;isolation:isolate;color:#fff;container-type:inline-size;
+  background:
+    radial-gradient(120% 130% at 0% 0%,color-mix(in srgb,var(--c) 82%,#fff 18%) 0%,var(--c) 26%,transparent 64%),
+    radial-gradient(90% 120% at 100% 100%,var(--d),transparent 72%),
+    linear-gradient(160deg,color-mix(in srgb,var(--c) 38%,#07080a),#07080a 80%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.1),inset 0 -1px 0 rgba(0,0,0,.6),0 26px 50px -20px rgba(0,0,0,.85),0 34px 70px -34px color-mix(in srgb,var(--c) 75%,transparent)}
+.gc::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-radial-gradient(circle at 104% 130%,rgba(255,255,255,.07) 0 1px,transparent 1px 11px)}
+.gc::after{content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 32%,rgba(255,255,255,.3) 47%,rgba(190,255,245,.1) 53%,transparent 66%);background-size:280% 100%;background-position:var(--sx) 0;mix-blend-mode:screen;pointer-events:none}
+.gc-water{position:absolute;right:-9%;bottom:-22%;width:62%;aspect-ratio:1;background:#fff;opacity:.07;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.gc-glyph{position:absolute;left:8%;top:11%;width:15%;aspect-ratio:1;background:#fff;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.gc-glyph.txt{width:auto;aspect-ratio:auto;background:none;-webkit-mask:none;mask:none;font-style:normal;font-weight:800;letter-spacing:-.04em;font-size:11cqw;line-height:1.3}
+.gc-kind{position:absolute;right:8%;top:12.500%;font-family:var(--mono);font-size:3cqw;letter-spacing:.14em;text-transform:uppercase;opacity:.72}
+.gc-name{position:absolute;left:8%;bottom:10%;right:30%;font-weight:600;font-size:7cqw;line-height:1.05;letter-spacing:-.025em}
+.gc-holo{position:absolute;right:8%;bottom:10.500%;width:12%;aspect-ratio:1.3;border-radius:1.800cqw;background:conic-gradient(from 40deg,#7cf2dc,#8fb4ff,#ffd6a5,#ff9ecb,#7cf2dc);opacity:.85;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.gc-holo::after{content:"";position:absolute;inset:18%;border-radius:1cqw;background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(255,255,255,.15))}
+.gc.flat{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.1),0 18px 30px -16px rgba(0,0,0,.8)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:clamp(92px,12vh,132px);text-align:center;overflow:clip}
+.hero-light{position:absolute;left:50%;top:-10%;width:min(1100px,130%);aspect-ratio:1.5;translate:-50% 0;background:radial-gradient(closest-side,rgba(124,242,220,.16),transparent);pointer-events:none}
+:root[data-theme="light"] .hero-light{background:radial-gradient(closest-side,rgba(12,108,96,.12),transparent)}
+.hero-pill{position:relative;display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 14px;padding:7px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);background:color-mix(in srgb,var(--surface) 80%,transparent);font-size:.84rem;color:var(--muted)}
+.hero-pill i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.hero h1{position:relative;margin:24px auto 0;font-size:clamp(2.5rem,7vw,5.5rem);line-height:1;letter-spacing:-.055em}
+.line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
 .line>span{display:block}
-.hero h1 .accent{color:var(--accent)}
-.hero-sub{margin-top:24px;max-width:46ch;color:var(--muted);font-size:clamp(1rem,1.3vw,1.15rem)}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.facts{margin-top:clamp(40px,7vh,88px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
-.fact{padding:20px 20px 0 0}
-.fact+.fact{padding-inline-start:20px;border-inline-start:1px solid var(--line)}
-.fact b{display:block;font-weight:600}
-.fact span{color:var(--muted);font-size:.9rem}
-.stage{position:relative;aspect-ratio:1/1;perspective:1300px;max-height:72svh;justify-self:center;width:100%}
-.orbits{position:absolute;inset:-6%;width:112%;height:112%;overflow:visible}
-.orbits ellipse{fill:none;stroke:var(--orbit);stroke-width:1}
-.orbits .dot{fill:var(--accent)}
-.stage-tilt{position:absolute;inset:0;transform-style:preserve-3d}
-.gc-wrap{position:absolute;width:62%;transform-style:preserve-3d}
-.gc-wrap.xb{right:2%;top:14%}
-.gc-wrap.ps{left:2%;bottom:16%}
-.gc-float{transform-style:preserve-3d}
-.gc-wrap.xb .gc{transform:translateZ(-40px) rotate(14deg)}
-.gc-wrap.ps .gc{transform:translateZ(60px) rotate(-11deg)}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#8fb4ff));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{position:relative;margin:22px auto 0;max-width:46ch;color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.26rem)}
+.search{position:relative;z-index:6;margin:30px auto 0;max-width:560px}
+.search input{width:100%;height:58px;padding:0 54px 0 54px;border-radius:999px;border:0;font:inherit;font-size:1.04rem;color:var(--text);background:color-mix(in srgb,var(--surface) 86%,transparent);box-shadow:inset 0 0 0 1px var(--line-2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:box-shadow .25s}
+.search input::placeholder{color:var(--dim)}
+.search input:focus{outline:0;box-shadow:inset 0 0 0 1.5px var(--accent),0 0 0 6px var(--accent-soft)}
+.search>svg{position:absolute;left:20px;top:50%;translate:0 -50%;color:var(--muted);pointer-events:none}
+.search kbd{position:absolute;right:18px;top:50%;translate:0 -50%;font-family:var(--mono);font-size:.74rem;color:var(--muted);padding:3px 8px;border-radius:7px;box-shadow:inset 0 0 0 1px var(--line-2);pointer-events:none}
+.try{position:relative;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:16px;color:var(--muted);font-size:.88rem}
+.try button{padding:7px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--text);font-weight:500;font-size:.86rem;transition:box-shadow .2s,background-color .2s,transform .14s var(--ease)}
+.try button:active{transform:scale(.96)}
+@media (hover:hover){.try button:hover{box-shadow:inset 0 0 0 1px var(--line-2);background:var(--surface)}}
 
-/* gift card */
-.gc{position:relative;aspect-ratio:1.586;border-radius:clamp(12px,1.6vw,20px);overflow:hidden;color:#fff;isolation:isolate;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),var(--gc-shadow);container-type:inline-size}
-.gc.ps{background:linear-gradient(135deg,var(--ps1),var(--ps2) 62%,#2b3f9c)}
-.gc.xb{background:linear-gradient(135deg,var(--xb1),var(--xb2) 70%,#137a39)}
-.gc::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(118deg,rgba(255,255,255,.07) 0 1px,transparent 1px 22px)}
-.gc::after{content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 30%,rgba(255,255,255,.28) 48%,rgba(160,255,240,.12) 54%,transparent 68%);background-size:260% 100%;background-position:var(--sheen,30%) 0;mix-blend-mode:screen;pointer-events:none}
-.gc-brand{position:absolute;left:7%;top:8%;font-weight:600;font-size:5cqw}
-.gc-logo{position:absolute;left:50%;top:50%;width:17cqw;height:17cqw;transform:translate(-50%,-50%);object-fit:contain;filter:brightness(0) invert(1)}
-.gc-value{position:absolute;right:7%;bottom:7%;font-weight:700;font-size:11cqw;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.gc-region{position:absolute;left:7%;bottom:8%;font-family:var(--mono);font-size:3.2cqw;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
-.chip{position:absolute;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:var(--chip-bg);box-shadow:inset 0 0 0 1px var(--line2),0 12px 30px rgba(0,0,0,.25);font-size:.85rem;font-weight:600;white-space:nowrap}
-.chip svg{width:16px;height:16px;color:var(--accent)}
-.chip.c1{right:0;bottom:22%;transform:translateZ(110px)}
-.chip.c2{left:6%;top:12%;transform:translateZ(90px)}
-.scroll-cue{position:absolute;left:50%;bottom:18px;translate:-50% 0;width:1px;height:44px;background:linear-gradient(var(--accent),transparent);transform-origin:50% 0;animation:cue 2.4s var(--ease) infinite}
-@keyframes cue{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
-@media (max-width:900px){
-  .hero{padding-block:108px 56px;min-height:0}
-  .hero-grid{grid-template-columns:minmax(0,1fr)}
-  .stage{max-width:440px;order:2;margin-top:8px}
-  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .fact:nth-child(3){padding-inline-start:0;border-inline-start:0}
-  .fact:nth-child(n+3){border-top:1px solid var(--line);margin-top:20px}
-  .scroll-cue{display:none}
+/* the carousel: every product on a slowly turning ring */
+.stage{--cw:clamp(150px,19vw,270px);position:relative;height:calc(var(--cw)*1.12);margin-top:clamp(36px,5vw,60px);perspective:1500px;perspective-origin:50% 30%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.ring-pos{position:absolute;left:50%;top:6%;width:var(--cw);margin-left:calc(var(--cw)/-2);transform-style:preserve-3d;transform:translateZ(calc(var(--cw)*-2.75)) rotateX(-7deg)}
+.ring{position:relative;transform-style:preserve-3d;height:calc(var(--cw)/1.586)}
+.ring-item{position:absolute;inset:0 0 auto 0;transform:rotateY(calc(var(--i)*360deg/var(--count))) translateZ(calc(var(--cw)*2.75));backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.ring .gc{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.1),0 30px 40px -24px rgba(0,0,0,.9)}
+.floor{position:absolute;left:50%;bottom:-6%;width:min(900px,90%);height:46%;translate:-50% 0;background:radial-gradient(closest-side,rgba(124,242,220,.2),transparent);pointer-events:none}
+.scroll-cue{display:grid;justify-items:center;margin-top:clamp(26px,4vw,44px);padding-bottom:34px}
+.scroll-cue i{width:1px;height:38px;background:linear-gradient(var(--accent),transparent);transform-origin:50% 0;animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0)}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* ---------- statement: words light up as you scroll ---------- */
+.say{padding-block:clamp(90px,16vw,220px)}
+.say p{font-size:clamp(1.9rem,5.4vw,4.5rem);line-height:1.08;letter-spacing:-.045em;font-weight:600;max-width:18ch}
+.say .wd{opacity:.16;transition:opacity .25s,color .25s}
+.say .wd.on{opacity:1}
+.say .wd.hi.on{color:var(--accent)}
+
+/* ---------- categories: three panels that stack as you scroll ---------- */
+.stack{display:grid;gap:22px;padding-bottom:clamp(60px,9vw,120px)}
+.panel{position:sticky;top:calc(76px + var(--n)*16px)}
+.panel-in{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:24px;min-height:min(540px,74svh);padding:clamp(26px,4.4vw,60px);border-radius:var(--r-lg);overflow:hidden;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line),0 -20px 60px -30px rgba(0,0,0,.6);transform-origin:50% 0}
+.panel-in::before{content:"";position:absolute;right:-12%;top:-30%;width:76%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--pc) 30%,transparent),transparent);pointer-events:none}
+.panel-copy{position:relative;display:grid;gap:16px;justify-items:start}
+.panel h2{font-size:clamp(2.2rem,5.6vw,4.4rem);line-height:.98;letter-spacing:-.05em}
+.panel p{color:var(--muted);font-size:clamp(1rem,1.4vw,1.2rem);max-width:30ch}
+.panel .names{font-size:.9rem;color:var(--dim);max-width:38ch}
+.fan{position:relative;height:clamp(200px,30vw,340px)}
+.fan .gc{position:absolute;left:50%;top:50%;width:min(48%,290px);transform:translate(-50%,-50%)}
+.fan.one .gc{width:min(72%,400px)}
+@media (max-width:820px){
+  .panel{top:calc(68px + var(--n)*12px)}
+  .panel-in{grid-template-columns:minmax(0,1fr);min-height:0;padding:26px 22px 30px}
+  .fan{order:-1;height:190px}
 }
 
-/* marquee */
-.marquee{position:relative;border-block:1px solid var(--line);overflow:hidden;padding-block:22px;background:rgba(255,255,255,.015)}
-.marquee-track{display:flex;width:max-content;will-change:transform}
-.marquee-track span{display:flex;align-items:center;gap:36px;padding-inline-end:36px;font-size:clamp(1.2rem,2.4vw,2rem);font-weight:500;letter-spacing:-.02em;color:var(--muted);white-space:nowrap}
-.marquee-track span i{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
-.marquee-track span b{color:var(--text);font-weight:500}
-.mq-toggle{position:absolute;right:12px;top:50%;translate:0 -50%;width:36px;height:36px;border-radius:50%;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;color:var(--muted)}
-.mq-toggle svg{width:14px;height:14px}
-
-/* sections */
-section{position:relative}
-.sec{padding-block:clamp(88px,13vw,168px)}
-.sec-head{display:grid;gap:18px;max-width:780px;margin-bottom:clamp(40px,6vw,72px)}
-.sec-head h2,.contact h2{font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.06;letter-spacing:-.03em;font-weight:600}
-.sec-head p{color:var(--muted);font-size:1.08rem;max-width:56ch}
+/* ---------- browse ---------- */
+.sec{padding-block:clamp(70px,10vw,140px)}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(26px,4vw,44px)}
+.sec-head h2{font-size:clamp(2.2rem,5.6vw,4.4rem);line-height:.98;letter-spacing:-.05em}
+.sec-head p{color:var(--muted);max-width:46ch;font-size:clamp(1rem,1.4vw,1.2rem)}
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
 .w>span{display:inline-block}
+.toolbar{position:sticky;top:56px;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding-block:12px;margin-bottom:10px;background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.tabs{position:relative;display:flex;padding:4px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);overflow-x:auto;scrollbar-width:none;max-width:100%}
+.tabs::-webkit-scrollbar{display:none}
+.tab{position:relative;z-index:1;display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-weight:500;font-size:.94rem;color:var(--muted);white-space:nowrap;transition:color .25s}
+.tab small{font-family:var(--mono);font-size:.72rem;opacity:.7}
+.tab[aria-selected="true"]{color:var(--accent-ink)}
+.tab-pill{position:absolute;z-index:0;top:4px;left:0;height:calc(100% - 8px);border-radius:999px;background:var(--accent);transition:transform .5s var(--ease),width .5s var(--ease)}
+.filter{display:flex;align-items:center;gap:10px;height:46px;padding:0 16px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);flex:1;min-width:200px;max-width:340px;margin-inline-start:auto;color:var(--muted)}
+.filter input{flex:1;min-width:0;height:100%;border:0;background:none;font:inherit;color:var(--text)}
+.filter input:focus{outline:0}
+.filter:focus-within{box-shadow:inset 0 0 0 1.5px var(--accent)}
+.filter button{font-size:.82rem;color:var(--muted);padding:4px 8px;border-radius:8px}
+.count{color:var(--muted);font-size:.9rem;margin-bottom:14px;min-height:1.5em}
+.count b{color:var(--text);font-weight:600}
+.group+.group{margin-top:clamp(40px,6vw,72px)}
+.group-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-bottom:20px}
+.group-head h3{font-size:1.5rem;white-space:nowrap}
+.group-head span{color:var(--muted);font-size:.94rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:30px 22px}
+.tile{display:grid;gap:14px;align-content:start;text-align:start;perspective:900px}
+.tile .gc{transition:transform .5s var(--ease);will-change:transform}
+.tile-meta{display:grid;gap:1px;padding-inline:4px}
+.tile-meta b{font-weight:600;letter-spacing:-.01em}
+.tile-meta span{color:var(--muted);font-size:.86rem;white-space:nowrap}
+.tile:active .gc{transform:scale(.98)}
+.ask{display:grid;gap:10px;align-content:center;justify-items:start;padding:24px;border-radius:var(--r-md);border:1px dashed var(--line-2);color:var(--muted);font-size:.94rem;aspect-ratio:1.586}
+.ask b{color:var(--text);font-size:1.1rem}
+.ask a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.empty{padding:56px 24px;border-radius:var(--r-lg);border:1px dashed var(--line-2);text-align:center;display:grid;gap:14px;justify-items:center;color:var(--muted)}
+.empty b{color:var(--text);font-size:1.3rem}
+.pop{animation:pop .6s var(--ease) both;animation-delay:calc(var(--i,0)*35ms)}
+@keyframes pop{from{opacity:0;transform:translateY(22px) scale(.96)}to{opacity:1;transform:none}}
+@media (max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.filter{max-width:none;order:-1;flex-basis:100%}.ask{aspect-ratio:auto}}
 
-/* configurator */
-.cfg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:stretch}
-.cfg-stage{position:relative;border-radius:var(--r-lg);background:radial-gradient(120% 90% at 50% 0%,rgba(60,140,200,.16),transparent 60%),var(--surface);box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;padding:clamp(28px,5vw,64px);perspective:1200px;min-height:420px;overflow:hidden}
-.cfg-stage::before{content:"";position:absolute;inset:0;background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 56px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/56px 100%;-webkit-mask-image:radial-gradient(70% 70% at 50% 60%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 60%,#000,transparent)}
-.cfg-tilt{width:min(440px,100%);transform-style:preserve-3d;position:relative}
-.cfg-tilt .gc{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),0 50px 80px -24px rgba(0,0,0,.75),0 0 90px -20px var(--glow,rgba(74,111,216,.6))}
-.cfg-note{position:absolute;left:24px;right:24px;bottom:20px;display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.88rem}
-.cfg-note svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(--accent)}
-.cfg-panel{display:grid;gap:28px;align-content:start;padding:clamp(4px,1vw,12px) 0}
-.field{display:grid;gap:12px}
-.seg{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);padding:5px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
-.seg::before{content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/2);border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line2);transform:translateX(calc(var(--i,0)*100%));transition:transform .45s var(--ease)}
-.seg button{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;border-radius:999px;font-weight:600;color:var(--muted);transition:color .25s}
-.seg button[aria-pressed="true"]{color:var(--text)}
-.seg img{width:20px;height:20px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85}
-.amounts{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
-.amt{display:grid;gap:2px;text-align:start;padding:14px 14px 12px;border-radius:var(--r-md);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);transition:transform .16s var(--ease),box-shadow .25s,background-color .25s}
-.amt:active{transform:scale(.97)}
-.amt b{font-size:1.25rem;font-weight:600;letter-spacing:-.02em}
-.amt small{color:var(--muted);font-size:.78rem;white-space:nowrap;font-variant-numeric:tabular-nums}
-.amt[aria-pressed="true"]{background:var(--accent-soft);box-shadow:inset 0 0 0 1.5px var(--accent)}
-.amt[aria-pressed="true"] small{color:var(--accent)}
-.amt[disabled]{opacity:.5;cursor:not-allowed;transform:none}
-.amt[disabled] b{text-decoration:line-through;text-decoration-thickness:1px}
-.amt[disabled] small{color:var(--warn)}
-@media (hover:hover){.amt:not([disabled]):hover{box-shadow:inset 0 0 0 1px var(--line2)}}
-.buy{display:grid;gap:20px;padding-top:28px;border-top:1px solid var(--line)}
-.price-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
-.price{font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:600;letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums}
-.price small{font-size:.38em;font-weight:500;color:var(--muted);letter-spacing:0;margin-inline-end:8px}
-.stock{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted)}
-.stock i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.buy-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
-.ghost-fly{position:fixed;z-index:150;pointer-events:none;margin:0}
-.all-prices{margin-top:clamp(32px,5vw,56px);border-radius:var(--r-lg);box-shadow:inset 0 0 0 1px var(--line);background:rgba(255,255,255,.015)}
-.all-prices summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 26px;cursor:pointer;font-weight:600;list-style:none}
-.all-prices summary::-webkit-details-marker{display:none}
-.all-prices summary svg{width:18px;height:18px;transition:transform .35s var(--ease)}
-.all-prices[open] summary svg{transform:rotate(45deg)}
-.price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 28px;padding:4px 26px 26px}
-.price-col h3{font-size:.95rem;font-weight:600;padding-block:10px;border-bottom:1px solid var(--line)}
-.price-col button{display:flex;justify-content:space-between;gap:12px;width:100%;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem;font-variant-numeric:tabular-nums;color:var(--muted);transition:color .2s}
-.price-col button span:last-child{color:var(--text)}
-.price-col button[disabled]{opacity:.45;cursor:not-allowed}
-@media (hover:hover){.price-col button:not([disabled]):hover{color:var(--accent)}}
-@media (max-width:900px){
-  .cfg{grid-template-columns:minmax(0,1fr)}
-  .cfg-stage{min-height:0;padding-bottom:124px}
-  .price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media (max-width:460px){.buy-actions,.price-grid{grid-template-columns:minmax(0,1fr)}}
-
-.restock{font-size:.88rem;color:var(--muted)}
-.restock a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
-.cfg-note a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
-
-/* sticky buy bar (phones) */
-.buybar{position:fixed;left:0;right:0;bottom:0;z-index:95;display:none;align-items:center;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--surface);box-shadow:0 -1px 0 var(--line),0 -18px 40px rgba(0,0,0,.28);transform:translateY(110%);visibility:hidden;transition:transform .45s cubic-bezier(.32,.72,0,1),visibility 0s .45s}
-.buybar.is-on{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.32,.72,0,1)}
-.buybar div{min-width:0;flex:1}
-.buybar small{display:block;color:var(--muted);font-size:.78rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.buybar b{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.buybar .btn{min-height:48px;padding:0 22px}
-@media (max-width:900px){.buybar{display:flex}}
-
-/* help: region + redeem */
-.help-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,4vw,48px)}
-.help-top .sec-head{margin-bottom:0}
-.help-top .seg{min-width:min(340px,100%)}
-.help-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
-.help-card{border-radius:var(--r-lg);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);padding:clamp(22px,3vw,36px)}
-.help-card h3{font-size:1.3rem;font-weight:600;letter-spacing:-.015em;margin-bottom:6px}
-.help-card>p{color:var(--muted);margin-bottom:18px}
-.help-card ol{list-style:none;margin:0;padding:0;counter-reset:s;display:grid}
-.help-card li{counter-increment:s;display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px;padding-block:14px;border-top:1px solid var(--line)}
-.help-card li::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--mono);font-size:.8rem}
-.help-card li span{align-self:center}
-.help-card li b{font-weight:600}
-.help-foot{margin-top:18px;color:var(--muted);font-size:.9rem}
-@media (max-width:900px){.help-grid{grid-template-columns:minmax(0,1fr)}}
-
-/* how it works */
-.how-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,6vw,96px)}
-.ticket-wrap{position:sticky;top:112px;align-self:start}
-.ticket{border-radius:var(--r-lg);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line),0 40px 80px -30px rgba(0,0,0,.6);padding:26px;overflow:hidden}
-.ticket-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.ticket-bar{height:3px;border-radius:3px;background:var(--line);margin-block:14px 8px;overflow:hidden}
-.ticket-bar i{display:block;height:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(var(--p,1));transition:transform .7s var(--ease)}
-.trow{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;align-items:center;padding-block:16px;border-bottom:1px dashed var(--line);transition:opacity .4s}
-.trow:last-child{border-bottom:0;padding-bottom:4px}
-.tdot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line2);color:var(--accent-ink);transition:background-color .4s,box-shadow .4s}
-.tdot svg{width:16px;height:16px;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .5s var(--ease) .1s}
-.trow b{display:block;font-weight:600}
-.trow span{display:block;color:var(--muted);font-size:.88rem;overflow-wrap:anywhere}
-.trow.is-done .tdot,.trow.is-active .tdot{background:var(--accent);box-shadow:none}
-.trow.is-done .tdot svg{stroke-dashoffset:0}
-.trow.is-active .tdot{box-shadow:0 0 0 6px var(--accent-soft)}
-.trow.is-active .tdot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent-ink);position:absolute}
-.tdot{position:relative}
-.trow.is-pending{opacity:.4}
-.code{font-family:var(--mono);letter-spacing:.12em;color:var(--accent)!important;font-size:.95rem!important}
-.steps{position:relative;display:grid}
-.steps-line{position:absolute;left:19px;top:20px;bottom:20px;width:1px;background:var(--line)}
-.steps-line i{position:absolute;inset:0;background:var(--accent);transform-origin:50% 0;transform:scaleY(1)}
-.step{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:24px;padding-block:clamp(28px,6vh,64px);transition:opacity .5s}
-.step-n{width:40px;height:40px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;font-family:var(--mono);font-size:.85rem;transition:background-color .4s,color .4s,box-shadow .4s}
-.step h3{font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.15;letter-spacing:-.02em;font-weight:600;margin-bottom:12px}
-.step p{color:var(--muted);max-width:48ch}
-.steps.is-live .step:not(.is-active){opacity:.38}
-.step.is-active .step-n{background:var(--accent);color:var(--accent-ink);box-shadow:none}
-@media (max-width:900px){
-  .how-grid{display:block}
-  .ticket-wrap{top:84px;z-index:2;margin-bottom:16px}
-  .ticket{padding:16px 18px}
-  .trow{padding-block:9px;grid-template-columns:28px minmax(0,1fr)}
-  .tdot{width:28px;height:28px}
-  .trow span{display:none}
-  .trow.is-active span{display:block}
-  .step{padding-block:44px}
+/* ---------- how it works: a line that draws itself ---------- */
+.flow{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-top:54px}
+.flow-line{position:absolute;left:0;right:0;top:19px;height:2px;border-radius:2px;background:var(--line)}
+.flow-line i{position:absolute;inset:0;border-radius:2px;background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 50%,#8fb4ff));transform-origin:0 50%;transform:scaleX(var(--p,1))}
+.flow li{position:relative;display:grid;gap:10px;align-content:start;transition:opacity .5s}
+.flow .dot{position:absolute;left:0;top:-54px;width:40px;height:40px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 2px var(--line-2);display:grid;place-items:center;color:var(--muted);transition:background-color .4s,color .4s,box-shadow .4s,transform .5s var(--ease)}
+.flow .dot svg{width:18px;height:18px}
+.flow .dot path,.flow .dot rect{stroke-dasharray:60;stroke-dashoffset:0;transition:stroke-dashoffset .9s var(--ease)}
+.flow b{font-size:1.2rem;font-weight:600;letter-spacing:-.02em}
+.flow p{color:var(--muted);font-size:.96rem;max-width:26ch}
+.flow.live li:not(.on){opacity:.35}
+.flow.live li:not(.on) .dot path,.flow.live li:not(.on) .dot rect{stroke-dashoffset:60}
+.flow li.on .dot{background:var(--accent);color:var(--accent-ink);box-shadow:0 0 0 8px var(--accent-soft);transform:scale(1.06)}
+@media (max-width:860px){
+  .flow{grid-template-columns:minmax(0,1fr);gap:34px;padding:0 0 0 62px}
+  .flow-line{left:19px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .flow-line i{transform-origin:50% 0;transform:scaleY(var(--p,1));background:linear-gradient(var(--accent),color-mix(in srgb,var(--accent) 50%,#8fb4ff))}
+  .flow .dot{left:-62px;top:-6px}
 }
 
-/* why */
-.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
-.tile{--mx:50%;--my:50%;position:relative;border-radius:var(--r-lg);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);padding:clamp(22px,2.6vw,34px);display:grid;gap:10px;align-content:end;min-height:240px;overflow:hidden}
-.tile::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx) var(--my),var(--accent-soft),transparent 60%);opacity:0;transition:opacity .4s}
-@media (hover:hover){.tile:hover::before{opacity:1}}
-.tile>*{position:relative}
-.tile h3{font-size:1.3rem;font-weight:600;letter-spacing:-.015em}
-.tile p{color:var(--muted);max-width:40ch}
-.tile .ico{width:44px;height:44px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:auto}
-.tile .ico svg{width:22px;height:22px}
-.t1{grid-column:span 4;min-height:300px}.t2{grid-column:span 2}.t3,.t4,.t5{grid-column:span 2}
-.slots{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:auto;align-self:start}
-.slots i{width:clamp(18px,3vw,30px);aspect-ratio:3/4;border-radius:7px;box-shadow:inset 0 0 0 1px var(--line2);background:rgba(255,255,255,.02);display:grid;place-items:center;font-family:var(--mono);font-style:normal;font-size:.8rem;color:var(--accent)}
-.slots i.gap{box-shadow:none;background:none;width:8px}
-.js-motion .slots i:not(.gap){opacity:.25;transform:translateY(6px)}
-.js-motion .tile.in .slots i:not(.gap){animation:slot .5s var(--ease) forwards;animation-delay:calc(var(--n)*70ms + 200ms)}
-@keyframes slot{to{opacity:1;transform:none;background:var(--accent-soft)}}
-@media (max-width:900px){.t1,.t2,.t3,.t4,.t5{grid-column:span 6}.tile{min-height:0}.tile .ico,.slots{margin-bottom:28px}}
+/* ---------- questions ---------- */
+.faq-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(24px,6vw,96px)}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;cursor:pointer;font-weight:600;font-size:1.1rem;letter-spacing:-.01em;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:18px;height:18px;flex:none;color:var(--muted);transition:transform .4s var(--ease)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq .a{padding:0 2px 24px;color:var(--muted);max-width:62ch;display:grid;gap:10px}
+.faq .a ol{list-style:decimal;padding-inline-start:20px;display:grid;gap:4px}
+.help-card{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:860px){.faq-grid{grid-template-columns:minmax(0,1fr)}}
 
-/* contact */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:start}
-.contact p.lead{color:var(--muted);font-size:1.08rem;margin-top:18px;max-width:44ch}
-.channels{display:grid;margin-top:36px;border-top:1px solid var(--line)}
-.channel{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 4px;border-bottom:1px solid var(--line);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:500;letter-spacing:-.01em;transition:color .25s,padding .35s var(--ease)}
-.channel small{display:block;font-size:.85rem;color:var(--muted);font-weight:400;letter-spacing:0}
-.channel svg{width:22px;height:22px;flex:none;transition:transform .35s var(--ease)}
-@media (hover:hover){.channel:hover{color:var(--accent);padding-inline:14px 4px}.channel:hover svg{transform:translate(4px,-4px)}}
-.form{border-radius:var(--r-lg);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);padding:clamp(22px,3vw,36px);display:grid;gap:18px}
-.form h3{font-size:1.3rem;font-weight:600}
-label{display:grid;gap:8px;font-size:.9rem;font-weight:500}
-input,textarea{font:inherit;font-size:1rem;color:var(--text);background:var(--bg2);border:1px solid var(--line2);border-radius:var(--r-sm);padding:14px 16px;width:100%;transition:border-color .2s,box-shadow .2s}
-textarea{min-height:120px;resize:vertical}
-input:focus,textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.form-status{color:var(--accent);font-size:.92rem;min-height:1.4em}
-@media (max-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
+/* ---------- closing ---------- */
+.end{position:relative;padding-block:clamp(90px,14vw,190px) clamp(60px,8vw,110px);text-align:center;overflow:clip;border-top:1px solid var(--line)}
+.end h2{font-size:clamp(2.6rem,9vw,7.2rem);line-height:.96;letter-spacing:-.055em}
+.end p{margin:20px auto 0;color:var(--muted);max-width:40ch;font-size:clamp(1rem,1.4vw,1.2rem)}
+.end-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+.belt{display:flex;width:max-content;gap:22px;margin-top:clamp(50px,8vw,100px);will-change:transform}
+.belt .gc{width:clamp(170px,20vw,260px);flex:none}
 
-/* footer */
-footer{border-top:1px solid var(--line);padding-block:40px calc(40px + env(safe-area-inset-bottom))}
-.foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;color:var(--muted);font-size:.9rem}
-.foot nav{display:flex;flex-wrap:wrap;gap:8px 24px}
-.foot a:hover{color:var(--text)}
-.concept-note{margin-top:24px;color:var(--dim);font-size:.82rem}
+footer{border-top:1px solid var(--line);padding-block:48px calc(110px + env(safe-area-inset-bottom))}
+.foot{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:32px}
+.foot-brand img{height:26px;width:auto}
+.foot-brand p{margin-top:16px;color:var(--muted);max-width:32ch;font-size:.95rem}
+.foot-col{display:grid;gap:10px;align-content:start;font-size:.94rem}
+.foot-col b{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.foot-col a{color:var(--muted);width:fit-content;transition:color .2s}
+.foot-col a:hover{color:var(--text)}
+.fine{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between}
+@media (max-width:760px){.foot{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.foot-brand{grid-column:1/-1}}
+@media (min-width:901px){footer{padding-bottom:48px}}
+
+/* phone dock */
+.dock{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom));translate:-50% 0;z-index:60;display:none;gap:4px;padding:6px;border-radius:999px;background:color-mix(in srgb,var(--surface) 86%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);box-shadow:inset 0 0 0 1px var(--line-2),0 18px 40px -12px rgba(0,0,0,.6)}
+.dock a,.dock button{position:relative;display:grid;justify-items:center;gap:2px;width:66px;padding:8px 0 6px;border-radius:999px;font-size:.66rem;font-weight:500;color:var(--muted);transition:color .2s,background-color .3s,transform .14s var(--ease)}
+.dock a:active,.dock button:active{transform:scale(.94)}
+.dock .on{color:var(--text);background:var(--surface-2)}
+.dock .badge{top:2px;right:12px}
+@media (max-width:900px){.dock{display:flex}}
+
+/* ---------- product sheet ---------- */
+dialog{border:0;padding:0;color:var(--text);background:var(--bg-2);max-width:none;max-height:none}
+dialog::backdrop{background:rgba(0,0,0,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:0;transition:opacity .35s}
+dialog.is-open::backdrop{opacity:1}
+.sheet{width:min(1000px,calc(100% - 32px));height:min(680px,calc(100dvh - 48px));margin:auto;border-radius:34px;box-shadow:inset 0 0 0 1px var(--line-2),0 50px 100px -30px rgba(0,0,0,.9);overflow:hidden;opacity:0;transform:translateY(24px) scale(.97);transition:opacity .22s var(--ease),transform .3s var(--ease)}
+.sheet.is-open{opacity:1;transform:none;transition:opacity .35s var(--ease),transform .6s var(--ease)}
+.sheet-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);height:100%}
+.sheet-art{position:relative;display:grid;place-items:center;padding:clamp(24px,4vw,52px);background:radial-gradient(70% 60% at 50% 42%,color-mix(in srgb,var(--c) 34%,transparent),transparent 72%),var(--surface)}
+.sheet-art .gc{width:min(100%,380px);animation:hover 6s ease-in-out infinite}
+@keyframes hover{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-2.500deg) translateY(-10px)}}
+.sheet-body{display:flex;flex-direction:column;min-height:0}
+.sheet-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:30px clamp(20px,3vw,36px) 20px;display:grid;gap:24px;align-content:start}
+.sheet-close{position:absolute;right:14px;top:14px;z-index:3;background:color-mix(in srgb,var(--surface-2) 80%,transparent);color:var(--text)}
+.sheet h2{font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.02;margin-top:8px}
+.sheet .desc{color:var(--muted);margin-top:10px}
+.field>span{display:block;font-weight:600;font-size:.92rem;margin-bottom:10px}
+.field>span small{font-weight:400;color:var(--muted);margin-inline-start:6px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.opts.wide{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.opt{position:relative;display:block}
+.opt input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.opt span{display:grid;place-items:center;min-height:48px;padding:8px 12px;border-radius:14px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font-weight:600;font-size:.95rem;text-align:center;font-variant-numeric:tabular-nums;transition:background-color .2s,box-shadow .2s,color .2s,transform .14s var(--ease)}
+.opt input:active+span{transform:scale(.96)}
+.opt input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.opt input:checked+span{background:var(--accent);box-shadow:none;color:var(--accent-ink)}
+@media (hover:hover){.opt input:not(:checked):hover+span{box-shadow:inset 0 0 0 1px var(--line-2)}}
+.opts .opt{animation:pop .45s var(--ease) both;animation-delay:calc(var(--i,0)*22ms)}
+.fixed-region{display:flex;gap:10px;align-items:center;padding:12px 16px;border-radius:14px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font-size:.94rem}
+.fixed-region svg{color:var(--accent)}
+.hint{font-size:.88rem;color:var(--muted);margin-top:10px}
+.notes{display:grid;gap:10px;padding-top:20px;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.notes li{display:flex;gap:10px;align-items:flex-start}
+.notes svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(--accent)}
+.sheet-bar{display:flex;align-items:center;gap:10px;padding:14px clamp(20px,3vw,36px) calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--bg-2)}
+.qty{display:flex;align-items:center;height:50px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line-2)}
+.qty button{width:42px;height:100%;font-size:1.2rem;color:var(--muted)}
+.qty output{min-width:22px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.sheet-bar .btn-primary{flex:1}
+.sheet-bar .btn-quiet{padding:0 18px}
+.need{color:var(--warn);font-size:.88rem;font-weight:500;min-height:1.3em}
+@media (max-width:760px){
+  .sheet{width:100%;height:calc(100dvh - 28px);margin:auto 0 0;border-radius:28px 28px 0 0;transform:translateY(60px)}
+  .sheet-in{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+  .sheet-art{padding:30px 20px 22px}
+  .sheet-art .gc{width:min(66%,260px)}
+  .sheet-bar .btn-quiet span{display:none}
+}
 
 /* cart drawer */
-dialog.cart{margin:0 0 0 auto;height:100dvh;max-height:none;width:min(460px,100%);max-width:none;border:0;padding:0;background:var(--bg2);color:var(--text);box-shadow:-30px 0 80px rgba(0,0,0,.5),inset 1px 0 0 var(--line);transform:translateX(100%);transition:transform .32s cubic-bezier(.32,.72,0,1)}
-dialog.cart.is-open{transform:none;transition-duration:.5s}
-dialog.cart::backdrop{background:rgba(2,5,10,.6);opacity:0;transition:opacity .35s}
-dialog.cart.is-open::backdrop{opacity:1}
-.cart-inner{display:grid;grid-template-rows:auto minmax(0,1fr) auto;height:100%}
-.cart-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--line)}
-.cart-head h2{font-size:1.35rem;font-weight:600;letter-spacing:-.02em}
-.cart-body{overflow-y:auto;overscroll-behavior:contain;padding:8px 24px}
-.cart-empty{display:grid;gap:16px;justify-items:start;padding-block:40px;color:var(--muted)}
-.ci{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:14px;align-items:center;padding-block:18px;border-bottom:1px solid var(--line)}
-.ci .gc{border-radius:8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.cart{width:min(440px,100%);height:100dvh;margin:0 0 0 auto;box-shadow:inset 1px 0 0 var(--line-2),-30px 0 80px rgba(0,0,0,.5);transform:translateX(100%);transition:transform .3s var(--ease-drawer)}
+.cart.is-open{transform:none;transition-duration:.55s}
+.cart-in{display:grid;grid-template-rows:auto minmax(0,1fr) auto;height:100%}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
+.cart-head h2{font-size:1.4rem}
+.cart-body{overflow-y:auto;overscroll-behavior:contain;padding:6px 22px}
+.ci{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:14px;align-items:center;padding-block:16px;border-bottom:1px solid var(--line);animation:pop .5s var(--ease) both;animation-delay:calc(var(--i,0)*50ms)}
+.ci .gc{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 8px 14px -8px rgba(0,0,0,.7)}
+.ci .gc-name,.ci .gc-kind,.ci .gc-holo{display:none}
+.ci .gc-glyph{left:50%;top:50%;translate:-50% -50%;width:34%}
+.ci .gc-glyph.txt{width:auto;font-size:20cqw}
 .ci b{display:block;font-weight:600}
 .ci small{color:var(--muted)}
-.ci .lp{font-weight:600;font-variant-numeric:tabular-nums;text-align:end;white-space:nowrap}
-.qty{display:inline-flex;align-items:center;gap:4px;margin-top:8px}
-.qty button{width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;font-size:1.1rem;line-height:1}
-.qty button:active{transform:scale(.92)}
-.qty span{min-width:28px;text-align:center;font-variant-numeric:tabular-nums;font-weight:600}
-.rm{display:block;margin-top:8px;margin-inline-start:auto;color:var(--muted);font-size:.82rem;text-decoration:underline;text-underline-offset:3px}
-.cart-foot{padding:20px 24px calc(20px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:grid;gap:14px;background:var(--surface)}
+.ci .qty{height:36px}
+.ci .qty button{width:32px}
+.rm{display:block;margin-top:6px;margin-inline-start:auto;color:var(--muted);font-size:.8rem;text-decoration:underline;text-underline-offset:3px}
+.cart-empty{padding-block:44px;display:grid;gap:16px;justify-items:start;color:var(--muted)}
+.cart-foot{padding:18px 22px calc(18px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--surface);display:grid;gap:12px}
+.cart-foot label{display:grid;gap:6px;font-size:.86rem;font-weight:500}
+.cart-foot input{font:inherit;font-size:1rem;color:var(--text);background:var(--bg-2);border:1px solid var(--line-2);border-radius:14px;padding:12px 14px;width:100%}
+.cart-foot input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .cart-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
-.cart-fields input{padding:12px 14px}
-.total{display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
-.total strong{font-size:1.6rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.cart-foot p{color:var(--muted);font-size:.82rem}
+.cart-foot p{color:var(--muted);font-size:.84rem}
 .cart-foot .btn{width:100%}
 
-/* ===== v2 polish ===== */
-h1 em,h2 em{font-style:normal;color:var(--accent)}
-.w.acc{color:var(--accent)}
+.tag{position:fixed;right:14px;bottom:14px;z-index:40;padding:7px 12px;border-radius:999px;background:color-mix(in srgb,var(--surface) 90%,transparent);box-shadow:inset 0 0 0 1px var(--line-2);font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);pointer-events:none}
+@media (max-width:900px){.tag{display:none}}
+.ghost-fly{position:fixed;z-index:150;pointer-events:none;margin:0}
+::view-transition-group(cover){animation-duration:.55s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
 
-/* richer gift card art: light from the top corner, engraved rings, top edge highlight */
-.gc{box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 0 0 1px rgba(255,255,255,.2),var(--gc-shadow)}
-.gc.ps{background:radial-gradient(110% 90% at 88% -10%,rgba(150,180,255,.6),transparent 55%),radial-gradient(90% 90% at -10% 110%,rgba(8,12,60,.85),transparent 60%),linear-gradient(135deg,#1a2a7c,#3f62d2 60%,#2a409f)}
-.gc.xb{background:radial-gradient(110% 90% at 88% -10%,rgba(150,255,170,.5),transparent 55%),radial-gradient(90% 90% at -10% 110%,rgba(3,40,16,.85),transparent 60%),linear-gradient(135deg,#0c5a27,#21a04e 62%,#147a3a)}
-.gc::before{background:repeating-radial-gradient(circle at 92% 135%,rgba(255,255,255,.085) 0 1px,transparent 1px 13px)}
+/* ---- search results under the hero box ---- */
+.hero-copy{position:relative;z-index:5}
+.suggest{position:absolute;left:0;right:0;top:calc(100% + 10px);z-index:30;padding:8px;border-radius:28px;background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:blur(24px) saturate(1.6);backdrop-filter:blur(24px) saturate(1.6);box-shadow:inset 0 0 0 1px var(--line-2),0 40px 80px -30px rgba(0,0,0,.85);text-align:start;animation:pop .32s var(--ease) both}
+.sg{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;width:100%;padding:8px 14px 8px 8px;border-radius:20px;text-align:start;transition:background-color .15s}
+.sg[aria-selected="true"]{background:var(--surface-2)}
+@media (hover:hover){.sg:hover{background:var(--surface-2)}}
+.sg b{display:block;font-weight:600;letter-spacing:-.01em}
+.sg small{display:block;color:var(--muted);font-size:.84rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sg .arr{width:16px;height:16px;color:var(--muted)}
+.sg-more{display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px 16px;border-radius:18px;color:var(--muted);font-size:.9rem;font-weight:500}
+.sg-more .arr{width:16px;height:16px}
+.sg-none{padding:16px;color:var(--muted);font-size:.94rem}
+.sg-none a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+/* small card used in lists */
+.gc.mini{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 8px 14px -8px rgba(0,0,0,.7)}
+.gc.mini .gc-name,.gc.mini .gc-kind,.gc.mini .gc-holo{display:none}
+.gc.mini .gc-glyph{left:50%;top:50%;translate:-50% -50%;width:34%}
+.gc.mini .gc-glyph.txt{width:auto;font-size:20cqw}
+/* ring cards can be tapped */
+.ring-item{cursor:pointer}
+.ring-item .gc{transition:filter .3s}
+@media (hover:hover) and (pointer:fine){.ring-item:hover .gc{filter:brightness(1.2)}}
+/* ---- recently viewed + order again ---- */
+.again{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 28px;align-items:center;margin-bottom:14px;padding:18px 20px;border-radius:var(--r-md);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.again .label{display:block;margin-bottom:10px}
+.rv-list{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.rv-list::-webkit-scrollbar{display:none}
+.rv{display:flex;align-items:center;gap:10px;flex:none;padding:6px 16px 6px 6px;border-radius:999px;background:var(--surface-2);font-weight:500;font-size:.9rem;white-space:nowrap;transition:transform .14s var(--ease),box-shadow .2s}
+.rv:active{transform:scale(.97)}
+.rv .gc{width:50px}
+@media (hover:hover){.rv:hover{box-shadow:inset 0 0 0 1px var(--line-2)}}
+.again-order{display:grid;gap:8px;justify-items:start;max-width:340px}
+.again-order .label{margin-bottom:0}
+.again-order p{font-size:.92rem;color:var(--muted)}
+.again-order .btn{min-height:42px;padding:0 18px;font-size:.92rem}
+@media (max-width:760px){.again{grid-template-columns:minmax(0,1fr)}}
+/* ---- how to redeem, inside a product ---- */
+.redeem{border-radius:14px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);padding-inline:16px}
+.redeem summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:14px;cursor:pointer;font-weight:600;font-size:.92rem;list-style:none}
+.redeem summary::-webkit-details-marker{display:none}
+.redeem summary svg{width:16px;height:16px;color:var(--muted);transition:transform .4s var(--ease)}
+.redeem[open] summary svg{transform:rotate(45deg)}
+.redeem div{display:grid;gap:10px;padding-bottom:16px;font-size:.9rem;color:var(--muted)}
+.redeem ol{list-style:decimal;padding-inline-start:20px;display:grid;gap:5px}
+.redeem a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;width:fit-content}
+/* ---- order sent ---- */
+.sent{grid-row:2/4;overflow-y:auto;padding:34px 24px;display:grid;gap:18px;align-content:start;justify-items:start}
+.cart:not(.is-sent) .sent{display:none}
+.cart.is-sent .cart-body,.cart.is-sent .cart-foot{display:none}
+.sent-ico{width:64px;height:64px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;animation:pop .6s var(--ease) both}
+.sent-ico svg{width:30px;height:30px}
+.sent-ico path{stroke-dasharray:30;stroke-dashoffset:30;animation:draw .6s var(--ease) .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.sent h3{font-size:1.7rem;line-height:1.05}
+.sent>p{color:var(--muted)}
+.ref{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line-2);font-family:var(--mono);font-size:.9rem}
+.ref b{font-weight:500;color:var(--accent)}
+.sent ol{display:grid;gap:14px;width:100%;padding-top:18px;border-top:1px solid var(--line)}
+.sent li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;font-size:.94rem;color:var(--muted);animation:pop .5s var(--ease) both;animation-delay:calc(var(--i)*90ms + 350ms)}
+.sent li i{width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-style:normal;font-family:var(--mono);font-size:.78rem}
+.sent li b{display:block;color:var(--text);font-weight:600}
+.sent-actions{display:grid;gap:10px;width:100%}
+/* ---- request a game ---- */
+.sheet.req{width:min(480px,calc(100% - 32px));height:fit-content;max-height:calc(100dvh - 48px)}
+.req-in{position:relative;display:grid;gap:20px;padding:32px clamp(20px,4vw,34px) 26px}
+.req-in h2{font-size:1.9rem;line-height:1.05;margin:0}
+.req-in>p{color:var(--muted);margin-top:-8px}
+.req-in label.txt{display:grid;gap:8px;font-weight:600;font-size:.92rem}
+.req-in input[type="text"]{font:inherit;font-size:1rem;color:var(--text);background:var(--surface);border:1px solid var(--line-2);border-radius:14px;padding:14px 16px;width:100%}
+.req-in input[type="text"]:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.req-in .btn{width:100%}
+@media (max-width:760px){.sheet.req{width:100%;height:fit-content;margin:auto 0 0}}
+/* ---- lighter mode for slow devices: same page, fewer expensive effects ---- */
+.lite .top,.lite .toolbar,.lite .dock,.lite .search input,.lite .suggest{-webkit-backdrop-filter:none;backdrop-filter:none}
+.lite .top,.lite .toolbar{background:var(--bg)}
+.lite .dock,.lite .suggest{background:var(--surface)}
+.lite dialog::backdrop{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,0,0,.8)}
+.lite .gc{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.1),0 16px 26px -16px rgba(0,0,0,.8)}
+.lite .gc::before,.lite .gc-water{display:none}
+.lite .belt{display:none}
+.lite .sheet-art .gc{animation:none;transform:rotate(-4deg)}
 
-/* hero stage: glowing pool and a perspective floor under the cards */
-.pool{position:absolute;left:6%;right:6%;bottom:4%;height:34%;background:radial-gradient(closest-side,var(--accent-soft),transparent);transform:scaleY(.6)}
-.floor{position:absolute;left:-25%;right:-25%;bottom:-4%;height:52%;background:linear-gradient(var(--orbit) 1px,transparent 1px) 0 0/100% 46px,linear-gradient(90deg,var(--orbit) 1px,transparent 1px) 50% 0/46px 100%;transform:perspective(520px) rotateX(66deg);transform-origin:50% 100%;-webkit-mask-image:radial-gradient(55% 75% at 50% 55%,#000 10%,transparent 72%);mask-image:radial-gradient(55% 75% at 50% 55%,#000 10%,transparent 72%);opacity:.7;animation:floor 3.2s linear infinite}
-@keyframes floor{to{background-position:0 46px,50% 0}}
-
-/* pointer light (desktop) */
-.cursor-glow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(closest-side,var(--accent-soft),transparent);pointer-events:none;z-index:-1;opacity:0;transition:opacity .6s}
-.cursor-glow.on{opacity:1}
-
-/* primary button: light sweep on hover */
-.btn-primary{position:relative;overflow:hidden}
-.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-130%);transition:transform .8s var(--ease);pointer-events:none}
-@media (hover:hover) and (pointer:fine){.btn-primary:hover::after{transform:translateX(130%)}}
-
-.nav-links a.is-current{color:var(--text);background:rgba(255,255,255,.08)}
-
-/* section rule with index */
-.rule{position:relative;display:flex;justify-content:space-between;align-items:center;padding-top:16px;margin-bottom:clamp(28px,4vw,52px)}
-.rule::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line2);transform-origin:0 50%;transform:scaleX(var(--rule,1))}
-
-/* configurator halo */
-.halo{position:absolute;inset:0;margin:auto;width:min(80%,520px);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 50%,var(--glow,rgba(74,111,216,.6)) 76%,transparent);filter:blur(38px);opacity:.6;animation:spin 14s linear infinite;transition:opacity .5s}
-@keyframes spin{to{transform:rotate(360deg)}}
-:root[data-theme="light"] .halo{opacity:.4}
-
-/* benefit tiles with mini visuals */
-.tile{display:flex;flex-direction:column;gap:10px;min-height:300px}
-.viz{flex:1;display:flex;position:relative;min-height:124px;margin-bottom:18px}
-.viz-mail{flex-direction:column;justify-content:center;gap:16px}
-.mail-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line);max-width:400px}
-.mail-av{width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
-.mail-av svg{width:18px;height:18px}
-.mail-txt{flex:1;min-width:0;display:grid;line-height:1.3}
-.mail-txt b{font-size:.92rem;font-weight:600}
-.mail-txt small{color:var(--muted);font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.viz-mail .slots{margin:0}
-.viz-chat{flex-direction:column;justify-content:center;gap:8px}
-.bub{max-width:92%;padding:10px 14px;border-radius:18px;font-size:.88rem;line-height:1.35}
-.bub.me{align-self:flex-end;background:var(--accent);color:var(--accent-ink);border-bottom-right-radius:6px;transform-origin:100% 100%}
-.bub.them{align-self:flex-start;display:flex;gap:8px;align-items:center;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);border-bottom-left-radius:6px;transform-origin:0 100%}
-.bub svg{width:16px;height:16px;flex:none;color:var(--accent)}
-.viz-fx{align-items:center;gap:14px;flex-wrap:wrap}
-.fx-from{font-size:2.2rem;font-weight:600;letter-spacing:-.03em;line-height:1}
-.viz-fx svg{width:22px;height:22px;color:var(--muted);flex:none}
-.fx-to{font-size:clamp(1.25rem,1.9vw,1.7rem);font-weight:600;letter-spacing:-.02em;color:var(--accent);white-space:nowrap}
-.fx-clip{overflow:hidden;display:inline-block;padding-block:.1em}
-.fx-clip>span{display:inline-block}
-.viz-fan{min-height:150px}
-.viz-fan .gc{position:absolute;width:min(62%,230px);transition:transform .6s var(--ease)}
-.viz-fan .gc.ps{left:0;top:6px;transform:rotate(-8deg)}
-.viz-fan .gc.xb{right:0;top:30px;transform:rotate(8deg)}
-@media (hover:hover){.tile:hover .viz-fan .gc.ps{transform:translate(-6px,-6px) rotate(-13deg)}.tile:hover .viz-fan .gc.xb{transform:translate(6px,4px) rotate(13deg)}}
-.viz-tags{flex-wrap:wrap;align-content:center;gap:8px}
-.viz-tags span{padding:9px 15px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line2);background:var(--bg2);font-size:.88rem;font-weight:500}
-.viz-tags span:first-child{background:var(--accent-soft);color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
-.js-motion .tile .mail-row,.js-motion .tile .bub,.js-motion .tile .viz-tags span{opacity:0}
-.js-motion .tile.in .mail-row{animation:dropin .7s var(--ease) .15s forwards}
-.js-motion .tile.in .slots i:not(.gap){animation-delay:calc(var(--n)*70ms + 650ms)}
-.js-motion .tile.in .bub.me{animation:pop .55s var(--ease) .3s forwards}
-.js-motion .tile.in .bub.them{animation:pop .55s var(--ease) 1.1s forwards}
-.js-motion .tile.in .viz-tags span{animation:pop .5s var(--ease) forwards;animation-delay:calc(var(--n)*110ms + 250ms)}
-@keyframes dropin{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
-@keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
-@media (max-width:900px){.tile{min-height:0}.viz{min-height:112px}}
-
-/* closing call to action */
-.cta{padding-block:clamp(96px,15vw,210px);text-align:center;overflow:hidden;border-top:1px solid var(--line);background:radial-gradient(60% 90% at 50% 110%,var(--accent-soft),transparent 70%)}
-.cta-ghost{position:absolute;left:0;top:50%;translate:0 -50%;white-space:nowrap;font-size:clamp(7rem,23vw,21rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:transparent;-webkit-text-stroke:1px var(--line2);opacity:.55;pointer-events:none;user-select:none}
-.cta-ghost span{display:inline-block;will-change:transform}
-.cta-in{position:relative}
-.cta h2{font-size:clamp(2.2rem,6.2vw,5.2rem);line-height:1.03;letter-spacing:-.035em;font-weight:600;max-width:15ch;margin-inline:auto}
-.cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(28px,4vw,44px)}
-
-/* footer: always dark so the white logo reads in both themes */
-footer.footer{--text:#e9f3f3;--muted:#8fa3ad;--dim:#5d717c;--line:rgba(170,225,235,.10);--accent:#7cf2dc;background:#04070c;color:var(--text);border-top:1px solid var(--line);padding-block:clamp(48px,7vw,88px) calc(64px + env(safe-area-inset-bottom))}
-.foot-top{display:grid;grid-template-columns:minmax(0,1.7fr) repeat(3,minmax(0,1fr));gap:36px}
-.foot-brand img{height:34px;width:auto}
-.foot-brand p{color:var(--muted);margin-top:18px;max-width:34ch}
-.foot-col{display:grid;gap:10px;align-content:start;font-size:.94rem}
-.foot-col b{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
-.foot-col a{color:var(--muted);transition:color .2s;width:fit-content}
-.foot-col a:hover{color:var(--accent)}
-footer.footer .concept-note{margin-top:clamp(36px,5vw,64px);padding-top:22px;border-top:1px solid var(--line)}
-@media (max-width:760px){.foot-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.foot-brand{grid-column:1/-1}}
-
-/* account button + panel */
-.nav-pill{position:relative}
-.acct-panel{position:absolute;right:0;top:calc(100% + 10px);width:min(320px,calc(100vw - 32px));padding:22px;border-radius:24px;background:rgba(8,14,24,.97);box-shadow:inset 0 0 0 1px var(--line2),0 24px 60px rgba(0,0,0,.5);display:grid;gap:12px;opacity:0;transform:translateY(-6px) scale(.96);transform-origin:calc(100% - 80px) 0;visibility:hidden;transition:opacity .16s var(--ease),transform .2s var(--ease),visibility 0s .2s}
-.nav.acct-open .acct-panel{opacity:1;transform:none;visibility:visible;transition:opacity .22s var(--ease),transform .3s var(--ease)}
-.acct-panel b{font-size:1.1rem;font-weight:600;letter-spacing:-.01em}
-.acct-panel p{color:var(--muted);font-size:.92rem;line-height:1.45}
-.acct-panel .btn{min-height:46px;width:100%}
-.acct-panel small{color:var(--muted);font-size:.8rem;text-align:center}
-.acct-btn[aria-expanded="true"]{background:rgba(255,255,255,.1)}
-.menu-sep{height:1px;background:var(--line);margin:8px 6px}
-.menu-panel a.menu-acct{display:flex;align-items:center;gap:12px}
-.menu-panel a.menu-acct svg{width:20px;height:20px;color:var(--accent)}
-.cart-acct{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--r-sm);background:var(--accent-soft);color:var(--text)!important;font-size:.88rem!important}
-.cart-acct svg{width:18px;height:18px;flex:none;color:var(--accent)}
-.cart-acct a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-@media (max-width:820px){.acct-btn,.acct-panel{display:none}}
-
-/* pre-animation states (only with JS + motion allowed) */
-.js-motion [data-reveal],.js-motion [data-split],.js-motion .hero .line>span,.js-motion .hero-in,.js-motion .stage .gc,.js-motion .stage .chip{opacity:0}
-
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
-}
+/* hidden until animated in (only when JS and motion are both on) */
+.js-motion [data-reveal],.js-motion [data-split],.js-motion .hero .line>span,.js-motion .hero-in,.js-motion .ring-item .gc{opacity:0}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body id="top">
-<a class="skip" href="#shop">Skip to the store</a>
+<a class="skip" href="#browse">Skip to the catalogue</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
-<div style="position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:90;padding:7px 12px;border-radius:999px;background:rgba(8,14,24,.85);box-shadow:inset 0 0 0 1px rgba(170,225,235,.2);font:500 .72rem/1 'Geist Mono',ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:#8fa3ad;pointer-events:none">Concept preview</div>
-<div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
-<div class="grain" aria-hidden="true"></div>
-<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-<header class="nav" id="nav">
-  <div class="nav-pill">
-    <a class="brand" href="#top" aria-label="Cardora Maldives, back to top">
-      <img src="assets/cardora-logo.webp" alt="Cardora Maldives" width="116" height="30" onerror="this.outerHTML='<span class=&quot;wordmark&quot;>CARDORA</span>'">
-    </a>
-    <nav class="nav-links" aria-label="Main">
-      <a href="#shop">Store</a>
+<header class="top" id="nav">
+  <div class="wrap top-in">
+    <a class="brand" href="#top" aria-label="Cardora Maldives, home"><img src="assets/cardora-logo.webp" alt="Cardora Maldives" width="93" height="24"></a>
+    <nav class="top-links" aria-label="Categories">
+      <a href="#browse" data-cat="gift-cards">Gift cards</a>
+      <a href="#browse" data-cat="game-keys">Game keys</a>
+      <a href="#browse" data-cat="game-credits">Game credits</a>
       <a href="#how">How it works</a>
-      <a href="#why">Why Cardora</a>
-      <a href="#contact">Contact</a>
+      <a href="#help">Help</a>
     </nav>
-    <div class="nav-actions">
+    <div class="top-actions">
+      <button class="icon-btn" type="button" data-focus-search aria-label="Search the store"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.500-3.500"/></svg></button>
       <button class="icon-btn theme-btn" id="themeBtn" aria-label="Switch to light mode">
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.500A8 8 0 0 1 9.500 4a8 8 0 1 0 10.500 10.500Z"/></svg>
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600 7 7M17 17l1.400 1.400M5.600 18.400 7 17M17 7l1.400-1.400"/></svg>
+        <svg class="icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.500A8 8 0 0 1 9.500 4a8 8 0 1 0 10.500 10.500Z"/></svg>
+        <svg class="icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600 7 7M17 17l1.400 1.400M5.600 18.400 7 17M17 7l1.400-1.400"/></svg>
       </button>
-      <button class="icon-btn acct-btn" id="acctBtn" aria-label="Account" aria-expanded="false" aria-controls="acctPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></button>
-      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
-      </button>
-      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Open cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
-        <span class="badge num" id="cartCount" aria-hidden="true">0</span>
-      </button>
+      <a class="icon-btn" href="login.html" aria-label="Sign in"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></a>
+      <button class="icon-btn" type="button" data-open-cart aria-label="Open cart"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span class="badge" data-count data-n="0" aria-hidden="true">0</span></button>
     </div>
-    <div class="acct-panel" id="acctPanel" role="group" aria-label="Account">
-      <b>Your Cardora account</b>
-      <p>Sign in to see your past orders and find your gift codes again.</p>
-      <a class="btn btn-primary" href="login.html">Sign in</a>
-      <a class="btn btn-ghost" href="register.html">Create account</a>
-      <small>You can order without an account.</small>
-    </div>
-  </div>
-  <div class="menu-panel" id="menuPanel">
-    <a href="#shop">Store</a>
-    <a href="#how">How it works</a>
-    <a href="#why">Why Cardora</a>
-    <a href="#contact">Contact</a>
-    <div class="menu-sep" aria-hidden="true"></div>
-    <a class="menu-acct" href="login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Sign in</a>
-    <a class="menu-acct" href="register.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M2 21a8 8 0 0 1 14-5.300M19 14v6M16 17h6"/></svg>Create account</a>
   </div>
 </header>
 
 <main>
-  <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <h1 aria-label="PSN and Xbox credit, priced in rufiyaa.">
-            <span class="line" aria-hidden="true"><span>PSN &amp; Xbox credit,</span></span>
-            <span class="line" aria-hidden="true"><span class="accent">priced in rufiyaa.</span></span>
-          </h1>
-          <p class="hero-sub hero-in">US and UK gift cards for your PlayStation or Xbox account. Order online or on WhatsApp, and your code arrives by email after payment is confirmed.</p>
-          <div class="hero-cta hero-in">
-            <a class="btn btn-primary magnetic" href="#shop">Shop gift cards
-              <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
-            </a>
-            <a class="btn btn-ghost" href="#how">How it works</a>
-          </div>
-        </div>
-
-        <div class="stage" id="stage" aria-hidden="true">
-          <div class="pool"></div><div class="floor"></div>
-          <svg class="orbits" viewBox="0 0 500 500">
-            <ellipse cx="250" cy="260" rx="235" ry="92" transform="rotate(-16 250 260)" pathLength="1"/>
-            <ellipse cx="250" cy="260" rx="190" ry="60" transform="rotate(-16 250 260)" pathLength="1"/>
-            <circle class="dot" r="4" cx="0" cy="0"/>
-          </svg>
-          <div class="stage-tilt" id="stageTilt">
-            <div class="gc-wrap xb"><div class="gc-float">
-              <div class="gc xb">
-                <span class="gc-brand">Xbox</span>
-                <img class="gc-logo" src="assets/xbox.svg" alt="" onerror="this.remove()">
-                <span class="gc-region">United Kingdom</span>
-                <span class="gc-value">£40</span>
-              </div>
-            </div></div>
-            <div class="gc-wrap ps"><div class="gc-float">
-              <div class="gc ps">
-                <span class="gc-brand">PlayStation</span>
-                <img class="gc-logo" src="assets/playstation.svg" alt="" onerror="this.remove()">
-                <span class="gc-region">United States</span>
-                <span class="gc-value">$50</span>
-              </div>
-            </div></div>
-            <div class="chip c1 num">MVR 1,199.00</div>
-            <div class="chip c2">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
-              Code sent by email
-            </div>
-          </div>
-        </div>
+    <div class="hero-light" aria-hidden="true"></div>
+    <div class="wrap hero-copy">
+      <p class="hero-pill hero-in"><i></i>Digital codes<i></i>Pay in MVR<i></i>Email or WhatsApp delivery</p>
+      <h1 aria-label="Cards, keys and credits. Paid in rufiyaa.">
+        <span class="line" aria-hidden="true"><span>Cards, keys and credits.</span></span>
+        <span class="line" aria-hidden="true"><span><em>Paid in rufiyaa.</em></span></span>
+      </h1>
+      <p class="hero-sub hero-in">Gift cards, game keys and game credits for gamers in the Maldives. We confirm stock before you pay.</p>
+      <div class="search hero-in" role="search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.500-3.500"/></svg>
+        <label class="sr" for="q1">Search the store</label>
+        <input id="q1" data-q type="search" placeholder="Search PlayStation, PUBG, Roblox…" autocomplete="off" enterkeyhint="search">
+        <kbd>/</kbd>
+        <div class="suggest" id="suggest" role="listbox" aria-label="Search results" data-lenis-prevent hidden></div>
       </div>
-
-      <div class="facts">
-        <div class="fact hero-in"><b>Digital delivery</b><span>By email after payment confirmation</span></div>
-        <div class="fact hero-in"><b>Order confirmation</b><span>Availability checked on WhatsApp</span></div>
-        <div class="fact hero-in"><b>US and UK regions</b><span>PlayStation and Xbox</span></div>
-        <div class="fact hero-in"><b>Customer support</b><span>Help with orders and codes</span></div>
-      </div>
+      <div class="try hero-in"><span>Try</span><span id="tryChips" style="display:contents"></span></div>
     </div>
-    <span class="scroll-cue" aria-hidden="true"></span>
+    <div class="stage" id="stage" aria-hidden="true"><div class="floor"></div><div class="ring-pos"><div class="ring" id="ring"></div></div></div>
+    <div class="scroll-cue hero-in" aria-hidden="true"><i></i></div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee" id="marquee">
-    <div class="marquee-track" aria-hidden="true">
-      <span><b>PlayStation</b><i></i>Xbox<i></i><b>United States</b><i></i>United Kingdom<i></i><b>Priced in MVR</b><i></i>Delivered by email<i></i><b>Order on WhatsApp</b><i></i></span>
-      <span><b>PlayStation</b><i></i>Xbox<i></i><b>United States</b><i></i>United Kingdom<i></i><b>Priced in MVR</b><i></i>Delivered by email<i></i><b>Order on WhatsApp</b><i></i></span>
-    </div>
-    <button class="mq-toggle" id="mqToggle" aria-label="Pause moving text" aria-pressed="false">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
-    </button>
-  </div>
+  <section class="say" id="say">
+    <div class="wrap"><p id="sayText" data-words="Choose it in seconds. Send it on *WhatsApp.* Get your code *by email or chat.*"></p></div>
+  </section>
 
-  <!-- STORE -->
-  <section class="sec" id="shop">
+  <section id="cats" aria-label="Categories"><div class="wrap stack" id="stack"></div></section>
+
+  <section class="sec" id="browse">
     <div class="wrap">
-      <div class="rule" data-rule><span class="mono">01</span><span class="mono">Store</span></div>
-      <div class="sec-head">
-        <h2 data-split>Build your card in <em>three taps.</em></h2>
-        <p data-reveal>Pick your console, match your account region, choose an amount. The rufiyaa price updates as you go.</p>
-      </div>
-
-      <div class="cfg">
-        <div class="cfg-stage" id="cfgStage" data-reveal>
-          <div class="halo" aria-hidden="true"></div>
-          <div class="cfg-tilt" id="cfgTilt">
-            <div class="gc ps" id="cfgCard">
-              <span class="gc-brand" id="cBrand">PlayStation</span>
-              <img class="gc-logo" id="cLogo" src="assets/playstation.svg" alt="" onerror="this.style.visibility='hidden'">
-              <span class="gc-region" id="cRegion">United States</span>
-              <span class="gc-value" id="cValue">$50</span>
-            </div>
-          </div>
-          <p class="cfg-note">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
-            <span><span id="regionNote">US cards only work on accounts set to the United States.</span> <a href="#help">How to check your region</a></span>
-          </p>
-        </div>
-
-        <div class="cfg-panel">
-          <div class="field" data-reveal="1">
-            <span class="mono" id="lblBrand">1 · Console</span>
-            <div class="seg" id="segBrand" role="group" aria-labelledby="lblBrand">
-              <button type="button" data-brand="ps" aria-pressed="true"><img src="assets/playstation.svg" alt="" onerror="this.remove()">PlayStation</button>
-              <button type="button" data-brand="xb" aria-pressed="false"><img src="assets/xbox.svg" alt="" onerror="this.remove()">Xbox</button>
-            </div>
-          </div>
-          <div class="field" data-reveal="2">
-            <span class="mono" id="lblRegion">2 · Account region</span>
-            <div class="seg" id="segRegion" role="group" aria-labelledby="lblRegion">
-              <button type="button" data-region="us" aria-pressed="true">United States</button>
-              <button type="button" data-region="uk" aria-pressed="false">United Kingdom</button>
-            </div>
-          </div>
-          <div class="field" data-reveal="3">
-            <span class="mono" id="lblAmount">3 · Amount</span>
-            <div class="amounts" id="amounts" role="group" aria-labelledby="lblAmount"></div>
-            <p class="restock" id="restock" hidden></p>
-          </div>
-          <div class="buy" data-reveal="4">
-            <div class="price-row">
-              <div class="price" aria-live="polite"><small>MVR</small><span id="price">1,199.00</span></div>
-              <span class="stock"><i></i><span id="stockText">Available · 50.00 USD face value</span></span>
-            </div>
-            <div class="buy-actions">
-              <button class="btn btn-primary magnetic" id="addBtn" type="button">Add to cart</button>
-              <a class="btn btn-ghost" id="waBtn" target="_blank" rel="noopener noreferrer" href="#">Order on WhatsApp</a>
-            </div>
-          </div>
+      <div class="sec-head"><h2 data-split>Browse the store.</h2><p data-reveal>Every brand we carry, in one place. Tap one to choose your region and amount.</p></div>
+      <div class="again" id="again" hidden></div>
+      <div class="toolbar">
+        <div class="tabs" role="tablist" aria-label="Category" id="tabs"><span class="tab-pill" id="tabPill"></span></div>
+        <div class="filter">
+          <svg class="icon" style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.500-3.500"/></svg>
+          <label class="sr" for="q2">Filter products</label>
+          <input id="q2" data-q type="search" placeholder="Filter by name" autocomplete="off" enterkeyhint="search">
+          <button type="button" id="clearQ" hidden>Clear</button>
         </div>
       </div>
-
-      <details class="all-prices" data-reveal>
-        <summary>See all 24 cards and prices
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <div class="price-grid" id="priceGrid"></div>
-      </details>
+      <p class="count" id="count" role="status"></p>
+      <div id="results"></div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="sec" id="how">
+  <section class="sec" id="how" style="padding-top:0">
     <div class="wrap">
-      <div class="rule" data-rule><span class="mono">02</span><span class="mono">How it works</span></div>
-      <div class="sec-head">
-        <h2 data-split>From cart to code in <em>four steps.</em></h2>
-        <p data-reveal>You never pay before we have confirmed your card is in stock.</p>
-      </div>
-      <div class="how-grid">
-        <div class="ticket-wrap" data-reveal>
-          <div class="ticket" id="ticket" aria-hidden="true">
-            <div class="ticket-top"><span class="mono">Your order</span><span class="mono num" id="tStep">4 / 4</span></div>
-            <div class="ticket-bar"><i id="tBar"></i></div>
-            <div class="trow is-done"><div class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div><div><b>Card chosen</b><span id="tCard">PlayStation · 50.00 USD · United States</span></div></div>
-            <div class="trow is-done"><div class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div><div><b>Order sent on WhatsApp</b><span>To +960 922-2544</span></div></div>
-            <div class="trow is-done"><div class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div><div><b>Availability confirmed</b><span>Stock and final price checked</span></div></div>
-            <div class="trow is-done"><div class="tdot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div><div><b>Code emailed</b><span class="code" id="tCode">XXXX-XXXX-XXXX</span></div></div>
-          </div>
-        </div>
-
-        <ol class="steps" id="steps" style="list-style:none;margin:0;padding:0">
-          <div class="steps-line" aria-hidden="true"><i id="stepsLine"></i></div>
-          <li class="step"><span class="step-n">1</span><div><h3>Choose a card for your account</h3><p>Pick PlayStation or Xbox, then the US or UK region that matches your account. Check the face value and MVR price, and add it to your cart.</p></div></li>
-          <li class="step"><span class="step-n">2</span><div><h3>Send your order on WhatsApp</h3><p>Open your cart, check the quantities and total, and add your name and delivery email. Tap Send order on WhatsApp to share it with our team.</p></div></li>
-          <li class="step"><span class="step-n">3</span><div><h3>Wait for availability confirmation</h3><p>Our team confirms the stock and final price on WhatsApp before sharing payment details.</p></div></li>
-          <li class="step"><span class="step-n">4</span><div><h3>Complete your order</h3><p>Follow the payment instructions sent on WhatsApp. Your digital gift code is emailed after payment is confirmed. Keep your order reference handy if you contact us.</p></div></li>
-        </ol>
-      </div>
+      <div class="sec-head"><h2 data-split>Cart to code, in four steps.</h2><p data-reveal>You never pay before we have confirmed your item is in stock.</p></div>
+      <ol class="flow" id="flow">
+        <div class="flow-line" aria-hidden="true"><i></i></div>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M3 10h18"/></svg></span><b>Choose your item</b><p>Pick a brand, the region that matches your account, and an amount.</p></li>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.800 7L4 20l1.100-4A8 8 0 1 1 20 12Z"/></svg></span><b>Send it on WhatsApp</b><p>Add your name and delivery contact, then send your cart to our team in one tap.</p></li>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><b>We confirm stock and price</b><p>We check availability and confirm the final rufiyaa price before sharing payment details.</p></li>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span><b>Pay and get your code</b><p>Your code arrives by email or WhatsApp after payment is confirmed.</p></li>
+      </ol>
     </div>
   </section>
 
-  <!-- HELP -->
   <section class="sec" id="help" style="padding-top:0">
-    <div class="wrap">
-      <div class="rule" data-rule><span class="mono">03</span><span class="mono">Region and redeem</span></div>
-      <div class="help-top">
-        <div class="sec-head">
-          <h2 data-split>Check your region, <em>redeem your code.</em></h2>
-        </div>
-        <div class="seg" id="segHelp" role="group" aria-label="Console" data-reveal>
-          <button type="button" data-help="ps" aria-pressed="true">PlayStation</button>
-          <button type="button" data-help="xb" aria-pressed="false">Xbox</button>
+    <div class="wrap faq-grid">
+      <div>
+        <h2 data-split style="font-size:clamp(2rem,4.4vw,3.4rem);line-height:1;letter-spacing:-.045em">Good to know before you order.</h2>
+        <div class="help-card" data-reveal>
+          <a class="btn btn-primary magnetic" href="https://wa.me/9609222544?text=Hi%20Cardora%20Maldives%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a>
+          <a class="btn btn-quiet" href="https://www.instagram.com/cardoramdv" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </div>
-      <div class="help-grid" id="helpGrid" data-reveal>
-        <article class="help-card">
-          <h3>Before you buy: check your region</h3>
-          <p id="hRegionLead"></p>
-          <ol id="hRegion"></ol>
-        </article>
-        <article class="help-card">
-          <h3>After you buy: redeem your code</h3>
-          <p id="hRedeemLead"></p>
-          <ol id="hRedeem"></ol>
-        </article>
-      </div>
-      <p class="help-foot" data-reveal>Stuck on a step? <a href="#contact" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">Message the Cardora team</a> with your order reference.</p>
+      <div class="faq" id="faq" data-reveal></div>
     </div>
   </section>
 
-  <!-- WHY -->
-  <section class="sec" id="why">
+  <section class="end" id="end">
     <div class="wrap">
-      <div class="rule" data-rule><span class="mono">04</span><span class="mono">Why Cardora</span></div>
-      <div class="sec-head">
-        <h2 data-split>Made for gamers <em>in the Maldives.</em></h2>
-      </div>
-      <div class="bento">
-        <article class="tile t1" data-reveal>
-          <div class="viz viz-mail" aria-hidden="true">
-            <div class="mail-row">
-              <span class="mail-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span>
-              <span class="mail-txt"><b>Cardora Maldives</b><small>Your gift code is ready</small></span>
-              <span class="mono">now</span>
-            </div>
-            <div class="slots">
-              <i style="--n:0">•</i><i style="--n:1">•</i><i style="--n:2">•</i><i style="--n:3">•</i><i class="gap"></i>
-              <i style="--n:4">•</i><i style="--n:5">•</i><i style="--n:6">•</i><i style="--n:7">•</i><i class="gap"></i>
-              <i style="--n:8">•</i><i style="--n:9">•</i><i style="--n:10">•</i><i style="--n:11">•</i>
-            </div>
-          </div>
-          <h3>Digital delivery</h3>
-          <p>Your gift code arrives by email after payment is confirmed. No pickup, no waiting on a courier.</p>
-        </article>
-        <article class="tile t2" data-reveal="1">
-          <div class="viz viz-chat" aria-hidden="true">
-            <span class="bub me">1 × PlayStation $50 (US)</span>
-            <span class="bub them"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>In stock. Final price MVR 1,199.00</span>
-          </div>
-          <h3>Confirmed before you pay</h3>
-          <p>We check availability on WhatsApp first, then share payment details.</p>
-        </article>
-        <article class="tile t3" data-reveal id="fxTile">
-          <div class="viz viz-fx" aria-hidden="true">
-            <span class="fx-clip"><span class="fx-from" id="fxFrom">$50</span></span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
-            <span class="fx-clip"><span class="fx-to num" id="fxTo">MVR 1,199.00</span></span>
-          </div>
-          <h3>Priced in MVR</h3>
-          <p>See the rufiyaa price for every denomination before you order.</p>
-        </article>
-        <article class="tile t4" data-reveal="1">
-          <div class="viz viz-fan" aria-hidden="true">
-            <div class="gc ps"><span class="gc-brand">PlayStation</span><img class="gc-logo" src="assets/playstation.svg" alt=""><span class="gc-region">United States</span><span class="gc-value">$25</span></div>
-            <div class="gc xb"><span class="gc-brand">Xbox</span><img class="gc-logo" src="assets/xbox.svg" alt=""><span class="gc-region">United Kingdom</span><span class="gc-value">£20</span></div>
-          </div>
-          <h3>US and UK regions</h3>
-          <p>Choose the card that matches the region of your PlayStation or Xbox account.</p>
-        </article>
-        <article class="tile t5" data-reveal="2">
-          <div class="viz viz-tags" aria-hidden="true">
-            <span style="--n:0">Orders</span><span style="--n:1">Delivery</span><span style="--n:2">Redeeming codes</span><span style="--n:3">Account regions</span>
-          </div>
-          <h3>Help when you need it</h3>
-          <p>Support with orders, delivery and redeeming your code.</p>
-        </article>
+      <h2 data-split>Ready when you are.</h2>
+      <p data-reveal>Pick something, send it over, and we'll take it from there.</p>
+      <div class="end-actions" data-reveal>
+        <a class="btn btn-primary magnetic" href="#browse">Browse the store <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-quiet" href="https://wa.me/9609222544?text=Hi%20Cardora%20Maldives%2C%20I%20want%20to%20make%20an%20order." target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
       </div>
     </div>
-  </section>
-
-  <!-- CLOSING CTA -->
-  <section class="cta" id="cta">
-    <div class="cta-ghost" aria-hidden="true"><span>CARDORA · PLAYSTATION · XBOX · CARDORA · PLAYSTATION · XBOX ·</span></div>
-    <div class="wrap cta-in">
-      <h2 data-split>Your next top-up is <em>three taps away.</em></h2>
-      <div class="cta-actions" data-reveal>
-        <a class="btn btn-primary magnetic" href="#shop">Shop gift cards <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-        <a class="btn btn-ghost" href="https://wa.me/9609222544?text=Hi%20Cardora%20Maldives%2C%20I%20want%20to%20make%20an%20order." target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="sec contact" id="contact">
-    <div class="wrap">
-      <div class="rule" data-rule><span class="mono">05</span><span class="mono">Contact</span></div>
-      <div class="contact-grid">
-        <div>
-          <h2 data-split>Questions about an order?</h2>
-          <p class="lead" data-reveal>Message the Cardora team on the app you already use.</p>
-          <div class="channels" data-reveal="1">
-            <a class="channel" href="https://wa.me/9609222544?text=Hi%20Cardora%20Maldives%2C%20I%20want%20to%20make%20an%20order." target="_blank" rel="noopener noreferrer"><span>WhatsApp<small class="num">+960 922-2544</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <a class="channel" href="viber://chat?number=%2B9609823238"><span>Viber</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <a class="channel" href="https://t.me/+9609823238" target="_blank" rel="noopener noreferrer"><span>Telegram</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <a class="channel" href="https://www.instagram.com/cardoramdv" target="_blank" rel="noopener noreferrer"><span>Instagram<small>@cardoramdv</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-          </div>
-        </div>
-        <form class="form" id="contactForm" data-reveal="2" novalidate>
-          <h3>Send a message</h3>
-          <label>Name<input name="name" autocomplete="name" required></label>
-          <label>Email<input name="email" type="email" inputmode="email" autocomplete="email" required></label>
-          <label>Message<textarea name="message" required></textarea></label>
-          <button class="btn btn-primary" type="submit">Send message</button>
-          <p class="form-status" id="formStatus" role="status"></p>
-        </form>
-      </div>
-    </div>
+    <div class="belt" id="belt" aria-hidden="true"></div>
   </section>
 </main>
 
-<footer class="footer">
+<footer>
   <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <img src="assets/cardora-logo.webp" alt="Cardora Maldives" width="132" height="34" loading="lazy">
-        <p>PlayStation and Xbox gift cards for US and UK accounts, priced in MVR.</p>
-      </div>
-      <nav class="foot-col" aria-label="Store"><b>Store</b><a href="#shop">Gift cards</a><a href="#how">How it works</a><a href="#help">Redeem a code</a></nav>
-      <nav class="foot-col" aria-label="Contact"><b>Contact</b><a class="num" href="https://wa.me/9609222544" target="_blank" rel="noopener noreferrer">WhatsApp +960 922-2544</a><a href="viber://chat?number=%2B9609823238">Viber</a><a href="https://t.me/+9609823238" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.instagram.com/cardoramdv" target="_blank" rel="noopener noreferrer">Instagram</a></nav>
+    <div class="foot">
+      <div class="foot-brand"><img src="assets/cardora-logo.webp" alt="Cardora Maldives" width="101" height="26" loading="lazy"><p>Gift cards, game keys and game credits for gamers in the Maldives. Paid in MVR.</p></div>
+      <nav class="foot-col" aria-label="Shop"><b>Shop</b><a href="#browse" data-cat="gift-cards">Gift cards</a><a href="#browse" data-cat="game-keys">Game keys</a><a href="#browse" data-cat="game-credits">Game credits</a></nav>
+      <nav class="foot-col" aria-label="Help"><b>Help</b><a href="#how">How it works</a><a href="#help">Region and redeem</a><a href="https://wa.me/9609222544" target="_blank" rel="noopener noreferrer">WhatsApp +960 922-2544</a></nav>
       <nav class="foot-col" aria-label="Account"><b>Account</b><a href="login.html">Sign in</a><a href="register.html">Create account</a></nav>
     </div>
-    <p class="concept-note">Concept redesign prepared for Cardora Maldives. Not the live store. Cards, prices and stock mirror cardoramdv.com as of 22 November 2026.</p>
+    <p class="fine"><span>Redesign concept for Cardora Maldives. Not the live store. Catalogue mirrors cardoramdv.com on 26 November 2026.</span><span>Not affiliated with or endorsed by the brands shown. Card artwork is illustrative.</span></p>
   </div>
 </footer>
 
-<!-- STICKY BUY BAR (phones) -->
-<div class="buybar" id="buybar">
-  <div><small id="bbLabel">PlayStation · $50 · US</small><b class="num" id="bbPrice">MVR 1,199.00</b></div>
-  <button class="btn btn-primary" id="bbAdd" type="button" tabindex="-1">Add to cart</button>
-</div>
+<nav class="dock" aria-label="Quick navigation">
+  <a href="#top" class="on"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1v-8Z"/></svg>Home</a>
+  <a href="#browse"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg>Browse</a>
+  <button type="button" data-focus-search><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.500-3.500"/></svg>Search</button>
+  <button type="button" data-open-cart><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>Cart<span class="badge" data-count data-n="0" aria-hidden="true">0</span></button>
+</nav>
+<div class="tag">Concept preview</div>
 
-<!-- CART -->
+<dialog class="sheet" id="sheet" aria-labelledby="sheetTitle"></dialog>
 <dialog class="cart" id="cart" aria-labelledby="cartTitle">
-  <div class="cart-inner">
-    <div class="cart-head">
-      <h2 id="cartTitle">Your cart</h2>
-      <button class="icon-btn" id="cartClose" aria-label="Close cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-    </div>
+  <div class="cart-in">
+    <div class="cart-head"><h2 id="cartTitle">Your cart</h2><button class="icon-btn" type="button" id="cartClose" aria-label="Close cart"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <div class="cart-body" id="cartBody" data-lenis-prevent></div>
+    <div class="sent" id="cartSent" data-lenis-prevent></div>
     <div class="cart-foot" id="cartFoot">
-      <p class="cart-acct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Have an account? <a href="login.html">Sign in to save this order</a></span></p>
       <div class="cart-fields">
         <label>Name<input id="oName" autocomplete="name" enterkeyhint="next"></label>
-        <label>Delivery email<input id="oEmail" type="email" inputmode="email" autocomplete="email" enterkeyhint="done"></label>
+        <label>Email or WhatsApp<input id="oContact" autocomplete="email" enterkeyhint="done"></label>
       </div>
-      <div class="total"><span>Total</span><strong id="cartTotal">MVR 0.00</strong></div>
-      <a class="btn btn-primary" id="sendOrder" target="_blank" rel="noopener noreferrer" href="#">Send order on WhatsApp</a>
-      <p>We confirm availability and the final price on WhatsApp before sharing payment details.</p>
+      <a class="btn btn-primary" id="sendOrder" href="#" target="_blank" rel="noopener noreferrer">Send order on WhatsApp</a>
+      <p>Adding to cart does not reserve stock. We confirm availability and the final MVR price on WhatsApp before you pay.</p>
     </div>
   </div>
+</dialog>
+
+<dialog class="sheet req" id="req" aria-labelledby="reqTitle">
+  <form class="req-in" id="reqForm" novalidate>
+    <button class="icon-btn sheet-close" type="button" data-close aria-label="Close"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <h2 id="reqTitle">Request a game</h2>
+    <p>Tell us what you're after and we'll check if we can get it.</p>
+    <label class="txt">Game title<input type="text" id="reqGame" autocomplete="off" enterkeyhint="done" placeholder="For example, EA FC 26"></label>
+    <div class="field"><span>Platform</span><div class="opts wide">
+      <label class="opt"><input type="radio" name="reqPlat" value="PlayStation"><span>PlayStation</span></label>
+      <label class="opt"><input type="radio" name="reqPlat" value="Xbox"><span>Xbox</span></label>
+      <label class="opt"><input type="radio" name="reqPlat" value="Nintendo Switch"><span>Nintendo Switch</span></label>
+      <label class="opt"><input type="radio" name="reqPlat" value="PC"><span>PC</span></label>
+    </div></div>
+    <p class="need" id="reqNeed" role="alert"></p>
+    <button class="btn btn-primary" type="submit">Ask on WhatsApp</button>
+  </form>
 </dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -910,450 +610,488 @@ footer.footer .concept-note{margin-top:clamp(36px,5vw,64px);padding-top:22px;bor
 <script>
 (() => {
   'use strict';
-  const $ = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
   const motion = !!(window.gsap && window.ScrollTrigger) && !reduce;
   if (!motion) root.classList.remove('js-motion');
-
-  /* ---------- catalogue (mirrors the live store) ---------- */
   const WA = '9609222544';
-  const BRANDS = { ps: { name: 'PlayStation', logo: 'assets/playstation.svg', glow: 'rgba(74,111,216,.6)' },
-                   xb: { name: 'Xbox', logo: 'assets/xbox.svg', glow: 'rgba(34,166,81,.55)' } };
-  const REGIONS = { us: { name: 'United States', cur: 'USD', sym: '$', short: 'US' }, uk: { name: 'United Kingdom', cur: 'GBP', sym: '£', short: 'UK' } };
-  // [face value, MVR price, in stock]
-  const CARDS = {
-    ps: { us: [[10,249,0],[25,610,1],[50,1199,1],[75,1749,1],[80,1899,1],[100,2339,1]],
-          uk: [[10,339,1],[20,640,0],[40,1280,1],[50,1599,1],[100,3100,1]] },
-    xb: { us: [[10,249,1],[25,610,1],[50,1149,1],[75,1725,1],[80,1840,1],[100,2299,1]],
-          uk: [[10,339,1],[20,640,1],[40,1280,1],[50,1599,1],[70,2240,1],[90,2880,1],[100,3199,1]] }
+  const wa = t => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  /* ---------- catalogue: mirrors cardoramdv.com/api/catalogue-groups on 26 Nov 2026, tidied for display ---------- */
+  const CATS = [
+    { id: 'gift-cards', name: 'Gift cards', one: 'Gift card', blurb: 'Store credit for your console, phone or favourite shop.', glow: '#2f6bff', noun: 'brand' },
+    { id: 'game-keys', name: 'Game keys', one: 'Game key', blurb: 'Full games as a code you redeem on your console.', glow: '#ff5fa2', noun: 'title' },
+    { id: 'game-credits', name: 'Game credits', one: 'Game credit', blurb: 'In-game currency for the games you already play.', glow: '#ffc531', noun: 'game' }
+  ];
+  const US = 'United States', UK = 'United Kingdom', WW = 'Worldwide';
+  const usd = a => a.map(n => '$' + n), gbp = a => a.map(n => '£' + n);
+  const P = [
+    { id: 'playstation', cat: 'gift-cards', redeem: 'ps', name: 'PlayStation Store', short: 'PlayStation', icon: 'playstation', c: '#2f6bff', d: '#0a1f6b', unit: 'amount',
+      desc: 'Wallet top-up for the PlayStation Store. Use it for games, add-ons and subscriptions.',
+      regions: { [US]: usd([10, 25, 50, 75, 80, 100, 150, 200, 250]), [UK]: gbp([10, 20, 40, 50, 100]) } },
+    { id: 'xbox', cat: 'gift-cards', redeem: 'xb', name: 'Xbox', icon: 'xbox', c: '#22b845', d: '#064d18', unit: 'amount',
+      desc: 'Credit for games, add-ons and subscriptions on your Microsoft account.', regions: { [US]: usd([5, 10, 15, 20, 25, 50, 100]) } },
+    { id: 'nintendo-eshop', cat: 'gift-cards', name: 'Nintendo eShop', icon: 'nintendo', c: '#f0322b', d: '#6e0808', unit: 'amount',
+      desc: 'Credit for games and add-ons on Nintendo Switch.', regions: { [US]: usd([5, 10, 20, 50, 70, 100, 150, 200]) } },
+    { id: 'nintendo-switch-online', cat: 'gift-cards', name: 'Nintendo Switch Online', short: 'Switch Online', icon: 'nintendoswitch', c: '#ff5a52', d: '#5e0a0e', unit: 'plan', wide: 1,
+      desc: 'Membership for online play on Nintendo Switch.', regions: { [US]: ['3 months', '12 months', 'Family · 12 months'] } },
+    { id: 'apple', cat: 'gift-cards', name: 'Apple', icon: 'apple', c: '#a9adb8', d: '#26272c', unit: 'amount',
+      desc: 'Credit for the App Store, subscriptions and more on your Apple account.', regions: { [US]: usd([2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 50, 70, 100]) } },
+    { id: 'google-play', cat: 'gift-cards', name: 'Google Play', icon: 'googleplay', c: '#27c08f', d: '#0b4a3a', unit: 'amount',
+      desc: 'Credit for apps, games and subscriptions on Android.', regions: { [US]: usd([10, 15, 20, 25, 50, 100]) } },
+    { id: 'amazon', cat: 'gift-cards', name: 'Amazon', icon: 'amazon', c: '#f59300', d: '#3a2203', unit: 'amount',
+      desc: 'Gift balance for shopping on Amazon.', regions: { [US]: usd([15, 20, 25, 30]) } },
+    { id: 'roblox', cat: 'gift-cards', name: 'Roblox', icon: 'roblox', c: '#8f95a3', d: '#1b1c21', unit: 'amount',
+      desc: 'Redeem for Robux or a Premium subscription.', regions: { [US]: usd([10, 15, 20, 25, 50, 75, 100, 150, 200]) } },
+    { id: 'battle-net', cat: 'gift-cards', name: 'Blizzard Battle.net', short: 'Battle.net', icon: 'battledotnet', c: '#2f96ff', d: '#0a2f6e', unit: 'amount',
+      desc: 'Balance for Blizzard games and in-game items.', regions: { [US]: usd([20, 50]) } },
+    { id: 'epic-games', cat: 'gift-cards', name: 'Epic Games', icon: 'epicgames', c: '#7d828f', d: '#131316', unit: 'option', wide: 1,
+      desc: 'V-Bucks for your Epic Games account.', regions: { [WW]: ['V-Bucks · 25'] } },
+    { id: 'gta-iv', cat: 'game-keys', redeem: 'ps', name: 'GTA IV', mark: 'IV', c: '#f0508f', d: '#3a0f3a', unit: 'edition', wide: 1,
+      desc: 'Digital game code for a UK PlayStation account.', regions: { [UK]: ['Standard', 'Ultimate · PS5'] }, regionNote: 'PlayStation Network' },
+    { id: 'pubg-mobile', cat: 'game-credits', name: 'PUBG Mobile', mark: 'UC', c: '#f5b61f', d: '#4a3004', unit: 'pack', wide: 1,
+      desc: 'Unknown Cash (UC) for PUBG Mobile.', regions: { [WW]: ['60 UC', '300 + 25 UC', '600 + 60 UC', '1500 + 300 UC', '3000 + 850 UC', '6000 + 2100 UC', '12000 + 2100 UC', '18000 + 6300 UC', '24000 + 8400 UC', '30000 + 10500 UC'] } },
+    { id: 'valorant', cat: 'game-credits', name: 'Valorant', icon: 'valorant', c: '#ff4655', d: '#5c0f18', unit: 'amount',
+      desc: 'Gift card to top up Valorant Points on a US account.', regions: { [US]: usd([5, 10, 15, 20, 25, 35, 50, 80, 100]) } },
+    { id: 'league-of-legends', cat: 'game-credits', name: 'League of Legends', icon: 'leagueoflegends', c: '#d9a93f', d: '#0b2238', unit: 'amount',
+      desc: 'Gift card to top up Riot Points on a US account.', regions: { [US]: usd([5, 10, 15, 20, 25, 35, 50, 100]) } }
+  ];
+  const byId = Object.fromEntries(P.map(p => [p.id, p]));
+  const catOf = id => CATS.find(c => c.id === id);
+  const SHORT = { [US]: 'US', [UK]: 'UK', [WW]: 'Worldwide' };
+  const plural = (n, w) => n + ' ' + w + (n === 1 ? '' : 's');
+  const meta = p => Object.keys(p.regions).map(x => SHORT[x]).join(' · ') + ' · ' + plural(Object.values(p.regions).reduce((t, a) => t + a.length, 0), p.unit);
+  // the card: one drawing for every brand, coloured by --c and --d
+  const card = (p, extra = '', cls = '') => {
+    const m = p.icon ? `--m:url(assets/icons/${p.icon}.svg);` : '';
+    return `<span class="gc${cls ? ' ' + cls : ''}" ${extra} style="--c:${p.c};--d:${p.d};${m}">${p.icon ? '<i class="gc-water"></i><i class="gc-glyph"></i>' : `<i class="gc-glyph txt">${p.mark}</i>`}<span class="gc-kind">${catOf(p.cat).one}</span><span class="gc-name">${esc(p.short || p.name)}</span><i class="gc-holo"></i></span>`;
   };
-  const money = n => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  const face = (v, r) => v.toFixed(2) + ' ' + REGIONS[r].cur;
-  const find = (b, r, a) => CARDS[b][r].find(c => c[0] === a);
-  const waLink = text => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+  const ICON = {
+    arrow: '<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>',
+    check: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>',
+    plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+    x: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
+  };
 
-  /* ---------- configurator ---------- */
-  const state = { brand: 'ps', region: 'us', amount: 50 };
-  const el = { card: $('#cfgCard'), tilt: $('#cfgTilt'), cBrand: $('#cBrand'), cLogo: $('#cLogo'), cRegion: $('#cRegion'), cValue: $('#cValue'),
-    amounts: $('#amounts'), price: $('#price'), stock: $('#stockText'), add: $('#addBtn'), wa: $('#waBtn'), note: $('#regionNote'), tCard: $('#tCard') };
-  let shownPrice = 1199, flipTl = null;
+  /* ---------- static pieces ---------- */
+  $('#tryChips').innerHTML = ['PlayStation', 'Xbox', 'PUBG Mobile', 'Roblox', 'Valorant'].map(t => `<button type="button" data-try="${t}">${t}</button>`).join('');
+  const ringOrder = ['playstation', 'valorant', 'xbox', 'gta-iv', 'apple', 'pubg-mobile', 'nintendo-eshop', 'roblox', 'league-of-legends', 'google-play', 'battle-net', 'amazon', 'nintendo-switch-online', 'epic-games'];
+  $('#ring').style.setProperty('--count', ringOrder.length);
+  $('#ring').innerHTML = ringOrder.map((id, i) => `<div class="ring-item" data-ring="${id}" style="--i:${i}">${card(byId[id])}</div>`).join('');
+  $('#stack').innerHTML = CATS.map((c, i) => {
+    const items = P.filter(p => p.cat === c.id), show = items.slice(0, 5);
+    return `<article class="panel" style="--n:${i}"><div class="panel-in" style="--pc:${c.glow}">
+      <div class="panel-copy"><span class="label">0${i + 1} · ${plural(items.length, c.noun)}</span><h2>${c.name}</h2><p>${c.blurb}</p>
+        <p class="names">${items.map(p => p.short || p.name).join(' · ')}</p>
+        <a class="btn btn-primary magnetic" href="#browse" data-cat="${c.id}">Browse ${c.name.toLowerCase()} ${ICON.arrow}</a></div>
+      <div class="fan${show.length === 1 ? ' one' : ''}" aria-hidden="true">${show.map(p => card(p)).join('')}</div></div></article>`;
+  }).join('');
+  $('#belt').innerHTML = [...P, ...P].map(p => card(p)).join('');
+  $$('#belt .gc').forEach(g => g.classList.add('flat'));
+  // statement text: split into words, *starred* words get the accent
+  (() => { const el = $('#sayText'); let hi = false;
+    el.setAttribute('aria-label', el.dataset.words.replace(/\*/g, ''));
+    el.innerHTML = el.dataset.words.split(' ').map(w => { if (w.startsWith('*')) hi = true; const out = `<span class="wd${hi ? ' hi' : ''} on" aria-hidden="true">${w.replace(/\*/g, '')}</span>`; if (w.endsWith('*')) hi = false; return out; }).join(' '); })();
 
-  function paintCard() {
-    const b = BRANDS[state.brand], r = REGIONS[state.region];
-    el.card.className = 'gc ' + state.brand;
-    el.cBrand.textContent = b.name;
-    el.cLogo.style.visibility = ''; el.cLogo.src = b.logo;
-    el.cRegion.textContent = r.name;
-    el.cValue.textContent = r.sym + state.amount;
-    $('#cfgStage').style.setProperty('--glow', b.glow);
-  }
-  function render(change) {
-    const list = CARDS[state.brand][state.region];
-    let cur = find(state.brand, state.region, state.amount);
-    if (!cur || !cur[2]) { cur = list.find(c => c[2] && c[0] >= state.amount) || list.filter(c => c[2]).pop(); state.amount = cur[0]; }
-    const b = BRANDS[state.brand], r = REGIONS[state.region];
-
-    $$('#segBrand button').forEach((btn, i) => { const on = btn.dataset.brand === state.brand; btn.setAttribute('aria-pressed', on); if (on) $('#segBrand').style.setProperty('--i', i); });
-    $$('#segRegion button').forEach((btn, i) => { const on = btn.dataset.region === state.region; btn.setAttribute('aria-pressed', on); if (on) $('#segRegion').style.setProperty('--i', i); });
-
-    el.amounts.innerHTML = list.map(([v, p, ok]) =>
-      `<button type="button" class="amt" data-amount="${v}" aria-pressed="${v === state.amount}" ${ok ? '' : 'disabled'} aria-label="${face(v, state.region)}, ${ok ? 'MVR ' + money(p) : 'out of stock'}">
-        <b>${r.sym}${v}</b><small>${ok ? 'MVR ' + money(p) : 'Out of stock'}</small></button>`).join('');
-    if (motion && change && change !== 'amount') gsap.from(el.amounts.children, { opacity: 0, y: 10, duration: .4, ease: 'power3.out', stagger: .035 });
-
-    // card art
-    if (flipTl) { flipTl.kill(); flipTl = null; gsap.set(el.card, { rotationY: 0 }); }
-    if (motion && change === 'brand') {
-      flipTl = gsap.timeline()
-        .to(el.card, { rotationY: 90, duration: .22, ease: 'power2.in' })
-        .add(paintCard).set(el.card, { rotationY: -90 })
-        .to(el.card, { rotationY: 0, duration: .6, ease: 'expo.out' });
+  /* ---------- browse: tabs + live filter ---------- */
+  const view = { cat: 'all', q: '' };
+  const tabs = $('#tabs'), pill = $('#tabPill'), results = $('#results'), countEl = $('#count');
+  tabs.insertAdjacentHTML('beforeend', [{ id: 'all', name: 'All' }, ...CATS].map(c =>
+    `<button class="tab" role="tab" type="button" data-tab="${c.id}" aria-selected="false">${c.name}<small>${c.id === 'all' ? P.length : P.filter(p => p.cat === c.id).length}</small></button>`).join(''));
+  const movePill = () => { const t = $('.tab[aria-selected="true"]', tabs); if (!t) return; pill.style.width = t.offsetWidth + 'px'; pill.style.transform = `translateX(${t.offsetLeft}px)`; };
+  const tile = (p, i) => `<a class="tile pop" style="--i:${i}" href="#/p/${p.id}" data-id="${p.id}">${card(p)}<div class="tile-meta"><b>${esc(p.name)}</b><span>${meta(p)}</span></div></a>`;
+  const askTile = `<div class="ask"><b>Looking for another game?</b><span>Tell us the title and platform and we'll check if we can get it.</span><button class="btn btn-quiet" type="button" data-open-req>Request a game</button></div>`;
+  function renderBrowse() {
+    const q = view.q.trim().toLowerCase();
+    $$('.tab', tabs).forEach(t => t.setAttribute('aria-selected', t.dataset.tab === view.cat));
+    movePill();
+    $$('input[data-q]').forEach(i => { if (i.value !== view.q) i.value = view.q; });
+    $('#clearQ').hidden = !q;
+    const match = p => !q || [p.name, p.short || '', catOf(p.cat).name, ...Object.keys(p.regions), ...Object.values(p.regions).flat()].join(' ').toLowerCase().includes(q);
+    const list = P.filter(p => (view.cat === 'all' || p.cat === view.cat) && match(p));
+    if (!list.length) {
+      countEl.textContent = '';
+      results.innerHTML = `<div class="empty pop"><b>Nothing matches "${esc(view.q.trim())}"${view.cat === 'all' ? '' : ' in ' + catOf(view.cat).name.toLowerCase()}</b><span>We may still be able to get it. Ask us, or clear the search to see everything.</span>
+        <span style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn btn-quiet" type="button" data-reset>Show everything</button><a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="${wa('Hi Cardora Maldives, do you have: ' + view.q.trim())}">Ask on WhatsApp</a></span></div>`;
     } else {
-      paintCard();
-      if (motion && change) gsap.fromTo([el.cValue, change === 'region' ? el.cRegion : null].filter(Boolean), { yPercent: 45, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .45, ease: 'power3.out' });
+      countEl.innerHTML = q ? `<b>${plural(list.length, 'result')}</b> for "${esc(view.q.trim())}"` : '';
+      let i = 0;
+      results.innerHTML = (view.cat === 'all' ? CATS : [catOf(view.cat)]).map(c => {
+        const items = list.filter(p => p.cat === c.id); if (!items.length) return '';
+        return `<div class="group"><div class="group-head"><h3>${c.name}</h3><span>${c.blurb}</span></div><div class="grid">${items.map(p => tile(p, i++)).join('')}${c.id === 'game-keys' && !q ? askTile : ''}</div></div>`;
+      }).join('');
     }
-
-    // price
-    const target = cur[1];
-    if (motion && change) {
-      const o = { v: shownPrice };
-      gsap.to(o, { v: target, duration: .6, ease: 'power3.out', overwrite: true, onUpdate: () => { el.price.textContent = money(o.v); }, onComplete: () => { el.price.textContent = money(target); } });
-    } else el.price.textContent = money(target);
-    shownPrice = target;
-
-    el.stock.textContent = 'Available · ' + face(cur[0], state.region) + ' face value';
-    el.note.textContent = `${r.short} cards only work on accounts set to the ${r.name}.`;
-    $('#bbLabel').textContent = `${b.name} · ${r.sym}${cur[0]} · ${r.short}`;
-    $('#bbPrice').textContent = 'MVR ' + money(target);
-    const out = list.filter(c => !c[2]), rs = $('#restock');
-    rs.hidden = !out.length;
-    if (out.length) {
-      const names = out.map(c => r.sym + c[0]).join(' and ');
-      rs.innerHTML = `${names} ${out.length > 1 ? 'are' : 'is'} out of stock. <a target="_blank" rel="noopener noreferrer" href="${waLink(`Hi Cardora Maldives, please let me know when the ${b.name} Gift Card (${out.map(c => face(c[0], state.region)).join(', ')}, ${r.name}) is back in stock.`)}">Ask us when it's back</a>`;
-    }
-    el.wa.href = waLink(`Hi Cardora Maldives, I would like to order one ${b.name} Gift Card (${face(cur[0], state.region)} face value, ${r.name}, selling price MVR ${cur[1].toFixed(2)}).`);
-    el.tCard.textContent = `${b.name} · ${face(cur[0], state.region)} · ${r.name}`;
+    if (motion) ScrollTrigger.refresh();
   }
-  $('#segBrand').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.brand !== state.brand) { state.brand = b.dataset.brand; render('brand'); } });
-  $('#segRegion').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.region !== state.region) { state.region = b.dataset.region; render('region'); } });
-  el.amounts.addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.disabled) { state.amount = +b.dataset.amount; render('amount'); } });
-
-  // full price list
-  $('#priceGrid').innerHTML = Object.keys(CARDS).map(b => Object.keys(CARDS[b]).map(r =>
-    `<div class="price-col"><h3>${BRANDS[b].name} · ${REGIONS[r].short}</h3>${CARDS[b][r].map(([v, p, ok]) =>
-      `<button type="button" data-b="${b}" data-r="${r}" data-a="${v}" ${ok ? '' : 'disabled'}><span>${face(v, r)}</span><span>${ok ? 'MVR ' + money(p) : 'Out of stock'}</span></button>`).join('')}</div>`).join('')).join('');
-  $('#priceGrid').addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b || b.disabled) return;
-    const brandChanged = state.brand !== b.dataset.b;
-    Object.assign(state, { brand: b.dataset.b, region: b.dataset.r, amount: +b.dataset.a });
-    render(brandChanged ? 'brand' : 'region');
-    scrollToEl($('#shop'));
+  const setCat = c => { view.cat = c; renderBrowse(); };
+  let lenis = null;
+  const go = target => { if (lenis) lenis.scrollTo(target, { offset: -70, duration: 1.3 }); else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
+  const goBrowse = () => go($('#browse'));
+  tabs.addEventListener('click', e => { const t = e.target.closest('.tab'); if (t) setCat(t.dataset.tab); });
+  document.addEventListener('input', e => { if (e.target.matches('input[data-q]')) { view.q = e.target.value; if (view.q && view.cat !== 'all') view.cat = 'all'; renderBrowse(); } });
+  // results appear right under the hero search box
+  const sg = $('#suggest'), q1 = $('#q1'); let sgI = -1, sgList = [];
+  const openProduct = (id, from) => { history.pushState(null, '', '#/p/' + id); openSheet(id, from); };
+  const pickSuggestion = (id, from) => { view.q = ''; renderBrowse(); openProduct(id, from); }; // choosing a result clears the search
+  function paintSuggest() {
+    const q = q1.value.trim().toLowerCase();
+    if (!q || document.activeElement !== q1) { sg.hidden = true; return; }
+    const all = P.filter(p => [p.name, p.short || '', catOf(p.cat).name, ...Object.values(p.regions).flat()].join(' ').toLowerCase().includes(q));
+    sgList = all.slice(0, 5); sgI = -1;
+    sg.innerHTML = sgList.length
+      ? sgList.map(p => `<button type="button" class="sg" role="option" aria-selected="false" data-sg="${p.id}">${card(p, '', 'mini')}<span><b>${esc(p.name)}</b><small>${catOf(p.cat).name} · ${meta(p)}</small></span>${ICON.arrow}</button>`).join('')
+        + (all.length > 1 ? `<button type="button" class="sg-more" data-sg-all>See all ${all.length} results in the store ${ICON.arrow}</button>` : '')
+      : `<p class="sg-none">Nothing matches "${esc(q1.value.trim())}". <a target="_blank" rel="noopener noreferrer" href="${wa('Hi Cardora Maldives, do you have: ' + q1.value.trim())}">Ask us on WhatsApp</a></p>`;
+    sg.hidden = false;
+  }
+  const markSg = () => $$('.sg', sg).forEach((b, i) => b.setAttribute('aria-selected', i === sgI));
+  q1.addEventListener('input', paintSuggest);
+  q1.addEventListener('focus', paintSuggest);
+  q1.addEventListener('blur', () => setTimeout(() => { if (!sg.contains(document.activeElement)) sg.hidden = true; }, 160));
+  q1.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { if (!sgList.length) return; e.preventDefault(); sgI = (sgI + (e.key === 'ArrowDown' ? 1 : -1) + sgList.length + 1) % (sgList.length + 1); if (sgI === sgList.length) sgI = -1; markSg(); }
+    else if (e.key === 'Enter') { sg.hidden = true; q1.blur(); if (sgI >= 0) pickSuggestion(sgList[sgI].id); else goBrowse(); }
+    else if (e.key === 'Escape') { sg.hidden = true; }
   });
+  sg.addEventListener('pointerdown', e => e.preventDefault());
+  sg.addEventListener('click', e => {
+    const b = e.target.closest('[data-sg]'); if (b) { sg.hidden = true; q1.blur(); pickSuggestion(b.dataset.sg); return; }
+    if (e.target.closest('[data-sg-all]')) { sg.hidden = true; q1.blur(); goBrowse(); }
+  });
+  $('#clearQ').addEventListener('click', () => { view.q = ''; renderBrowse(); $('#q2').focus(); });
+  addEventListener('resize', movePill);
+  if (document.fonts) document.fonts.ready.then(movePill);
+
+  document.addEventListener('click', e => {
+    const c = e.target.closest('[data-cat]'); if (c) { e.preventDefault(); view.q = ''; setCat(c.dataset.cat); goBrowse(); return; }
+    const t = e.target.closest('[data-try]'); if (t) { view.q = t.dataset.try; view.cat = 'all'; renderBrowse(); goBrowse(); return; }
+    if (e.target.closest('[data-reset]')) { view.q = ''; setCat('all'); return; }
+    if (e.target.closest('[data-focus-search]')) { goBrowse(); setTimeout(() => $('#q2').focus({ preventScroll: true }), reduce ? 0 : 700); return; }
+    if (e.target.closest('[data-open-cart]')) { openCart(); return; }
+    const rg = e.target.closest('[data-ring]'); if (rg) { openProduct(rg.dataset.ring); return; }
+    const rv = e.target.closest('[data-rv]'); if (rv) { e.preventDefault(); openProduct(rv.dataset.rv, rv); return; }
+    if (e.target.closest('[data-again]')) { orderAgain(); return; }
+    if (e.target.closest('[data-open-req]')) { openReq(); return; }
+    const tl = e.target.closest('.tile[data-id]'); if (tl) { e.preventDefault(); history.pushState(null, '', '#/p/' + tl.dataset.id); openSheet(tl.dataset.id, tl); return; }
+    const a = e.target.closest('a[href^="#"]'); if (a && a.getAttribute('href').length > 1 && !a.getAttribute('href').startsWith('#/')) { const el = document.querySelector(a.getAttribute('href')); if (el) { e.preventDefault(); go(el); } }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && !e.target.closest('input,textarea') && !$('dialog[open]')) { e.preventDefault(); const h = $('#q1'), r = h.getBoundingClientRect(); (r.bottom > 0 && r.top < innerHeight ? h : $('#q2')).focus(); }
+  });
+
+  /* ---------- how to redeem (follows the official PlayStation and Xbox support steps) ---------- */
+  const REDEEM = {
+    ps: { where: 'on PS5', len: 'PlayStation codes have 12 digits.', url: 'https://www.playstation.com/en-us/support/store/redeem-ps-store-voucher-code/',
+      steps: ['Open PlayStation Store and press the triangle button to open the menu.', 'Choose More (the three dots), then Redeem Code.', 'Enter the 12-digit code and select Redeem.'],
+      alt: 'On the web or in the PlayStation App, open PlayStation Store, choose your profile or the menu, then Redeem Code.' },
+    xb: { where: 'on Xbox', len: 'Xbox codes have 25 characters, in five groups of five.', url: 'https://support.xbox.com/en-US/help/subscriptions-billing/redeem-codes-gifting/redeem-prepaid-codes',
+      steps: ['Press the Xbox button to open the guide, then select Store.', 'Press the View button to open the side menu, then select Redeem.', 'Enter the 25-character code, select Next and follow the prompts.'],
+      alt: 'On the web, go to redeem.microsoft.com, sign in and enter the code.' }
+  };
+  const redeemHTML = p => { const r = REDEEM[p.redeem]; if (!r) return '';
+    return `<details class="redeem"><summary>How to redeem ${r.where}${ICON.plus}</summary><div><ol>${r.steps.map(t => `<li>${t}</li>`).join('')}</ol><p>${r.alt}</p><p>${r.len}</p><a href="${r.url}" target="_blank" rel="noopener noreferrer">Official guide</a></div></details>`; };
+
+  /* ---------- product sheet ---------- */
+  const sheet = $('#sheet');
+  let cur = null, qty = 1;
+  function sheetHTML(p) {
+    const regs = Object.keys(p.regions), multi = regs.length > 1, c = catOf(p.cat);
+    return `<div class="sheet-in" style="--c:${p.c}">
+      <button class="icon-btn sheet-close" type="button" data-close aria-label="Close">${ICON.x}</button>
+      <div class="sheet-art">${card(p, 'id="sheetCover"')}</div>
+      <form class="sheet-body" id="sheetForm" novalidate>
+        <div class="sheet-scroll" data-lenis-prevent>
+          <div><span class="label">${c.one}</span><h2 id="sheetTitle">${esc(p.name)}</h2><p class="desc">${esc(p.desc)}</p></div>
+          <div class="field"><span>${multi ? 'Where is your account registered?' : 'Account region'}</span>
+            ${multi ? `<div class="opts wide">${regs.map((r, i) => `<label class="opt" style="--i:${i}"><input type="radio" name="region" value="${r}"><span>${r}</span></label>`).join('')}</div><p class="hint">A code only works on an account from the same region. Paying from the Maldives is fine.</p>`
+              : `<div class="fixed-region">${ICON.check}<span>${regs[0] === WW ? 'Works worldwide' : `For <b>${regs[0]}</b> accounts${p.regionNote ? ' · ' + p.regionNote : ''}`}</span></div>`}
+          </div>
+          <div class="field"><span>Choose your ${p.unit}<small id="optCount"></small></span><div id="sheetOpts"></div></div>
+          ${redeemHTML(p)}
+          <ul class="notes">
+            <li>${ICON.check}<span>We confirm stock and the final MVR price on WhatsApp before you pay.</span></li>
+            <li>${ICON.check}<span>Your code is sent by email or WhatsApp after payment is confirmed.</span></li>
+          </ul>
+        </div>
+        <div style="padding-inline:clamp(20px,3vw,36px)"><p class="need" id="sheetNeed" role="alert"></p></div>
+        <div class="sheet-bar">
+          <div class="qty"><button type="button" data-step="-1" aria-label="Decrease quantity">−</button><output id="qtyOut" aria-live="polite">1</output><button type="button" data-step="1" aria-label="Increase quantity">+</button></div>
+          <button class="btn btn-primary" type="submit" id="sheetAdd">Add to cart</button>
+          <a class="btn btn-quiet" id="sheetAsk" target="_blank" rel="noopener noreferrer" href="#" aria-label="Ask on WhatsApp"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.800 7L4 20l1.100-4A8 8 0 1 1 20 12Z"/></svg><span>Ask</span></a>
+        </div>
+      </form></div>`;
+  }
+  function paintOpts(fresh) {
+    const p = cur.p, list = cur.region ? p.regions[cur.region] : null, box = $('#sheetOpts');
+    if (!list) { box.innerHTML = '<p class="hint" style="margin:0">Choose your account region first to see what is available.</p>'; $('#optCount').textContent = ''; }
+    else if (fresh) {
+      box.innerHTML = `<div class="opts${p.wide ? ' wide' : ''}">${list.map((o, i) => `<label class="opt" style="--i:${i}"><input type="radio" name="opt" value="${esc(o)}"><span>${esc(o)}</span></label>`).join('')}</div>`;
+      $('#optCount').textContent = plural(list.length, 'option');
+    }
+    $('#sheetAsk').href = wa(`Hi Cardora Maldives, is this available and what is the price in MVR? ${cur.opt ? `${p.name} ${cur.opt} (${cur.region})` : p.name}`);
+  }
+  function fillSheet(id) {
+    const p = byId[id], regs = Object.keys(p.regions);
+    cur = { p, region: regs.length === 1 ? regs[0] : null, opt: null }; qty = 1; pushRecent(id);
+    sheet.innerHTML = sheetHTML(p); paintOpts(true);
+  }
+  const pause = on => { if (lenis) on ? lenis.stop() : lenis.start(); };
+  function openSheet(id, fromTile) {
+    if (!byId[id]) return;
+    const show = () => { fillSheet(id); if (!sheet.open) sheet.showModal(); sheet.classList.add('is-open'); pause(true); };
+    const src = fromTile && $('.gc', fromTile);
+    if (src && document.startViewTransition && !reduce) {
+      src.style.transform = 'none'; src.style.viewTransitionName = 'cover';
+      const vt = document.startViewTransition(() => { src.style.viewTransitionName = ''; src.style.transform = ''; show(); $('#sheetCover').style.viewTransitionName = 'cover'; });
+      const done = () => { const c = $('#sheetCover'); if (c) c.style.viewTransitionName = ''; };
+      vt.finished.then(done, done); vt.ready.catch(() => {}); vt.updateCallbackDone.catch(() => {});
+    } else { fillSheet(id); sheet.showModal(); pause(true); requestAnimationFrame(() => sheet.classList.add('is-open')); }
+  }
+  function closeDialog(d) { if (!d.open) return; d.classList.remove('is-open'); setTimeout(() => { d.close(); if (!$('dialog[open]')) pause(false); }, reduce ? 0 : 280); }
+  function closeSheet() { if (location.hash.startsWith('#/p/')) history.pushState(null, '', location.pathname + location.search); closeDialog(sheet); renderAgain(); }
+  sheet.addEventListener('click', e => {
+    if (e.target === sheet || e.target.closest('[data-close]')) { closeSheet(); return; }
+    const qb = e.target.closest('[data-step]'); if (qb) { qty = Math.min(20, Math.max(1, qty + +qb.dataset.step)); $('#qtyOut').textContent = qty; }
+  });
+  sheet.addEventListener('cancel', e => { e.preventDefault(); closeSheet(); });
+  sheet.addEventListener('change', e => {
+    if (e.target.name === 'region') { cur.region = e.target.value; cur.opt = null; $('#sheetNeed').textContent = ''; paintOpts(true); }
+    if (e.target.name === 'opt') { cur.opt = e.target.value; $('#sheetNeed').textContent = ''; paintOpts(false); }
+  });
+  sheet.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!cur.region) { $('#sheetNeed').textContent = 'Choose where your account is registered.'; $('input[name="region"]', sheet).focus(); return; }
+    if (!cur.opt) { $('#sheetNeed').textContent = `Choose your ${cur.p.unit}.`; $('input[name="opt"]', sheet).focus(); return; }
+    const hit = cart.find(i => i.id === cur.p.id && i.region === cur.region && i.opt === cur.opt);
+    hit ? hit.qty = Math.min(20, hit.qty + qty) : cart.push({ id: cur.p.id, region: cur.region, opt: cur.opt, qty });
+    saveCart(); $('#sheetAdd').textContent = 'Added to cart';
+    flyToCart($('#sheetCover')); setTimeout(closeSheet, 520);
+  });
+  const route = () => { const m = location.hash.match(/^#\/p\/([\w-]+)/); if (m && byId[m[1]]) { if (!sheet.open || !cur || cur.p.id !== m[1]) openSheet(m[1]); } else closeDialog(sheet); };
+  addEventListener('popstate', route);
 
   /* ---------- cart ---------- */
-  const cartDlg = $('#cart'), cartBtn = $('#cartBtn'), countEl = $('#cartCount');
+  const cartDlg = $('#cart');
   let cart = [];
-  try { cart = JSON.parse(localStorage.getItem('cardora-concept-cart') || '[]'); } catch (e) {}
-  const save = () => { try { localStorage.setItem('cardora-concept-cart', JSON.stringify(cart)); } catch (e) {} };
-  const cartQty = () => cart.reduce((n, i) => n + i.qty, 0);
-
+  try { cart = JSON.parse(localStorage.getItem('cardora-v2-cart') || '[]').filter(i => byId[i.id]); } catch (e) {}
+  const saveCart = () => { try { localStorage.setItem('cardora-v2-cart', JSON.stringify(cart)); } catch (e) {} };
   function renderCart() {
-    const n = cartQty();
-    countEl.textContent = n;
-    cartBtn.setAttribute('aria-label', `Open cart, ${n} ${n === 1 ? 'item' : 'items'}`);
-    const body = $('#cartBody');
+    const n = cart.reduce((t, i) => t + i.qty, 0);
+    $$('[data-count]').forEach(b => { b.textContent = n; b.dataset.n = n; });
+    $$('[data-open-cart]').forEach(b => b.setAttribute('aria-label', `Open cart, ${plural(n, 'item')}`));
     $('#cartFoot').hidden = !cart.length;
-    if (!cart.length) {
-      body.innerHTML = `<div class="cart-empty"><p>Your cart is empty. Build a card and it will show up here, ready to send on WhatsApp.</p><button class="btn btn-ghost" type="button" data-act="browse">Browse gift cards</button></div>`;
-      return;
-    }
-    let total = 0;
-    body.innerHTML = cart.map((it, i) => {
-      const c = find(it.b, it.r, it.a), R = REGIONS[it.r]; total += c[1] * it.qty;
-      return `<div class="ci">
-        <div class="gc ${it.b}"><span class="gc-value">${R.sym}${it.a}</span></div>
-        <div><b>${BRANDS[it.b].name} Gift Card</b><small>${face(it.a, it.r)} · ${R.name}</small>
-          <div class="qty"><button type="button" data-act="dec" data-i="${i}" aria-label="Decrease quantity">−</button><span aria-live="polite">${it.qty}</span><button type="button" data-act="inc" data-i="${i}" aria-label="Increase quantity">+</button></div></div>
-        <div><span class="lp">MVR ${money(c[1] * it.qty)}</span><button type="button" class="rm" data-act="rm" data-i="${i}">Remove</button></div>
-      </div>`;
-    }).join('');
-    $('#cartTotal').textContent = 'MVR ' + money(total);
+    $('#cartBody').innerHTML = cart.length ? cart.map((it, i) => { const p = byId[it.id]; return `<div class="ci" style="--i:${i}">${card(p, '', 'mini')}
+        <div><b>${esc(p.name)} · ${esc(it.opt)}</b><small>${it.region}</small></div>
+        <div><div class="qty"><button type="button" data-ci="${i}" data-d="-1" aria-label="Decrease quantity">−</button><output>${it.qty}</output><button type="button" data-ci="${i}" data-d="1" aria-label="Increase quantity">+</button></div><button type="button" class="rm" data-ci="${i}" data-d="0">Remove</button></div></div>`; }).join('')
+      : `<div class="cart-empty"><p>Your cart is empty. Pick something from the store and it will show up here, ready to send on WhatsApp.</p><button class="btn btn-quiet" type="button" id="cartBrowse">Browse the store</button></div>`;
+  }
+  const nav = $('#nav'); let navHidden = false;
+  function showNav() { if (motion && navHidden) { navHidden = false; gsap.to(nav, { yPercent: 0, duration: .5, ease: 'power3.out' }); } }
+  // the card shrinks and flies into the cart icon
+  function flyToCart(src) {
+    const target = $$('[data-open-cart]').find(b => b.offsetParent !== null);
+    if (!motion || !src || !target) { renderCart(); return; }
+    showNav();
+    const a = src.getBoundingClientRect(), b = target.getBoundingClientRect(), g = src.cloneNode(true);
+    g.removeAttribute('id'); g.classList.add('ghost-fly');
+    Object.assign(g.style, { left: a.left + 'px', top: a.top + 'px', width: a.width + 'px', animation: 'none', transform: 'none' });
+    document.body.append(g);
+    gsap.to(g, { x: b.left + b.width / 2 - (a.left + a.width / 2), y: b.top + b.height / 2 - (a.top + a.height / 2), scale: .06, rotation: 18, duration: .75, ease: 'power3.inOut',
+      onComplete: () => { g.remove(); renderCart(); gsap.fromTo(target, { scale: .8 }, { scale: 1, duration: .6, ease: 'back.out(3)' }); } });
+    gsap.to(g, { opacity: 0, duration: .22, delay: .55 });
   }
   $('#cartBody').addEventListener('click', e => {
-    const b = e.target.closest('[data-act]'); if (!b) return;
-    const i = +b.dataset.i, act = b.dataset.act;
-    if (act === 'browse') { closeCart(); scrollToEl($('#shop')); return; }
-    if (act === 'inc') cart[i].qty++;
-    if (act === 'dec') { cart[i].qty--; if (cart[i].qty < 1) cart.splice(i, 1); }
-    if (act === 'rm') cart.splice(i, 1);
-    save(); renderCart();
+    if (e.target.closest('#cartBrowse')) { closeDialog(cartDlg); goBrowse(); return; }
+    const b = e.target.closest('[data-ci]'); if (!b) return;
+    const i = +b.dataset.ci, d = +b.dataset.d;
+    if (d === 0) cart.splice(i, 1); else { cart[i].qty = Math.min(20, cart[i].qty + d); if (cart[i].qty < 1) cart.splice(i, 1); }
+    saveCart(); renderCart();
   });
+  function openCart() { if (cartDlg.open) return; cartDlg.classList.remove('is-sent'); renderCart(); cartDlg.showModal(); pause(true); requestAnimationFrame(() => cartDlg.classList.add('is-open')); }
+  $('#cartClose').addEventListener('click', () => closeDialog(cartDlg));
+  cartDlg.addEventListener('click', e => { if (e.target === cartDlg) closeDialog(cartDlg); });
+  cartDlg.addEventListener('cancel', e => { e.preventDefault(); closeDialog(cartDlg); });
+  /* ---------- recently viewed + order again ---------- */
+  const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
+  const store = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  let recent = load('cardora-v2-recent', []).filter(id => byId[id]), last = load('cardora-v2-last', null);
+  function pushRecent(id) { recent = [id, ...recent.filter(x => x !== id)].slice(0, 6); store('cardora-v2-recent', recent); }
+  function renderAgain() {
+    const box = $('#again'), items = last && last.items ? last.items.filter(i => byId[i.id]) : [];
+    box.hidden = !recent.length && !items.length; if (box.hidden) return;
+    box.innerHTML = (recent.length ? `<div><span class="label">Recently viewed</span><div class="rv-list">${recent.map(id => `<a class="rv" href="#/p/${id}" data-rv="${id}">${card(byId[id], '', 'mini')}${esc(byId[id].short || byId[id].name)}</a>`).join('')}</div></div>` : '<span></span>')
+      + (items.length ? `<div class="again-order"><span class="label">Your last order</span><p>${items.map(i => `${i.qty} × ${esc(byId[i.id].short || byId[i.id].name)} ${esc(i.opt)}`).join(' · ')}</p><button class="btn btn-quiet" type="button" data-again>Add to cart again</button></div>` : '');
+  }
+  function orderAgain() {
+    last.items.filter(i => byId[i.id]).forEach(i => { const hit = cart.find(c => c.id === i.id && c.region === i.region && c.opt === i.opt); hit ? hit.qty = Math.min(20, hit.qty + i.qty) : cart.push({ ...i }); });
+    saveCart(); openCart();
+  }
+
+  /* ---------- sending the order: reference + what happens next ---------- */
   $('#sendOrder').addEventListener('click', e => {
-    let total = 0;
-    const lines = cart.map(it => { const c = find(it.b, it.r, it.a); total += c[1] * it.qty; return `• ${it.qty} × ${BRANDS[it.b].name} Gift Card (${face(it.a, it.r)} face value, ${REGIONS[it.r].name}) — MVR ${(c[1] * it.qty).toFixed(2)}`; });
-    const name = $('#oName').value.trim(), email = $('#oEmail').value.trim();
-    e.currentTarget.href = waLink(['Hi Cardora Maldives, I would like to order:', ...lines, `Total: MVR ${total.toFixed(2)}`, name && `Name: ${name}`, email && `Delivery email: ${email}`].filter(Boolean).join('\n'));
+    const name = $('#oName').value.trim(), contact = $('#oContact').value.trim();
+    const ref = 'CM-' + Date.now().toString(36).slice(-5).toUpperCase();
+    e.currentTarget.href = wa(['Hi Cardora Maldives, I would like to order:', ...cart.map(it => `• ${it.qty} × ${byId[it.id].name} ${it.opt} (${it.region})`), 'Please confirm availability and the price in MVR.', `Order ref: ${ref}`, name && `Name: ${name}`, contact && `Send my code to: ${contact}`].filter(Boolean).join('\n'));
+    const href = e.currentTarget.href;
+    last = { ref, items: cart.map(i => ({ ...i })) }; store('cardora-v2-last', last);
+    setTimeout(() => {
+      $('#cartSent').innerHTML = `<span class="sent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>
+        <h3>Your order is on its way to WhatsApp</h3><p>If WhatsApp opened, press send there to finish. Keep this reference in case you need to ask about it.</p>
+        <span class="ref">Order ref <b>${ref}</b></span>
+        <ol><li style="--i:0"><i>1</i><span><b>We confirm stock and price</b>Our team replies on WhatsApp with availability and the final MVR price.</span></li>
+          <li style="--i:1"><i>2</i><span><b>You pay in MVR</b>Follow the payment instructions we send you.</span></li>
+          <li style="--i:2"><i>3</i><span><b>Your code arrives</b>By email or WhatsApp, after payment is confirmed.</span></li></ol>
+        <div class="sent-actions"><button class="btn btn-primary" type="button" data-sent="done">Done, clear my cart</button><a class="btn btn-quiet" href="${href}" target="_blank" rel="noopener noreferrer">WhatsApp didn't open? Try again</a><button class="btn btn-quiet" type="button" data-sent="back">Back to cart</button></div>`;
+      cartDlg.classList.add('is-sent'); renderAgain();
+    }, 250);
+  });
+  $('#cartSent').addEventListener('click', e => {
+    const b = e.target.closest('[data-sent]'); if (!b) return;
+    if (b.dataset.sent === 'done') { cart = []; saveCart(); renderCart(); closeDialog(cartDlg); setTimeout(() => cartDlg.classList.remove('is-sent'), 320); }
+    else cartDlg.classList.remove('is-sent');
   });
 
-  function openCart() {
-    if (cartDlg.open) return;
-    renderCart(); cartDlg.showModal();
-    requestAnimationFrame(() => cartDlg.classList.add('is-open'));
-    if (lenis) lenis.stop();
-    if (motion) gsap.from('#cartBody .ci', { opacity: 0, x: 24, duration: .5, ease: 'power3.out', stagger: .06, delay: .12 });
-  }
-  function closeCart() {
-    if (!cartDlg.open) return;
-    cartDlg.classList.remove('is-open');
-    setTimeout(() => { cartDlg.close(); if (lenis) lenis.start(); cartBtn.focus({ preventScroll: true }); }, reduce ? 0 : 320);
-  }
-  cartBtn.addEventListener('click', openCart);
-  $('#cartClose').addEventListener('click', closeCart);
-  cartDlg.addEventListener('cancel', e => { e.preventDefault(); closeCart(); });
-  cartDlg.addEventListener('click', e => { if (e.target === cartDlg) closeCart(); });
-
-  el.add.addEventListener('click', () => {
-    const { brand: b, region: r, amount: a } = state;
-    const hit = cart.find(i => i.b === b && i.r === r && i.a === a);
-    hit ? hit.qty++ : cart.push({ b, r, a, qty: 1 });
-    save();
-    el.add.textContent = 'Added to cart';
-    clearTimeout(el.add._t); el.add._t = setTimeout(() => { el.add.textContent = 'Add to cart'; }, 1600);
-    if (!motion) { renderCart(); return; }
-    showNav();
-    const bump = () => { renderCart(); gsap.fromTo(countEl, { scale: 1.7 }, { scale: 1, duration: .5, ease: 'back.out(3)' }); gsap.fromTo(cartBtn, { scale: .88 }, { scale: 1, duration: .5, ease: 'back.out(2.5)' }); };
-    const from = el.card.getBoundingClientRect(), to = cartBtn.getBoundingClientRect();
-    if (from.bottom < 0 || from.top > innerHeight) { bump(); return; } // card is off screen: skip the flight
-    const ghost = el.card.cloneNode(true); ghost.removeAttribute('id'); ghost.classList.add('ghost-fly');
-    Object.assign(ghost.style, { left: from.left + 'px', top: from.top + 'px', width: from.width + 'px', height: from.height + 'px', transform: 'none' });
-    document.body.append(ghost);
-    gsap.to(ghost, { x: to.left + to.width / 2 - (from.left + from.width / 2), y: to.top + to.height / 2 - (from.top + from.height / 2), scale: .07, rotation: 14, duration: .8, ease: 'power3.inOut',
-      onComplete: () => { ghost.remove(); bump(); } });
-    gsap.to(ghost, { opacity: 0, duration: .25, delay: .58 });
-  });
-
-  /* ---------- sticky buy bar: shown on phones while the store is on screen but its own button is not ---------- */
-  const buybar = $('#buybar'), bbAdd = $('#bbAdd');
-  if ('IntersectionObserver' in window) {
-    const seen = { shop: false, buy: false };
-    const syncBar = () => { const on = seen.shop && !seen.buy; buybar.classList.toggle('is-on', on); bbAdd.tabIndex = on ? 0 : -1; };
-    const io = new IntersectionObserver(es => { es.forEach(e => { seen[e.target.id === 'shop' ? 'shop' : 'buy'] = e.isIntersecting; }); syncBar(); });
-    io.observe($('#shop')); io.observe($('.buy-actions'));
-  }
-  bbAdd.addEventListener('click', () => {
-    el.add.click(); bbAdd.textContent = 'Added';
-    clearTimeout(bbAdd._t); bbAdd._t = setTimeout(() => { bbAdd.textContent = 'Add to cart'; }, 1600);
-  });
-
-  /* ---------- help: region + redeem steps ---------- */
-  const HELP = {
-    ps: { regionLead: 'A PlayStation account keeps the region it was created with, and a card only works in that region.',
-          region: ['Sign in at <b>playstation.com</b> and open <b>Account settings</b>.', 'Find <b>Country/Region</b> in your account details.', 'Buy the <b>US</b> card for United States, or the <b>UK</b> card for United Kingdom.'],
-          redeemLead: 'Your code is 12 characters long.',
-          redeem: ['On your PS5, open <b>Settings</b>, then <b>Users and Accounts</b>.', 'Choose <b>Account</b>, then <b>Payment and Subscriptions</b>, then <b>Redeem Codes</b>.', 'Type the code from your email and confirm. The credit lands in your wallet.'] },
-    xb: { regionLead: 'Xbox cards follow the country of your Microsoft account.',
-          region: ['Sign in at <b>account.microsoft.com</b> and open <b>Your info</b>.', 'Check the <b>Country/region</b> shown on your profile.', 'Buy the <b>US</b> card for United States, or the <b>UK</b> card for United Kingdom.'],
-          redeemLead: 'Your code is 25 characters long.',
-          redeem: ['On your console, press the <b>Xbox button</b> and open the <b>Store</b>.', 'Choose <b>Redeem</b> from the Store menu. You can also use <b>redeem.microsoft.com</b>.', 'Type the code from your email and confirm. The credit is added to your Microsoft account.'] }
-  };
-  function renderHelp(k, animate) {
-    const h = HELP[k], li = a => a.map(t => `<li><span>${t}</span></li>`).join('');
-    $$('#segHelp button').forEach((b, i) => { const on = b.dataset.help === k; b.setAttribute('aria-pressed', on); if (on) $('#segHelp').style.setProperty('--i', i); });
-    $('#hRegionLead').textContent = h.regionLead; $('#hRegion').innerHTML = li(h.region);
-    $('#hRedeemLead').textContent = h.redeemLead; $('#hRedeem').innerHTML = li(h.redeem);
-    if (motion && animate) gsap.from('#helpGrid li, #helpGrid .help-card>p', { opacity: 0, y: 12, duration: .45, ease: 'power3.out', stagger: .04 });
-  }
-  $('#segHelp').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.getAttribute('aria-pressed') !== 'true') renderHelp(b.dataset.help, true); });
-  renderHelp('ps');
-
-  /* ---------- contact form (concept only) ---------- */
-  $('#contactForm').addEventListener('submit', e => {
+  /* ---------- request a game ---------- */
+  const req = $('#req');
+  function openReq() { $('#reqNeed').textContent = ''; req.showModal(); pause(true); requestAnimationFrame(() => req.classList.add('is-open')); $('#reqGame').focus(); }
+  req.addEventListener('click', e => { if (e.target === req || e.target.closest('[data-close]')) closeDialog(req); });
+  req.addEventListener('cancel', e => { e.preventDefault(); closeDialog(req); });
+  $('#reqForm').addEventListener('submit', e => {
     e.preventDefault();
-    const f = e.currentTarget, bad = $$('input,textarea', f).find(i => !i.checkValidity());
-    const s = $('#formStatus');
-    if (bad) { s.textContent = 'Fill in your name, a valid email and a message.'; bad.focus(); return; }
-    s.textContent = 'Concept preview: on the live site this message goes to the Cardora team.';
+    const game = $('#reqGame').value.trim(), plat = ($('input[name="reqPlat"]:checked') || {}).value;
+    if (!game) { $('#reqNeed').textContent = 'Type the name of the game.'; $('#reqGame').focus(); return; }
+    if (!plat) { $('#reqNeed').textContent = 'Choose a platform.'; $('input[name="reqPlat"]').focus(); return; }
+    window.open(wa(`Hi Cardora Maldives, can you get this game key? ${game} (${plat}). Please let me know the price in MVR.`), '_blank', 'noopener');
+    closeDialog(req);
   });
 
-  /* ---------- theme toggle ---------- */
+  /* ---------- questions ---------- */
+  const FAQ = [
+    ['Which region should I choose?', '<p>Choose the region your account was created in. A code only works on an account from the same region, and most platforms do not let you change it later. You can pay from the Maldives whatever region you pick.</p>'],
+    ['How do I check my PlayStation account region?', '<ol><li>Sign in at playstation.com and open Account settings.</li><li>Find Country/Region in your account details.</li><li>Buy the US card for United States, or the UK card for United Kingdom.</li></ol>'],
+    ['Is my item in stock?', '<p>Adding to cart does not reserve stock. When you send your order, our team checks availability on WhatsApp and confirms it before asking for payment.</p>'],
+    ['How do I pay, and what does it cost?', '<p>You pay in MVR. Our team confirms the final rufiyaa price and sends payment instructions on WhatsApp once your item is confirmed.</p>'],
+    ['How and when do I get my code?', '<p>Your code is sent by email or WhatsApp after your payment is confirmed. Keep your order reference handy if you contact us.</p>'],
+    ['How do I redeem a PlayStation code?', '<ol><li>On your PS5, open Settings, then Users and Accounts.</li><li>Choose Account, then Payment and Subscriptions, then Redeem Codes.</li><li>Type the 12-character code and confirm. The credit lands in your wallet.</li></ol>']
+  ];
+  $('#faq').innerHTML = FAQ.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${q}${ICON.plus}</summary><div class="a">${a}</div></details>`).join('');
+
+  /* ---------- theme ---------- */
   const themeBtn = $('#themeBtn'), themeMeta = $('meta[name="theme-color"]');
-  const syncTheme = () => {
-    const light = root.dataset.theme === 'light';
-    themeBtn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
-    themeMeta.content = light ? '#fbf9f3' : '#05090f';
-  };
-  syncTheme();
+  const syncTheme = () => { const l = root.dataset.theme === 'light'; themeBtn.setAttribute('aria-label', l ? 'Switch to dark mode' : 'Switch to light mode'); themeMeta.content = l ? '#f5f5f7' : '#050607'; };
   themeBtn.addEventListener('click', () => {
     const next = root.dataset.theme === 'light' ? 'dark' : 'light';
     const apply = () => { if (next === 'light') root.dataset.theme = 'light'; else delete root.dataset.theme; syncTheme(); };
-    try { localStorage.setItem('cardora-concept-theme', next); } catch (e) {}
+    try { localStorage.setItem('cardora-v2-theme', next); } catch (e) {}
     if (!document.startViewTransition || reduce) { apply(); return; }
-    // the new theme spreads out in a circle from the button
-    const r = themeBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
-    const R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    document.startViewTransition(apply).ready.then(() => root.animate(
-      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${R}px at ${x}px ${y}px)`] },
-      { duration: 700, easing: 'cubic-bezier(.22,1,.36,1)', pseudoElement: '::view-transition-new(root)' })).catch(() => {});
+    const r = themeBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2, R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const tv = document.startViewTransition(apply); tv.finished.catch(() => {}); tv.updateCallbackDone.catch(() => {});
+    tv.ready.then(() => root.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${R}px at ${x}px ${y}px)`] }, { duration: 700, easing: 'cubic-bezier(.22,1,.36,1)', pseudoElement: '::view-transition-new(root)' })).catch(() => {});
   });
+  syncTheme();
 
-  /* ---------- menu ---------- */
-  const nav = $('#nav'), menuBtn = $('#menuBtn');
-  const setMenu = open => { nav.classList.toggle('menu-open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
-  menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('menu-open')));
-  // account panel (desktop)
-  const acctBtn = $('#acctBtn'), acctPanel = $('#acctPanel');
-  const setAcct = open => { nav.classList.toggle('acct-open', open); acctBtn.setAttribute('aria-expanded', open); };
-  acctBtn.addEventListener('click', () => setAcct(!nav.classList.contains('acct-open')));
-  document.addEventListener('click', e => { if (nav.classList.contains('acct-open') && !acctPanel.contains(e.target) && !acctBtn.contains(e.target)) setAcct(false); });
-  document.addEventListener('keydown', e => {
-    if (e.key !== 'Escape') return;
-    setMenu(false);
-    if (nav.classList.contains('acct-open')) { setAcct(false); acctBtn.focus(); }
-  });
-
-  /* ---------- smooth scroll + anchors ---------- */
-  let lenis = null;
-  if (motion && window.Lenis) {
-    lenis = new Lenis({ lerp: .1 });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
+  if ('IntersectionObserver' in window) {
+    const dock = $$('.dock a'), spy = new IntersectionObserver(es => es.forEach(e => { dock[0].classList.toggle('on', !e.isIntersecting); dock[1].classList.toggle('on', e.isIntersecting); }), { rootMargin: '-40% 0px -40% 0px' });
+    spy.observe($('#browse'));
   }
-  function scrollToEl(target) {
-    if (lenis) lenis.scrollTo(target, { offset: -88, duration: 1.2 });
-    else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-  }
-  document.addEventListener('click', e => {
-    const a = e.target.closest('a[href^="#"]'); if (!a || a.getAttribute('href') === '#') return;
-    const t = document.querySelector(a.getAttribute('href')); if (!t) return;
-    e.preventDefault(); setMenu(false); scrollToEl(t);
-  });
-
-  let navHidden = false;
-  function showNav() { if (motion && navHidden) { navHidden = false; gsap.to(nav, { yPercent: 0, duration: .5, ease: 'power3.out' }); } }
-
-  render(); renderCart();
+  renderBrowse(); renderCart(); renderAgain(); route();
   if (!motion) return;
 
   /* =====================  MOTION  ===================== */
   gsap.registerPlugin(ScrollTrigger);
   const EXPO = 'expo.out';
-
-  // nav hide on scroll down, show on scroll up
-  ScrollTrigger.create({ start: 200, end: 'max', onUpdate: self => {
-    if (nav.classList.contains('menu-open')) return;
-    if (self.direction === 1 && !navHidden) { setAcct(false); navHidden = true; gsap.to(nav, { yPercent: -160, duration: .5, ease: 'power3.inOut' }); }
-    else if (self.direction === -1) showNav();
-  }, onLeaveBack: showNav });
+  // lighter mode: on by default for low-powered devices, and switched on later if the page is measured running slowly
+  const conn = navigator.connection || {};
+  let lite = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4 || !!conn.saveData;
+  if (lite) root.classList.add('lite');
+  const lenisTick = t => { if (lenis) lenis.raf(t * 1000); };
+  if (window.Lenis && !lite) {
+    lenis = new Lenis({ lerp: .09 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(lenisTick); gsap.ticker.lagSmoothing(0);
+  }
   gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+  ScrollTrigger.create({ start: 160, end: 'max', onUpdate: s => {
+    if (s.direction === 1 && !navHidden) { navHidden = true; gsap.to(nav, { yPercent: -110, duration: .5, ease: 'power3.inOut' }); } else if (s.direction === -1) showNav();
+  }, onLeaveBack: showNav });
 
-  // ambient drift
-  gsap.to('.a1', { x: '12vw', y: '10vh', duration: 22, ease: 'sine.inOut', yoyo: true, repeat: -1 });
-  gsap.to('.a2', { x: '-10vw', y: '16vh', duration: 28, ease: 'sine.inOut', yoyo: true, repeat: -1 });
-  gsap.to('.aurora', { yPercent: -18, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: true } });
+  // hero: lines rise, then every card flies onto the ring from deep space
+  const ring = $('#ring'), ringCards = $$('.ring-item .gc');
+  gsap.timeline({ defaults: { ease: EXPO }, delay: .1 })
+    .fromTo('.hero .line>span', { yPercent: 118, opacity: 1 }, { yPercent: 0, duration: 1.3, stagger: .09 }, 0)
+    .fromTo('.hero-in', { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 1.1, stagger: .08 }, .35)
+    .fromTo(ringCards, { opacity: 0, z: 900, rotationX: -40 }, { opacity: 1, z: 0, rotationX: 0, duration: 1.8, stagger: .05 }, .25)
+    .fromTo(ringCards, { '--sx': '120%' }, { '--sx': '-20%', duration: 2.2, ease: 'power2.inOut', stagger: .04 }, .9);
+  // the ring turns on its own; scrolling spins it faster, the pointer leans it
+  let hold = false;
+  const spin = gsap.to(ring, { rotationY: -360, duration: 80, ease: 'none', repeat: -1, paused: lite });
+  function goLite() { if (lite) return; lite = true; root.classList.add('lite'); if (lenis) { lenis.destroy(); lenis = null; } spin.pause(); }
+  let wasHidden = document.hidden; document.addEventListener('visibilitychange', () => { wasHidden = true; });
+  addEventListener('load', () => setTimeout(() => { let n = 0; const t0 = performance.now();
+    const tick = () => { n++; const dt = performance.now() - t0; if (dt < 3000) requestAnimationFrame(tick); else if (!wasHidden && n / dt * 1000 < 40) goLite(); };
+    requestAnimationFrame(tick); }, 2200));
+  if (fine) { const st = $('#stage');
+    st.addEventListener('pointerenter', () => { hold = true; gsap.to(spin, { timeScale: 0, duration: .6, overwrite: true }); });
+    st.addEventListener('pointerleave', () => { hold = false; gsap.to(spin, { timeScale: 1, duration: 1.2, overwrite: true }); }); }
+  ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: s => spin.paused(lite || !s.isActive),
+    onUpdate: s => { if (hold || lite) return; const v = Math.min(Math.abs(s.getVelocity()) / 220, 9); gsap.to(spin, { timeScale: 1 + v, duration: .3, overwrite: true, onComplete: () => gsap.to(spin, { timeScale: 1, duration: 1.6 }) }); } });
+  gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: .5 } })
+    .to('.hero-copy', { y: -90, opacity: 0, scale: .96, ease: 'none' }, 0)
+    .to('#stage', { scale: 1.22, y: -60, ease: 'none' }, 0);
+  if (fine) { const tx = gsap.quickTo('.ring-pos', 'rotationX', { duration: 1, ease: 'power3' }), tz = gsap.quickTo('.ring-pos', 'rotationZ', { duration: 1, ease: 'power3' });
+    gsap.set('.ring-pos', { rotationX: -7 });
+    $('#hero').addEventListener('pointermove', e => { tz((e.clientX / innerWidth - .5) * -4); tx(-7 - (e.clientY / innerHeight - .5) * 8); }); }
 
-  // hero entrance
-  const hero = gsap.timeline({ defaults: { ease: EXPO }, delay: .15 });
-  hero.from(nav, { y: -40, opacity: 0, duration: 1 }, 0)
-      .fromTo('.hero .line>span', { yPercent: 115, opacity: 1 }, { yPercent: 0, duration: 1.2, stagger: .1 }, .1)
-      .fromTo('.hero-in', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1, stagger: .07 }, .45)
-      .fromTo('.orbits ellipse', { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut', stagger: .2 }, .2)
-      .fromTo('.gc-wrap.xb .gc', { opacity: 0, y: 160, rotationX: -50, rotationZ: 40 }, { opacity: 1, y: 0, rotationX: 0, rotationZ: 14, duration: 1.5 }, .3)
-      .fromTo('.gc-wrap.ps .gc', { opacity: 0, y: 200, rotationX: -50, rotationZ: -40 }, { opacity: 1, y: 0, rotationX: 0, rotationZ: -11, duration: 1.5 }, .42)
-      .fromTo('.stage .chip', { opacity: 0, scale: .8 }, { opacity: 1, scale: 1, duration: .7, ease: 'back.out(2)', stagger: .12 }, 1.1)
-      .fromTo('.stage .gc', { '--sheen': '110%' }, { '--sheen': '-10%', duration: 1.6, ease: 'power2.inOut', stagger: .15, clearProps: '--sheen' }, .9);
+  // statement: words light up as the section crosses the screen
+  const words = $$('#sayText .wd'); words.forEach(w => w.classList.remove('on'));
+  ScrollTrigger.create({ trigger: '#say', start: 'top 75%', end: 'bottom 55%', scrub: true, onUpdate: s => { const n = Math.round(s.progress * words.length); words.forEach((w, i) => w.classList.toggle('on', i < n)); } });
 
-  // idle float + orbiting dot (paused while the hero is off screen)
-  const idle = gsap.timeline({ repeat: -1, yoyo: true, defaults: { ease: 'sine.inOut' } })
-    .to('.gc-wrap.xb .gc-float', { y: -14, rotationZ: 1.5, duration: 3.6 }, 0)
-    .to('.gc-wrap.ps .gc-float', { y: 12, rotationZ: -1.5, duration: 3.6 }, 0)
-    .to('.chip.c1', { y: -8, duration: 3.6 }, 0).to('.chip.c2', { y: 8, duration: 3.6 }, 0);
-  const dot = $('.orbits .dot'), orbit = { a: 0 };
-  const dotTween = gsap.to(orbit, { a: Math.PI * 2, duration: 14, ease: 'none', repeat: -1, onUpdate: () => {
-    const x = Math.cos(orbit.a) * 235, y = Math.sin(orbit.a) * 92, r = -16 * Math.PI / 180;
-    dot.setAttribute('cx', 250 + x * Math.cos(r) - y * Math.sin(r)); dot.setAttribute('cy', 260 + x * Math.sin(r) + y * Math.cos(r));
-  } });
-  ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: s => { idle.paused(!s.isActive); dotTween.paused(!s.isActive); } });
-
-  // hero scroll-away
-  gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: .6 } })
-    .to('.hero-copy', { y: -70, opacity: 0, ease: 'none' }, 0)
-    .to('.gc-wrap.ps', { x: -50, y: 90, rotationZ: -10, ease: 'none' }, 0)
-    .to('.gc-wrap.xb', { x: 60, y: -40, rotationZ: 12, ease: 'none' }, 0)
-    .to('.orbits', { rotation: 24, scale: 1.15, transformOrigin: '50% 50%', ease: 'none' }, 0);
-
-  // pointer tilt + sheen
-  function tilt(area, target, max) {
-    if (!fine) return;
-    const rx = gsap.quickTo(target, 'rotationX', { duration: .7, ease: 'power3' });
-    const ry = gsap.quickTo(target, 'rotationY', { duration: .7, ease: 'power3' });
-    area.addEventListener('pointermove', e => {
-      const r = area.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
-      ry(px * max * 2); rx(-py * max * 2);
-      target.style.setProperty('--sheen', (100 - (px + .5) * 100) + '%');
-    });
-    area.addEventListener('pointerleave', () => { rx(0); ry(0); });
-  }
-  tilt($('#hero'), $('#stageTilt'), 9);
-  tilt($('#cfgStage'), el.tilt, 12);
-
-  // magnetic buttons
-  if (fine) $$('.magnetic').forEach(b => {
-    const x = gsap.quickTo(b, 'x', { duration: .5, ease: 'power3' }), y = gsap.quickTo(b, 'y', { duration: .5, ease: 'power3' });
-    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); x((e.clientX - r.left - r.width / 2) * .22); y((e.clientY - r.top - r.height / 2) * .3); });
-    b.addEventListener('pointerleave', () => { x(0); y(0); });
+  // categories: each panel's cards fan out, then the panel sinks back as the next one covers it
+  const panels = $$('.panel');
+  panels.forEach((p, i) => {
+    const cards = $$('.fan .gc', p), mid = (cards.length - 1) / 2, step = innerWidth < 820 ? 40 : 66;
+    cards.forEach((c, k) => { c.style.zIndex = 10 - Math.abs(k - mid);
+      gsap.fromTo(c, { xPercent: -50, yPercent: -50, rotation: 0, x: 0, y: 40, scale: .82, opacity: Math.abs(k - mid) < 1 ? 1 : 0 },
+        { xPercent: -50, yPercent: -50, rotation: (k - mid) * 9, x: (k - mid) * step, y: Math.abs(k - mid) * 16, scale: 1 - Math.abs(k - mid) * .05, opacity: 1, ease: 'none',
+          scrollTrigger: { trigger: p, start: 'top 88%', end: 'top 22%', scrub: .7 } }); });
+    gsap.from($$('.panel-copy>*', p), { opacity: 0, y: 34, duration: 1, ease: EXPO, stagger: .07, scrollTrigger: { trigger: p, start: 'top 72%', once: true } });
+    if (panels[i + 1]) gsap.fromTo($('.panel-in', p), lite ? { scale: 1 } : { scale: 1, filter: 'brightness(1)' }, { scale: .94, ...(lite ? {} : { filter: 'brightness(.72)' }), ease: 'none', scrollTrigger: { trigger: panels[i + 1], start: 'top 62%', end: 'top 12%', scrub: true } });
   });
 
-  // marquee, speeds up with scroll velocity
-  let mqPaused = false;
-  const mq = gsap.to('.marquee-track', { xPercent: -50, duration: 38, ease: 'none', repeat: -1 });
-  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: self => {
-    const v = Math.min(Math.abs(self.getVelocity()) / 350, 5);
-    gsap.to(mq, { timeScale: 1 + v, duration: .25, overwrite: true, onComplete: () => gsap.to(mq, { timeScale: 1, duration: 1.2 }) });
-  } });
-  $('#mqToggle').addEventListener('click', e => {
-    mqPaused = !mqPaused; mq.paused(mqPaused);
-    const b = e.currentTarget; b.setAttribute('aria-pressed', mqPaused); b.setAttribute('aria-label', mqPaused ? 'Play moving text' : 'Pause moving text');
-    b.innerHTML = mqPaused ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>';
-  });
-
-  // headings: word-by-word mask reveal
+  // headings: word by word
   $$('[data-split]').forEach(h => {
-    h.setAttribute('aria-label', h.textContent.trim().replace(/\s+/g, ' '));
-    const out = [];
-    h.childNodes.forEach(nd => nd.textContent.trim().split(/\s+/).filter(Boolean).forEach(w =>
-      out.push(`<span class="w${nd.nodeType === 1 ? ' acc' : ''}" aria-hidden="true"><span>${w}</span></span>`)));
-    h.innerHTML = out.join(' ');
+    const t = h.textContent.trim(); h.setAttribute('aria-label', t);
+    h.innerHTML = t.split(/\s+/).map(w => `<span class="w" aria-hidden="true"><span>${w}</span></span>`).join(' ');
     gsap.set(h, { opacity: 1 });
-    gsap.from($$('.w>span', h), { yPercent: 115, duration: 1.1, ease: EXPO, stagger: .055, scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
+    gsap.from($$('.w>span', h), { yPercent: 118, duration: 1.2, ease: EXPO, stagger: .06, scrollTrigger: { trigger: h, start: 'top 90%', once: true } });
   });
-  // generic reveals
-  $$('[data-reveal]').forEach(node => {
-    gsap.fromTo(node, { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 1, ease: EXPO, delay: (+node.dataset.reveal || 0) * .09,
-      scrollTrigger: { trigger: node, start: 'top 90%', once: true, onEnter: () => node.classList.add('in') } });
-  });
-  // configurator card drifts in with scroll
-  gsap.fromTo(el.tilt, { y: 50, scale: .9 }, { y: 0, scale: 1, ease: 'none', scrollTrigger: { trigger: '#cfgStage', start: 'top 95%', end: 'top 35%', scrub: .6 } });
+  $$('[data-reveal]').forEach(n => gsap.fromTo(n, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.1, ease: EXPO, scrollTrigger: { trigger: n, start: 'top 92%', once: true } }));
 
-  // how it works: ticket follows the steps
-  const rows = $$('#ticket .trow'), steps = $$('#steps .step'), codeEl = $('#tCode');
-  let scr = null;
-  function scramble() {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', final = 'XXXX-XXXX-XXXX'; let f = 0;
-    clearInterval(scr);
-    scr = setInterval(() => {
-      f++;
-      codeEl.textContent = final.split('').map((c, i) => c === '-' ? '-' : (i < f - 8 ? c : chars[Math.random() * chars.length | 0])).join('');
-      if (f > 8 + final.length) clearInterval(scr);
-    }, 45);
-  }
-  function setStep(i) {
-    rows.forEach((r, n) => { r.classList.toggle('is-done', n < i); r.classList.toggle('is-active', n === i); r.classList.toggle('is-pending', n > i); });
-    steps.forEach((s, n) => s.classList.toggle('is-active', n === i));
-    $('#tBar').style.setProperty('--p', (i + 1) / 4); $('#tStep').textContent = (i + 1) + ' / 4';
-    if (i === 3) scramble(); else { clearInterval(scr); codeEl.textContent = 'Sent after payment is confirmed'; }
-  }
-  $('#steps').classList.add('is-live'); setStep(0);
-  steps.forEach((s, i) => ScrollTrigger.create({ trigger: s, start: 'top 58%', end: 'bottom 58%', onToggle: self => { if (self.isActive) setStep(i); } }));
-  gsap.fromTo('#stepsLine', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#steps', start: 'top 58%', end: 'bottom 58%', scrub: .4 } });
+  // how it works: the line draws and each step switches on
+  const flow = $('#flow'), steps = $$('li', flow); flow.classList.add('live');
+  ScrollTrigger.create({ trigger: flow, start: 'top 78%', end: 'bottom 62%', scrub: .5, onUpdate: s => {
+    flow.style.setProperty('--p', s.progress.toFixed(3)); steps.forEach((li, i) => li.classList.toggle('on', s.progress >= i / steps.length + .02)); } });
+  flow.style.setProperty('--p', 0);
 
-  // bento spotlight
-  if (fine) $$('.tile').forEach(t => t.addEventListener('pointermove', e => { const r = t.getBoundingClientRect(); t.style.setProperty('--mx', e.clientX - r.left + 'px'); t.style.setProperty('--my', e.clientY - r.top + 'px'); }));
+  // closing belt of cards drifts sideways with the scroll
+  gsap.fromTo('#belt', { xPercent: -4 }, { xPercent: -38, ease: 'none', scrollTrigger: { trigger: '#end', start: 'top bottom', end: 'bottom top', scrub: .6 } });
 
-  // section rules draw in
-  $$('[data-rule]').forEach(r => gsap.fromTo(r, { '--rule': 0 }, { '--rule': 1, duration: 1.4, ease: 'expo.inOut', scrollTrigger: { trigger: r, start: 'top 92%', once: true } }));
-  gsap.from('[data-rule] span', { opacity: 0, duration: .8, stagger: .05, scrollTrigger: { trigger: '#shop', start: 'top 92%', once: true } });
-
-  // nav shows which section you are in
-  $$('.nav-links a').forEach(a => {
-    const sec = document.querySelector(a.getAttribute('href'));
-    if (sec) ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 55%', onToggle: self => a.classList.toggle('is-current', self.isActive) });
-  });
-
-  // pointer light
+  // grid cards lean toward the pointer and catch the light
   if (fine) {
-    const glow = $('#cursorGlow'), gx = gsap.quickTo(glow, 'x', { duration: .9, ease: 'power3' }), gy = gsap.quickTo(glow, 'y', { duration: .9, ease: 'power3' });
-    addEventListener('pointermove', e => { gx(e.clientX); gy(e.clientY); glow.classList.add('on'); }, { passive: true });
+    results.addEventListener('pointermove', e => {
+      const t = e.target.closest('.tile'); if (!t) return; const g = $('.gc', t), r = t.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+      g.style.transform = `rotateY(${px * 16}deg) rotateX(${-py * 14}deg) translateY(-6px) scale(1.03)`; g.style.setProperty('--sx', (100 - (px + .5) * 100) + '%');
+    });
+    results.addEventListener('pointerout', e => { const t = e.target.closest('.tile'); if (t && !t.contains(e.relatedTarget)) $('.gc', t).style.transform = ''; });
+    $$('.magnetic').forEach(b => { const x = gsap.quickTo(b, 'x', { duration: .5, ease: 'power3' }), y = gsap.quickTo(b, 'y', { duration: .5, ease: 'power3' });
+      b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); x((e.clientX - r.left - r.width / 2) * .22); y((e.clientY - r.top - r.height / 2) * .3); });
+      b.addEventListener('pointerleave', () => { x(0); y(0); }); });
   }
-
-  // "Priced in MVR" tile cycles through real prices while it is on screen
-  const fxList = CARDS.ps.us.filter(c => c[2]), fxFrom = $('#fxFrom'), fxTo = $('#fxTo'); let fxI = 2, fxTimer = null;
-  const fxNext = () => {
-    fxI = (fxI + 1) % fxList.length; const [v, p] = fxList[fxI];
-    gsap.timeline().to([fxFrom, fxTo], { yPercent: -110, duration: .35, ease: 'power2.in', stagger: .06 })
-      .add(() => { fxFrom.textContent = '$' + v; fxTo.textContent = 'MVR ' + money(p); })
-      .set([fxFrom, fxTo], { yPercent: 110 }).to([fxFrom, fxTo], { yPercent: 0, duration: .6, ease: EXPO, stagger: .06 });
-  };
-  ScrollTrigger.create({ trigger: '#fxTile', start: 'top bottom', end: 'bottom top', onToggle: self => { clearInterval(fxTimer); if (self.isActive) fxTimer = setInterval(fxNext, 2400); } });
-
-  // closing call to action: giant outlined words drift with the scroll
-  gsap.fromTo('.cta-ghost span', { xPercent: 4 }, { xPercent: -42, ease: 'none', scrollTrigger: { trigger: '#cta', start: 'top bottom', end: 'bottom top', scrub: .5 } });
-  // hero floor only moves while the hero is on screen
-  ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: self => { $('.floor').style.animationPlayState = self.isActive ? 'running' : 'paused'; } });
-
+  // nav shows which part of the page you are in
+  [['#how', 'a[href="#how"]'], ['#help', 'a[href="#help"]']].forEach(([sec, sel]) => { const a = $('.top-links ' + sel); ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 55%', onToggle: s => a.classList.toggle('is-current', s.isActive) }); });
   addEventListener('load', () => ScrollTrigger.refresh());
 })();
 </script>

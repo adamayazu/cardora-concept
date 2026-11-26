@@ -3,77 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Create your account — Cardora Maldives (concept redesign)</title>
+<title>Create your account — Cardora Maldives (redesign concept)</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#05090f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2305090f'/%3E%3Cpath d='M8 13l8-5 8 5-8 5z' fill='%23fff'/%3E%3Cpath d='M8 19l8 5 8-5-3-2-5 3-5-3z' fill='%237cf2dc'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#050607">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050607'/%3E%3Cpath d='M8 13l8-5 8 5-8 5z' fill='%23fff'/%3E%3Cpath d='M8 19l8 5 8-5-3-2-5 3-5-3z' fill='%237cf2dc'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script>
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
-  try { if (localStorage.getItem('cardora-concept-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>try { if (localStorage.getItem('cardora-v2-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}</script>
 <link rel="stylesheet" href="assets/auth.css">
 </head>
 <body>
-<main class="auth-grid">
-  <aside class="auth-brand">
-    <a class="brand" href="index.html" aria-label="Cardora Maldives, back to the store"><img src="assets/cardora-logo.webp" alt="Cardora Maldives" width="124" height="32"></a>
-    <div class="auth-pitch">
-      <h2 aria-label="Your orders and codes, in one place."><span class="line" aria-hidden="true"><span>Your orders and codes,</span></span><span class="line" aria-hidden="true"><span class="accent">in one place.</span></span></h2>
-      <ul>
-        <li data-in><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Your past orders in one place</li>
-        <li data-in><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Find your gift codes again</li>
-        <li data-in><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Faster ordering next time</li>
-      </ul>
-    </div>
-    <div class="auth-stage" aria-hidden="true"><div class="auth-tilt">
-      <div class="gc-wrap xb"><div class="gc xb"><span class="gc-brand">Xbox</span><img class="gc-logo" src="assets/xbox.svg" alt=""><span class="gc-region">United Kingdom</span><span class="gc-value">£40</span></div></div>
-      <div class="gc-wrap ps"><div class="gc ps"><span class="gc-brand">PlayStation</span><img class="gc-logo" src="assets/playstation.svg" alt=""><span class="gc-region">United States</span><span class="gc-value">$50</span></div></div>
-    </div></div>
-  </aside>
-
-  <section class="auth-form">
-    <div class="auth-top">
-      <a class="back" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>Back to store</a>
-      <button class="icon-btn theme-btn" id="themeBtn" aria-label="Switch to light mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.500A8 8 0 0 1 9.500 4a8 8 0 1 0 10.500 10.500Z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600 7 7M17 17l1.400 1.400M5.600 18.400 7 17M17 7l1.400-1.400"/></svg></button>
-    </div>
-    <div class="auth-card">
-      <ol class="flow" data-in aria-label="Steps">
-        <li class="on">1 · Email</li><li>2 · Secure link</li><li>3 · Password</li>
-      </ol>
-      <div class="panes">
-        <div class="pane">
-          <h1 data-in>Create your Cardora account</h1>
-          <p class="sub" data-in>Enter your email to get a secure link and choose your password.</p>
-          <label data-in>Email address<input value="you@example.com" readonly aria-readonly="true"></label>
-          <button class="btn" type="button" data-go="1" data-in>Continue with email <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
-          <p class="alt" data-in>Already have a password? <a class="link" href="login.html">Sign in</a></p>
-        </div>
-        <div class="pane" hidden>
-          <div class="sent">
-            <span class="sent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/><path class="tick" d="m14.500 16 2 2 4-4.500" stroke-width="2.200"/></svg></span>
-            <h2>Check your email</h2>
-            <p>We sent a secure link to <b>you@example.com</b>. Open it on this device to choose your password.</p>
-          </div>
-          <button class="btn" type="button" data-go="2">See the next step <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
-          <p class="alt"><a class="link" href="#" data-go="0" onclick="return false">Use a different email</a></p>
-        </div>
-        <div class="pane" hidden>
-          <h2 style="font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.08;letter-spacing:-.03em;font-weight:600">Choose your password</h2>
-          <p class="sub">Use at least 8 characters.</p>
-          <label>New password<input value="••••••••••" readonly aria-readonly="true"></label>
-          <label>Confirm password<input value="••••••••••" readonly aria-readonly="true"></label>
-          <a class="btn" href="index.html#shop">Create account and start shopping <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
-          <p class="alt"><a class="link" href="#" data-go="0" onclick="return false">Start again</a></p>
-        </div>
-      </div>
-<p class="preview-note" data-in><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Preview only. The fields show sample text and no email is sent in this concept.</span></p>
-    </div>
-  </section>
-</main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="assets/auth.js"></script>
+<div class="light" aria-hidden="true"></div>
+<header class="bar">
+  <a href="index.html" aria-label="Cardora Maldives, back to the store"><img src="assets/cardora-logo.webp" alt="Cardora Maldives" width="93" height="24"></a>
+  <div class="bar-right"><a class="back" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>Back to store</a><button class="icon-btn" id="themeBtn" aria-label="Switch theme"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.500A8 8 0 0 1 9.500 4a8 8 0 1 0 10.500 10.500Z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600 7 7M17 17l1.400 1.400M5.600 18.400 7 17M17 7l1.400-1.400"/></svg></button></div>
+</header>
+<main><div class="box">
+<div class="fan" aria-hidden="true"><span class="gc i-xbox" style="--c:#22b845;--d:#064d18"><i class="gc-water"></i><i class="gc-glyph"></i><span class="gc-kind">Gift card</span><span class="gc-name">Xbox</span><i class="gc-holo"></i></span><span class="gc i-valorant" style="--c:#ff4655;--d:#5c0f18"><i class="gc-water"></i><i class="gc-glyph"></i><span class="gc-kind">Game credit</span><span class="gc-name">Valorant</span><i class="gc-holo"></i></span><span class="gc i-playstation" style="--c:#2f6bff;--d:#0a1f6b"><i class="gc-water"></i><i class="gc-glyph"></i><span class="gc-kind">Gift card</span><span class="gc-name">PlayStation</span><i class="gc-holo"></i></span></div>
+<ol class="flow rise" style="--i:0" aria-label="Steps"><li class="on">1 · Email</li><li>2 · Secure link</li><li>3 · Password</li></ol>
+<div class="panes">
+  <div class="pane">
+    <h1 class="rise" style="--i:1">Create your account</h1>
+    <p class="sub rise" style="--i:2">Enter your email to get a secure link and choose your password.</p>
+    <label class="rise" style="--i:3">Email address<input value="you@example.com" readonly aria-readonly="true"></label>
+    <button class="btn rise" style="--i:4" type="button" data-go="1">Continue with email <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+    <p class="alt rise" style="--i:5">Already have a password? <a class="link" href="login.html">Sign in</a></p>
+  </div>
+  <div class="pane" hidden>
+    <span class="sent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>
+    <h2>Check your email</h2>
+    <p class="sub">We sent a secure link to <b>you@example.com</b>. Open it on this device to choose your password.</p>
+    <button class="btn" type="button" data-go="2">See the next step <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+    <p class="alt"><a class="link" href="#" data-go="0">Use a different email</a></p>
+  </div>
+  <div class="pane" hidden>
+    <h2>Choose your password</h2>
+    <p class="sub">Use at least 8 characters.</p>
+    <label>New password<input value="••••••••••" readonly aria-readonly="true"></label>
+    <label>Confirm password<input value="••••••••••" readonly aria-readonly="true"></label>
+    <a class="btn" href="index.html#browse">Create account and start shopping <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
+    <p class="alt"><a class="link" href="#" data-go="0">Start again</a></p>
+  </div>
+</div>
+<p class="note rise" style="--i:6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Preview only. The fields show sample text and no email is sent in this concept.</span></p>
+</div></main>
+<footer>Redesign concept for Cardora Maldives. Not the live store.</footer>
+<script>
+(() => {
+  const root = document.documentElement, btn = document.getElementById('themeBtn');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  btn.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    const apply = () => { if (next === 'light') root.dataset.theme = 'light'; else delete root.dataset.theme; };
+    try { localStorage.setItem('cardora-v2-theme', next); } catch (e) {}
+    if (!document.startViewTransition || reduce) { apply(); return; }
+    const r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2, R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const vt = document.startViewTransition(apply); vt.finished.catch(() => {}); vt.updateCallbackDone.catch(() => {});
+    vt.ready.then(() => root.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + R + 'px at ' + x + 'px ' + y + 'px)'] }, { duration: 700, easing: 'cubic-bezier(.22,1,.36,1)', pseudoElement: '::view-transition-new(root)' })).catch(() => {});
+  });
+  const signIn = document.getElementById('signInBtn');
+  if (signIn) signIn.addEventListener('click', () => { document.getElementById('status').textContent = 'Preview only. On the live site this signs you in and opens your orders.'; });
+  const panes = [...document.querySelectorAll('.pane')], flow = [...document.querySelectorAll('.flow li')];
+  document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); const n = +b.dataset.go;
+    panes.forEach((p, i) => { p.hidden = i !== n; }); flow.forEach((li, i) => li.classList.toggle('on', i <= n)); }));
+})();
+</script>
 </body>
 </html>
