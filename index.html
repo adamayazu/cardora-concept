@@ -16,11 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#050607">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050607'/%3E%3Cpath d='M8 13l8-5 8 5-8 5z' fill='%23fff'/%3E%3Cpath d='M8 19l8 5 8-5-3-2-5 3-5-3z' fill='%237cf2dc'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+
+<link href="/assets/fonts/geist.css" rel="stylesheet">
 <script>
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
   try { if (localStorage.getItem('cardora-v2-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
 </script>
 <style>
@@ -165,9 +164,13 @@ p{text-wrap:pretty}
 .fan .gc{position:absolute;left:50%;top:50%;width:min(48%,290px);transform:translate(-50%,-50%)}
 .fan.one .gc{width:min(72%,400px)}
 @media (max-width:820px){
-  .panel{top:calc(80px + var(--n)*12px)}
-  .panel-in{grid-template-columns:minmax(0,1fr);min-height:0;padding:26px 22px 30px}
-  .fan{order:-1;height:190px}
+  .panel{position:relative;inset:auto}
+  .stack{gap:16px}
+  .panel-copy{gap:10px}
+  .panel-copy .btn{min-height:46px;scroll-margin-block:88px 110px}
+  .panel-in{grid-template-columns:minmax(0,1fr);min-height:0;gap:12px;padding:18px 20px 22px}
+  .fan{order:-1;height:clamp(96px,18svh,142px)}
+  .fan .gc,.fan.one .gc{width:min(46%,170px)}
 }
 
 /* ---------- browse ---------- */
@@ -209,7 +212,7 @@ p{text-wrap:pretty}
 .empty b{color:var(--text);font-size:1.3rem}
 .pop{animation:pop .6s var(--ease) both;animation-delay:calc(var(--i,0)*35ms)}
 @keyframes pop{from{opacity:0;transform:translateY(22px) scale(.96)}to{opacity:1;transform:none}}
-@media (max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.filter{max-width:none;order:-1;flex-basis:100%}.ask{aspect-ratio:auto}}
+@media (max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.filter{max-width:none;order:-1;flex-basis:100%}.ask{aspect-ratio:auto;grid-column:1/-1;grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- how it works: a line that draws itself ---------- */
 .flow{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-top:54px}
@@ -543,11 +546,10 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
 .lite dialog::backdrop{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,0,0,.8)}
 .lite .gc{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.1),0 16px 26px -16px rgba(0,0,0,.8)}
 .lite .gc::before,.lite .gc-water{display:none}
-.lite .belt{display:none}
+.lite .belt .gc{box-shadow:none}
 .lite .sheet-art .gc{animation:none;transform:rotate(-4deg)}
 
 /* hidden until animated in (only when JS and motion are both on) */
-.js-motion [data-reveal],.js-motion [data-split],.js-motion .hero .line>span,.js-motion .hero-in,.js-motion .ring-item .gc{opacity:0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -724,9 +726,9 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   </form>
 </dialog>
 
-<script src="assets/motion/gsap.min.js"></script>
-<script src="assets/motion/ScrollTrigger.min.js"></script>
-<script src="assets/motion/lenis.min.js"></script>
+<script src="assets/motion/gsap.min.js?v=28033e449a31"></script>
+<script src="assets/motion/ScrollTrigger.min.js?v=ad33c2df9ada"></script>
+<script src="assets/motion/lenis.min.js?v=55a065df7880"></script>
 <script>
 (() => {
   'use strict';
@@ -735,7 +737,7 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
   const motion = !!(window.gsap && window.ScrollTrigger) && !reduce;
-  if (!motion) root.classList.remove('js-motion');
+
   const WA = '9609222544';
   const wa = t => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -822,14 +824,18 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   tabs.insertAdjacentHTML('beforeend', [{ id: 'all', name: 'All' }, ...CATS].map(c =>
     `<button class="tab" role="tab" type="button" data-tab="${c.id}" aria-selected="false">${c.name}<small>${c.id === 'all' ? P.length : P.filter(p => p.cat === c.id).length}</small></button>`).join(''));
   const movePill = () => { const t = $('.tab[aria-selected="true"]', tabs); if (!t) return; pill.style.width = t.offsetWidth + 'px'; pill.style.transform = `translateX(${t.offsetLeft}px)`; };
-  const tile = (p, i) => `<a class="tile pop" style="--i:${i}" href="#/p/${p.id}" data-id="${p.id}">${card(p)}<div class="tile-meta"><b>${esc(p.name)}</b><span>${meta(p)}</span></div></a>`;
+  const tile = (p, i) => `<a class="tile" style="--i:${i}" href="#/p/${p.id}" data-id="${p.id}">${card(p)}<div class="tile-meta"><b>${esc(p.name)}</b><span>${meta(p)}</span></div></a>`;
   const askTile = `<div class="ask"><b>Looking for another game?</b><span>Tell us the title and platform and we'll check if we can get it.</span><button class="btn btn-quiet" type="button" data-open-req>Request a game</button></div>`;
+  let browseKey, refreshFrame;
   function renderBrowse() {
     const q = view.q.trim().toLowerCase();
     $$('.tab', tabs).forEach(t => t.setAttribute('aria-selected', t.dataset.tab === view.cat));
     movePill();
     $$('input[data-q]').forEach(i => { if (i.value !== view.q) i.value = view.q; });
     $('#clearQ').hidden = !q;
+    const key = JSON.stringify([q, view.cat]);
+    if (key === browseKey) return;
+    browseKey = key;
     const match = p => !q || [p.name, p.short || '', catOf(p.cat).name, ...Object.keys(p.regions), ...Object.values(p.regions).flat()].join(' ').toLowerCase().includes(q);
     const list = P.filter(p => (view.cat === 'all' || p.cat === view.cat) && match(p));
     if (!list.length) {
@@ -844,7 +850,10 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
         return `<div class="group"><div class="group-head"><h3>${c.name}</h3><span>${c.blurb}</span></div><div class="grid">${items.map(p => tile(p, i++)).join('')}${c.id === 'game-keys' && !q ? askTile : ''}</div></div>`;
       }).join('');
     }
-    if (motion) ScrollTrigger.refresh();
+    if (motion) {
+      cancelAnimationFrame(refreshFrame);
+      refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
+    }
   }
   const setCat = c => { view.cat = c; renderBrowse(); };
   let lenis = null;
@@ -854,11 +863,11 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   document.addEventListener('input', e => { if (e.target.matches('input[data-q]')) { view.q = e.target.value; if (view.q && view.cat !== 'all') view.cat = 'all'; renderBrowse(); } });
   // results appear right under the hero search box
   const sg = $('#suggest'), q1 = $('#q1'); let sgI = -1, sgList = [];
-  const openProduct = (id, from) => { history.pushState(null, '', '#/p/' + id); openSheet(id, from); };
+  const openProduct = (id, from) => { history.pushState({cardoraProduct:true}, '', '#/p/' + id); openSheet(id, from); };
   const pickSuggestion = (id, from) => { view.q = ''; renderBrowse(); openProduct(id, from); }; // choosing a result clears the search
   function paintSuggest() {
     const q = q1.value.trim().toLowerCase();
-    if (!q || document.activeElement !== q1) { sg.hidden = true; return; }
+    if (!q || document.activeElement !== q1) { sgList = []; sgI = -1; sg.hidden = true; return; }
     const all = P.filter(p => [p.name, p.short || '', catOf(p.cat).name, ...Object.values(p.regions).flat()].join(' ').toLowerCase().includes(q));
     sgList = all.slice(0, 5); sgI = -1;
     sg.innerHTML = sgList.length
@@ -872,9 +881,9 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   q1.addEventListener('focus', paintSuggest);
   q1.addEventListener('blur', () => setTimeout(() => { if (!sg.contains(document.activeElement)) sg.hidden = true; }, 160));
   q1.addEventListener('keydown', e => {
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { if (!sgList.length) return; e.preventDefault(); sgI = (sgI + (e.key === 'ArrowDown' ? 1 : -1) + sgList.length + 1) % (sgList.length + 1); if (sgI === sgList.length) sgI = -1; markSg(); }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { if (sg.hidden || !sgList.length) return; e.preventDefault(); sgI = (sgI + (e.key === 'ArrowDown' ? 1 : -1) + sgList.length + 1) % (sgList.length + 1); if (sgI === sgList.length) sgI = -1; markSg(); }
     else if (e.key === 'Enter') { sg.hidden = true; q1.blur(); if (sgI >= 0) pickSuggestion(sgList[sgI].id); else goBrowse(); }
-    else if (e.key === 'Escape') { sg.hidden = true; }
+    else if (e.key === 'Escape') { sgI = -1; sgList = []; sg.hidden = true; }
   });
   sg.addEventListener('pointerdown', e => e.preventDefault());
   sg.addEventListener('click', e => {
@@ -895,7 +904,7 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
     const rv = e.target.closest('[data-rv]'); if (rv) { e.preventDefault(); openProduct(rv.dataset.rv, rv); return; }
     if (e.target.closest('[data-again]')) { orderAgain(); return; }
     if (e.target.closest('[data-open-req]')) { openReq(); return; }
-    const tl = e.target.closest('.tile[data-id]'); if (tl) { e.preventDefault(); history.pushState(null, '', '#/p/' + tl.dataset.id); openSheet(tl.dataset.id, tl); return; }
+    const tl = e.target.closest('.tile[data-id]'); if (tl) { e.preventDefault(); openProduct(tl.dataset.id, tl); return; }
     const a = e.target.closest('a[href^="#"]'); if (a && a.getAttribute('href').length > 1 && !a.getAttribute('href').startsWith('#/')) { const el = document.querySelector(a.getAttribute('href')); if (el) { e.preventDefault(); go(el); } }
   });
   document.addEventListener('keydown', e => {
@@ -961,17 +970,38 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   const pause = on => { if (lenis) on ? lenis.stop() : lenis.start(); };
   function openSheet(id, fromTile) {
     if (!byId[id]) return;
-    const show = () => { fillSheet(id); if (!sheet.open) sheet.showModal(); sheet.classList.add('is-open'); pause(true); };
-    const src = fromTile && $('.gc', fromTile);
-    if (src && document.startViewTransition && !reduce) {
-      src.style.transform = 'none'; src.style.viewTransitionName = 'cover';
-      const vt = document.startViewTransition(() => { src.style.viewTransitionName = ''; src.style.transform = ''; show(); $('#sheetCover').style.viewTransitionName = 'cover'; });
-      const done = () => { const c = $('#sheetCover'); if (c) c.style.viewTransitionName = ''; };
-      vt.finished.then(done, done); vt.ready.catch(() => {}); vt.updateCallbackDone.catch(() => {});
-    } else { fillSheet(id); sheet.showModal(); pause(true); requestAnimationFrame(() => sheet.classList.add('is-open')); }
+    clearTimeout(addTimer);
+    fillSheet(id);
+    showDialog(sheet);
   }
-  function closeDialog(d) { if (!d.open) return; d.classList.remove('is-open'); setTimeout(() => { d.close(); if (!$('dialog[open]')) pause(false); }, reduce ? 0 : 280); }
-  function closeSheet() { if (location.hash.startsWith('#/p/')) history.pushState(null, '', location.pathname + location.search); closeDialog(sheet); renderAgain(); }
+  const closeTimers = new WeakMap();
+  let addTimer;
+  function showDialog(dialog) {
+    clearTimeout(closeTimers.get(dialog));
+    if (!dialog.open) dialog.showModal();
+    dialog.classList.add('is-open');
+    pause(true);
+  }
+  function closeDialog(dialog) {
+    if (!dialog.open) return;
+    clearTimeout(closeTimers.get(dialog));
+    dialog.classList.remove('is-open');
+    const finish = () => {
+      if (!dialog.open || dialog.classList.contains('is-open')) return;
+      dialog.close();
+      if (!$('dialog[open]')) pause(false);
+    };
+    if (reduce) finish();
+    else closeTimers.set(dialog, setTimeout(finish, 280));
+  }
+  function closeSheet() {
+    clearTimeout(addTimer);
+    if (location.hash.startsWith('#/p/')) {
+      if (history.state?.cardoraProduct) history.back();
+      else history.replaceState(null, '', location.pathname + location.search);
+    }
+    closeDialog(sheet); renderAgain();
+  }
   sheet.addEventListener('click', e => {
     if (e.target === sheet || e.target.closest('[data-close]')) { closeSheet(); return; }
     const qb = e.target.closest('[data-step]'); if (qb) { qty = Math.min(20, Math.max(1, qty + +qb.dataset.step)); $('#qtyOut').textContent = qty; }
@@ -983,14 +1013,15 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   });
   sheet.addEventListener('submit', e => {
     e.preventDefault();
+    if ($('#sheetAdd').disabled) return;
     if (!cur.region) { $('#sheetNeed').textContent = 'Choose where your account is registered.'; $('input[name="region"]', sheet).focus(); return; }
     if (!cur.opt) { $('#sheetNeed').textContent = `Choose your ${cur.p.unit}.`; $('input[name="opt"]', sheet).focus(); return; }
     const hit = cart.find(i => i.id === cur.p.id && i.region === cur.region && i.opt === cur.opt);
     hit ? hit.qty = Math.min(20, hit.qty + qty) : cart.push({ id: cur.p.id, region: cur.region, opt: cur.opt, qty });
-    saveCart(); $('#sheetAdd').textContent = 'Added to cart';
-    flyToCart($('#sheetCover')); setTimeout(closeSheet, 520);
+    saveCart(); $('#sheetAdd').disabled = true; $('#sheetAdd').textContent = 'Added to cart';
+    flyToCart($('#sheetCover')); addTimer = setTimeout(closeSheet, reduce ? 0 : 520);
   });
-  const route = () => { const m = location.hash.match(/^#\/p\/([\w-]+)/); if (m && byId[m[1]]) { if (!sheet.open || !cur || cur.p.id !== m[1]) openSheet(m[1]); } else closeDialog(sheet); };
+  const route = () => { const m = location.hash.match(/^#\/p\/([\w-]+)/); if (m && byId[m[1]]) { if (!sheet.open || !sheet.classList.contains('is-open') || !cur || cur.p.id !== m[1]) openSheet(m[1]); } else { clearTimeout(addTimer); closeDialog(sheet); } };
   addEventListener('popstate', route);
 
   /* ---------- cart ---------- */
@@ -1030,23 +1061,26 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
     if (d === 0) cart.splice(i, 1); else { cart[i].qty = Math.min(20, cart[i].qty + d); if (cart[i].qty < 1) cart.splice(i, 1); }
     saveCart(); renderCart();
   });
-  function openCart() { if (cartDlg.open) return; cartDlg.classList.remove('is-sent'); renderCart(); cartDlg.showModal(); pause(true); requestAnimationFrame(() => cartDlg.classList.add('is-open')); }
+  function openCart() { if (cartDlg.open && cartDlg.classList.contains('is-open')) return; cartDlg.classList.remove('is-sent'); renderCart(); showDialog(cartDlg); }
   $('#cartClose').addEventListener('click', () => closeDialog(cartDlg));
   cartDlg.addEventListener('click', e => { if (e.target === cartDlg) closeDialog(cartDlg); });
   cartDlg.addEventListener('cancel', e => { e.preventDefault(); closeDialog(cartDlg); });
   /* ---------- recently viewed + order again ---------- */
   const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
   const store = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-  let recent = load('cardora-v2-recent', []).filter(id => byId[id]), last = load('cardora-v2-last', null);
+  const storedRecent = load('cardora-v2-recent', []);
+  let recent = Array.isArray(storedRecent) ? storedRecent.filter(id => byId[id]).slice(0, 6) : [];
+  let last = load('cardora-v2-last', null);
+  if (!Array.isArray(last?.items)) last = null;
   function pushRecent(id) { recent = [id, ...recent.filter(x => x !== id)].slice(0, 6); store('cardora-v2-recent', recent); }
   function renderAgain() {
-    const box = $('#again'), items = last && last.items ? last.items.filter(i => byId[i.id]) : [];
+    const box = $('#again'), items = last && Array.isArray(last.items) ? last.items.filter(i => i && byId[i.id]) : [];
     box.hidden = !recent.length && !items.length; if (box.hidden) return;
     box.innerHTML = (recent.length ? `<div><span class="label">Recently viewed</span><div class="rv-list">${recent.map(id => `<a class="rv" href="#/p/${id}" data-rv="${id}">${card(byId[id], '', 'mini')}${esc(byId[id].short || byId[id].name)}</a>`).join('')}</div></div>` : '<span></span>')
       + (items.length ? `<div class="again-order"><span class="label">Your last order</span><p>${items.map(i => `${i.qty} × ${esc(byId[i.id].short || byId[i.id].name)} ${esc(i.opt)}`).join(' · ')}</p><button class="btn btn-quiet" type="button" data-again>Add to cart again</button></div>` : '');
   }
   function orderAgain() {
-    last.items.filter(i => byId[i.id]).forEach(i => { const hit = cart.find(c => c.id === i.id && c.region === i.region && c.opt === i.opt); hit ? hit.qty = Math.min(20, hit.qty + i.qty) : cart.push({ ...i }); });
+    last.items.filter(i => i && byId[i.id]).forEach(i => { const hit = cart.find(c => c.id === i.id && c.region === i.region && c.opt === i.opt); hit ? hit.qty = Math.min(20, hit.qty + i.qty) : cart.push({ ...i }); });
     saveCart(); openCart();
   }
 
@@ -1076,7 +1110,7 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
 
   /* ---------- request a game ---------- */
   const req = $('#req');
-  function openReq() { $('#reqNeed').textContent = ''; req.showModal(); pause(true); requestAnimationFrame(() => req.classList.add('is-open')); $('#reqGame').focus(); }
+  function openReq() { $('#reqNeed').textContent = ''; showDialog(req); $('#reqGame').focus(); }
   req.addEventListener('click', e => { if (e.target === req || e.target.closest('[data-close]')) closeDialog(req); });
   req.addEventListener('cancel', e => { e.preventDefault(); closeDialog(req); });
   $('#reqForm').addEventListener('submit', e => {
@@ -1128,7 +1162,7 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   let lite = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4 || !!conn.saveData;
   if (lite) root.classList.add('lite');
   const lenisTick = t => { if (lenis) lenis.raf(t * 1000); };
-  if (window.Lenis && !lite) {
+  if (window.Lenis && fine && !lite) {
     lenis = new Lenis({ lerp: .09 });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(lenisTick); gsap.ticker.lagSmoothing(0);
@@ -1147,17 +1181,19 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
     .fromTo(ringCards, { '--sx': '120%' }, { '--sx': '-20%', duration: 2.2, ease: 'power2.inOut', stagger: .04 }, .9);
   // the ring turns on its own; scrolling spins it faster, the pointer leans it
   let hold = false;
-  const spin = gsap.to(ring, { rotationY: -360, duration: 80, ease: 'none', repeat: -1, paused: lite });
-  function goLite() { if (lite) return; lite = true; root.classList.add('lite'); if (lenis) { lenis.destroy(); lenis = null; } spin.pause(); }
-  let wasHidden = document.hidden; document.addEventListener('visibilitychange', () => { wasHidden = true; });
-  addEventListener('load', () => setTimeout(() => { let n = 0; const t0 = performance.now();
-    const tick = () => { n++; const dt = performance.now() - t0; if (dt < 3000) requestAnimationFrame(tick); else if (!wasHidden && n / dt * 1000 < 40) goLite(); };
-    requestAnimationFrame(tick); }, 2200));
+  const spin = gsap.to(ring, { rotationY: -360, duration: 80, ease: 'none', repeat: -1, paused: document.hidden });
+  const syncSpin = () => {
+    const bounds = $('#hero').getBoundingClientRect();
+    spin.paused(document.hidden || bounds.bottom <= 0 || bounds.top >= innerHeight);
+  };
+  document.addEventListener('visibilitychange', syncSpin);
+  addEventListener('pagehide', () => { spin.pause(); if (lenis) lenis.stop(); });
+  addEventListener('pageshow', () => { syncSpin(); if (lenis && !$('dialog[open]')) lenis.start(); ScrollTrigger.refresh(); });
   if (fine) { const st = $('#stage');
     st.addEventListener('pointerenter', () => { hold = true; gsap.to(spin, { timeScale: 0, duration: .6, overwrite: true }); });
     st.addEventListener('pointerleave', () => { hold = false; gsap.to(spin, { timeScale: 1, duration: 1.2, overwrite: true }); }); }
-  ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: s => spin.paused(lite || !s.isActive),
-    onUpdate: s => { if (hold || lite) return; const v = Math.min(Math.abs(s.getVelocity()) / 220, 9); gsap.to(spin, { timeScale: 1 + v, duration: .3, overwrite: true, onComplete: () => gsap.to(spin, { timeScale: 1, duration: 1.6 }) }); } });
+  ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: syncSpin,
+    onUpdate: s => { if (hold || lite) return; const v = Math.min(Math.abs(s.getVelocity()) / 220, 9); gsap.to(spin, { overwrite: true, timeScale: 1 + v, duration: .3, overwrite: true, onComplete: () => gsap.to(spin, { timeScale: 1, duration: 1.6 }) }); } });
   gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: .5 } })
     .to('.hero-copy', { y: -90, opacity: 0, scale: .96, ease: 'none' }, 0)
     .to('#stage', { scale: 1.22, y: -60, ease: 'none' }, 0);
