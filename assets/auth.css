@@ -116,5 +116,7 @@ footer{padding:18px;text-align:center;color:var(--dim);font-size:.8rem}
 @media (hover:hover){.back:hover,.icon-btn:hover{background:var(--glass-hi)}}
 input,.note{background:var(--glass);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border-color:transparent;box-shadow:var(--glass-edge),var(--glass-shadow)}
 input:focus{border-color:transparent;box-shadow:var(--glass-edge),var(--glass-shadow),inset 0 0 0 1.5px var(--accent),0 0 0 5px var(--accent-soft)}
+.bar{--glass:linear-gradient(160deg,rgba(255,255,255,.055),rgba(12,13,16,.24));--glass-blur:blur(15px) saturate(145%);--glass-sheen:rgba(255,255,255,.09);--glass-shadow:0 6px 22px -12px rgba(0,0,0,.36)}
+:root[data-theme="light"] :is(.bar){--glass:linear-gradient(160deg,rgba(255,255,255,.37),rgba(255,255,255,.21));--glass-sheen:rgba(255,255,255,.25)}
 @media (prefers-reduced-transparency:reduce){.bar,input,.note{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}}
 @media (prefers-contrast:more){.bar,input,.note{background:var(--bg-2);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:inset 0 0 0 1.5px var(--text)}}

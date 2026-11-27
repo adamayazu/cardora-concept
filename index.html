@@ -450,6 +450,8 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
 @media (max-width:760px){.sheet-body{box-shadow:inset 0 1px 0 var(--line)}}
 
 /* people who ask for less transparency or more contrast get solid surfaces */
+.top-in,.dock,.tabs,.filter{--glass:linear-gradient(160deg,rgba(255,255,255,.055),rgba(12,13,16,.24));--glass-blur:blur(15px) saturate(145%);--glass-sheen:rgba(255,255,255,.09);--glass-shadow:0 6px 22px -12px rgba(0,0,0,.36)}
+:root[data-theme="light"] :is(.top-in,.dock,.tabs,.filter){--glass:linear-gradient(160deg,rgba(255,255,255,.37),rgba(255,255,255,.21));--glass-sheen:rgba(255,255,255,.25)}
 @media (prefers-reduced-transparency:reduce){
   .top-in,.dock,.tabs,.filter,.search input,.hero-pill,.try button,.tag{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}
   .sheet,.cart,.suggest{background:var(--bg-2);-webkit-backdrop-filter:none;backdrop-filter:none}
@@ -722,9 +724,9 @@ dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);ba
   </form>
 </dialog>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="assets/motion/gsap.min.js"></script>
+<script src="assets/motion/ScrollTrigger.min.js"></script>
+<script src="assets/motion/lenis.min.js"></script>
 <script>
 (() => {
   'use strict';
