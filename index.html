@@ -165,7 +165,7 @@ p{text-wrap:pretty}
 .fan .gc{position:absolute;left:50%;top:50%;width:min(48%,290px);transform:translate(-50%,-50%)}
 .fan.one .gc{width:min(72%,400px)}
 @media (max-width:820px){
-  .panel{top:calc(68px + var(--n)*12px)}
+  .panel{top:calc(80px + var(--n)*12px)}
   .panel-in{grid-template-columns:minmax(0,1fr);min-height:0;padding:26px 22px 30px}
   .fan{order:-1;height:190px}
 }
@@ -351,6 +351,117 @@ dialog.is-open::backdrop{opacity:1}
 .ghost-fly{position:fixed;z-index:150;pointer-events:none;margin:0}
 ::view-transition-group(cover){animation-duration:.55s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
 
+/* =====================================================================
+   LIQUID GLASS
+   One material for everything that floats above content: nav, dock, tabs,
+   search, chips, menus, sheets. Content itself (cards, panels, text) stays
+   solid, and glass is never stacked on glass.
+   Thin glass = small controls. Thick glass = sheets and menus.
+   ===================================================================== */
+:root{
+  --glass:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05)),linear-gradient(rgba(12,13,16,.44),rgba(12,13,16,.44));
+  --glass-thick:linear-gradient(180deg,rgba(44,46,54,.6),rgba(18,19,23,.7));
+  --glass-blur:blur(22px) saturate(190%) brightness(1.12);
+  --glass-blur-thick:blur(44px) saturate(190%);
+  /* light catching the top edge, a faint lower rim, a hairline, then depth */
+  --glass-edge:inset 0 1px 0 rgba(255,255,255,.42),inset 0 -1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,255,255,.1);
+  --glass-shadow:0 12px 40px -12px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.25);
+  --glass-shadow-thick:0 50px 110px -30px rgba(0,0,0,.9),0 10px 30px rgba(0,0,0,.35);
+  --glass-hi:rgba(255,255,255,.14);
+  --glass-sheen:rgba(255,255,255,.2);
+}
+:root[data-theme="light"]{
+  --glass:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.42));
+  --glass-thick:linear-gradient(180deg,rgba(255,255,255,.84),rgba(246,246,249,.8));
+  --glass-blur:blur(22px) saturate(190%);
+  --glass-edge:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.55),0 0 0 1px rgba(0,0,0,.05);
+  --glass-shadow:0 12px 36px -14px rgba(20,30,50,.3),0 2px 6px rgba(20,30,50,.08);
+  --glass-shadow-thick:0 50px 110px -34px rgba(20,30,50,.45),0 10px 30px rgba(20,30,50,.12);
+  --glass-hi:rgba(0,0,0,.07);
+  --glass-sheen:rgba(255,255,255,.7);
+}
+/* thin glass */
+.top-in,.dock,.tabs,.filter,.search input,.hero-pill,.try button,.tag{background:var(--glass);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-edge),var(--glass-shadow)}
+/* thick glass */
+.sheet,.cart,.suggest{background:var(--glass-thick);-webkit-backdrop-filter:var(--glass-blur-thick);backdrop-filter:var(--glass-blur-thick);box-shadow:var(--glass-edge),var(--glass-shadow-thick)}
+/* where the browser can do it, the nav and dock also bend what is behind them, like a lens */
+@supports (backdrop-filter:url(#lg)){
+  .top-in,.dock{-webkit-backdrop-filter:url(#lg) var(--glass-blur);backdrop-filter:url(#lg) var(--glass-blur)}
+}
+
+/* text on glass: full-strength colour and a touch more weight, so it survives whatever is behind */
+.top-links a,.tab,.dock a,.dock button,.hero-pill{color:color-mix(in srgb,var(--text) 78%,transparent);font-weight:500}
+.top-links a.is-current,.dock .on{color:var(--text)}
+.tab small{opacity:.8}
+.filter,.search>svg,.search kbd{color:color-mix(in srgb,var(--text) 70%,transparent)}
+.filter input::placeholder,.search input::placeholder{color:color-mix(in srgb,var(--text) 55%,transparent)}
+@media (hover:hover){.top-links a:hover{color:var(--text)}}
+
+/* nav bar: a floating capsule, content scrolls underneath it */
+.top{inset:12px 0 auto 0;padding-inline:clamp(10px,2.4vw,24px);background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border:0;pointer-events:none}
+.top-in{position:relative;pointer-events:auto;width:min(1180px,100%);min-height:56px;padding-inline:22px 8px;border-radius:999px;transition:min-height .5s var(--ease),width .5s var(--ease),padding .5s var(--ease)}
+.top.is-compact .top-in{min-height:48px;width:min(980px,100%)}
+/* a soft highlight that follows the pointer across the glass */
+.top-in::before,.dock::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px 90px at var(--gx,24%) 0%,var(--glass-sheen),transparent 72%);opacity:.9;transition:opacity .4s}
+.top-in>*{position:relative}
+.top-links a{transition:color .2s,background-color .25s,box-shadow .25s}
+@media (hover:hover){.top-links a:hover{background:var(--glass-hi)}}
+.top-links a.is-current{background:var(--glass-hi);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 0 0 1px rgba(255,255,255,.06)}
+.top .icon-btn{color:var(--text);opacity:.82}
+@media (hover:hover){.top .icon-btn:hover{background:var(--glass-hi);opacity:1}}
+/* scroll edge: content softens as it slides under the nav, instead of a hard line */
+.edge{position:fixed;inset:0 0 auto 0;height:70px;z-index:45;pointer-events:none;background:linear-gradient(var(--bg),transparent);opacity:0;transition:opacity .4s}
+.edge.on{opacity:.85}
+
+/* store toolbar: two floating glass capsules, no bar behind them */
+.toolbar{top:76px;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;pointer-events:none}
+.toolbar>*{pointer-events:auto}
+.tab-pill{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6px 16px -6px color-mix(in srgb,var(--accent) 70%,transparent)}
+.filter:focus-within{box-shadow:var(--glass-edge),var(--glass-shadow),inset 0 0 0 1.5px var(--accent)}
+.panel{top:calc(88px + var(--n)*16px)}
+
+/* hero controls */
+.search input:focus{box-shadow:var(--glass-edge),var(--glass-shadow),inset 0 0 0 1.5px var(--accent),0 0 0 6px var(--accent-soft)}
+.try button{transition:transform .14s var(--ease),background-color .25s}
+@media (hover:hover){.try button:hover{background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.08));box-shadow:var(--glass-edge),var(--glass-shadow)}}
+.sg[aria-selected="true"]{background:var(--glass-hi)}
+@media (hover:hover){.sg:hover{background:var(--glass-hi)}}
+
+.sheet-close{background:var(--glass-hi);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+/* the search icon sits above the glass field */
+.search>svg,.search kbd{z-index:1}
+
+/* dock */
+.dock{overflow:visible}
+.dock>*{position:relative}
+.dock .on{background:var(--glass-hi);box-shadow:inset 0 1px 0 rgba(255,255,255,.28)}
+
+/* sheets: thick glass that materialises (blur and scale arrive together), over a lighter dim */
+dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+:root[data-theme="light"] dialog::backdrop{background:rgba(30,35,50,.22)}
+.sheet-art{background:radial-gradient(70% 60% at 50% 42%,color-mix(in srgb,var(--c) 38%,transparent),transparent 72%)}
+.sheet-body{box-shadow:inset 1px 0 0 var(--line)}
+.sheet-bar,.cart-foot{background:transparent}
+.cart-foot{box-shadow:inset 0 1px 0 var(--line)}
+.cart-foot input,.req-in input[type="text"]{background:var(--glass-hi);border-color:var(--line-2)}
+/* solid controls inside the glass keep text sharp */
+.sheet .opt span,.sheet .fixed-region,.sheet .redeem{background:color-mix(in srgb,var(--surface) 72%,transparent)}
+.sheet .opt input:checked+span{background:var(--accent)}
+@media (max-width:760px){.sheet-body{box-shadow:inset 0 1px 0 var(--line)}}
+
+/* people who ask for less transparency or more contrast get solid surfaces */
+@media (prefers-reduced-transparency:reduce){
+  .top-in,.dock,.tabs,.filter,.search input,.hero-pill,.try button,.tag{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .sheet,.cart,.suggest{background:var(--bg-2);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .top-in::before,.dock::before{display:none}
+}
+@media (prefers-contrast:more){
+  .top-in,.dock,.tabs,.filter,.search input,.hero-pill,.try button,.sheet,.cart,.suggest{background:var(--bg-2);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:inset 0 0 0 1.5px var(--text)}
+}
+/* lighter mode keeps the shape and the edges but drops the live blur */
+.lite .top-in,.lite .dock,.lite .tabs,.lite .filter,.lite .search input,.lite .hero-pill,.lite .try button,.lite .tag{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}
+.lite .sheet,.lite .cart,.lite .suggest{background:var(--bg-2);-webkit-backdrop-filter:none;backdrop-filter:none}
+
 /* ---- search results under the hero box ---- */
 .hero-copy{position:relative;z-index:5}
 .suggest{position:absolute;left:0;right:0;top:calc(100% + 10px);z-index:30;padding:8px;border-radius:28px;background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:blur(24px) saturate(1.6);backdrop-filter:blur(24px) saturate(1.6);box-shadow:inset 0 0 0 1px var(--line-2),0 40px 80px -30px rgba(0,0,0,.85);text-align:start;animation:pop .32s var(--ease) both}
@@ -425,8 +536,8 @@ dialog.is-open::backdrop{opacity:1}
 @media (max-width:760px){.sheet.req{width:100%;height:fit-content;margin:auto 0 0}}
 /* ---- lighter mode for slow devices: same page, fewer expensive effects ---- */
 .lite .top,.lite .toolbar,.lite .dock,.lite .search input,.lite .suggest{-webkit-backdrop-filter:none;backdrop-filter:none}
-.lite .top,.lite .toolbar{background:var(--bg)}
-.lite .dock,.lite .suggest{background:var(--surface)}
+.lite .top,.lite .toolbar{background:none}
+
 .lite dialog::backdrop{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,0,0,.8)}
 .lite .gc{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.1),0 16px 26px -16px rgba(0,0,0,.8)}
 .lite .gc::before,.lite .gc-water{display:none}
@@ -441,6 +552,13 @@ dialog.is-open::backdrop{opacity:1}
 <body id="top">
 <a class="skip" href="#browse">Skip to the catalogue</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
+<div class="edge" id="edge" aria-hidden="true"></div>
+<!-- lens for the glass: bends whatever sits behind the nav and dock (browsers without support just blur) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="lg" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="1" seed="7" result="n"/>
+  <feGaussianBlur in="n" stdDeviation="4" result="soft"/>
+  <feDisplacementMap in="SourceGraphic" in2="soft" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+</filter></svg>
 
 <header class="top" id="nav">
   <div class="wrap top-in">
@@ -1015,8 +1133,8 @@ dialog.is-open::backdrop{opacity:1}
   }
   gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
   ScrollTrigger.create({ start: 160, end: 'max', onUpdate: s => {
-    if (s.direction === 1 && !navHidden) { navHidden = true; gsap.to(nav, { yPercent: -110, duration: .5, ease: 'power3.inOut' }); } else if (s.direction === -1) showNav();
-  }, onLeaveBack: showNav });
+    const down = s.scroll() > 90; nav.classList.toggle('is-compact', down); $('#edge').classList.toggle('on', down);
+  }, onLeaveBack: () => { nav.classList.remove('is-compact'); $('#edge').classList.remove('on'); } });
 
   // hero: lines rise, then every card flies onto the ring from deep space
   const ring = $('#ring'), ringCards = $$('.ring-item .gc');
@@ -1090,6 +1208,8 @@ dialog.is-open::backdrop{opacity:1}
       b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); x((e.clientX - r.left - r.width / 2) * .22); y((e.clientY - r.top - r.height / 2) * .3); });
       b.addEventListener('pointerleave', () => { x(0); y(0); }); });
   }
+  // the highlight on the glass follows the pointer
+  if (fine) $$('.top-in, .dock').forEach(g => g.addEventListener('pointermove', e => { const r = g.getBoundingClientRect(); g.style.setProperty('--gx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); }));
   // nav shows which part of the page you are in
   [['#how', 'a[href="#how"]'], ['#help', 'a[href="#help"]']].forEach(([sec, sel]) => { const a = $('.top-links ' + sel); ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 55%', onToggle: s => a.classList.toggle('is-current', s.isActive) }); });
   addEventListener('load', () => ScrollTrigger.refresh());

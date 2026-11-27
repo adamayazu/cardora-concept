@@ -107,3 +107,14 @@ footer{padding:18px;text-align:center;color:var(--dim);font-size:.8rem}
 .gc.i-xbox .gc-glyph,.gc.i-xbox .gc-water{-webkit-mask:url(icons/xbox.svg) center/contain no-repeat;mask:url(icons/xbox.svg) center/contain no-repeat}
 .gc.i-valorant .gc-glyph,.gc.i-valorant .gc-water{-webkit-mask:url(icons/valorant.svg) center/contain no-repeat;mask:url(icons/valorant.svg) center/contain no-repeat}
 .gc.i-playstation .gc-glyph,.gc.i-playstation .gc-water{-webkit-mask:url(icons/playstation.svg) center/contain no-repeat;mask:url(icons/playstation.svg) center/contain no-repeat}
+
+/* LIQUID GLASS: same material as the store, on the floating bar and the fields */
+:root{--glass:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05)),linear-gradient(rgba(12,13,16,.44),rgba(12,13,16,.44));--glass-blur:blur(22px) saturate(190%) brightness(1.12);--glass-edge:inset 0 1px 0 rgba(255,255,255,.42),inset 0 -1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,255,255,.1);--glass-shadow:0 12px 40px -12px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.25);--glass-hi:rgba(255,255,255,.14)}
+:root[data-theme="light"]{--glass:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.42));--glass-blur:blur(22px) saturate(190%);--glass-edge:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.55),0 0 0 1px rgba(0,0,0,.05);--glass-shadow:0 12px 36px -14px rgba(20,30,50,.3),0 2px 6px rgba(20,30,50,.08);--glass-hi:rgba(0,0,0,.07)}
+.bar{position:sticky;top:12px;z-index:5;width:min(1180px,calc(100% - 24px));margin:12px auto 0;padding:7px 8px 7px 22px;border-radius:999px;background:var(--glass);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-edge),var(--glass-shadow)}
+.back{color:color-mix(in srgb,var(--text) 78%,transparent)}
+@media (hover:hover){.back:hover,.icon-btn:hover{background:var(--glass-hi)}}
+input,.note{background:var(--glass);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border-color:transparent;box-shadow:var(--glass-edge),var(--glass-shadow)}
+input:focus{border-color:transparent;box-shadow:var(--glass-edge),var(--glass-shadow),inset 0 0 0 1.5px var(--accent),0 0 0 5px var(--accent-soft)}
+@media (prefers-reduced-transparency:reduce){.bar,input,.note{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media (prefers-contrast:more){.bar,input,.note{background:var(--bg-2);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:inset 0 0 0 1.5px var(--text)}}

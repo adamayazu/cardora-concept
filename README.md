@@ -111,6 +111,15 @@ The reference is generated in the browser from the clock, so it is only a label 
 
 Animation is skipped when the visitor's device asks for reduced motion, and the page still works if the libraries fail to load. On low-powered devices, or if the page measures itself running below about 40 frames per second, a lighter mode (`html.lite`) switches off smooth scrolling, the hero ring's spin, background blur and the heaviest shadows.
 
+## The glass material
+
+Everything that floats above content (nav bar, phone dock, category tabs, filter, hero search, chips, product sheet, cart, search menu) uses one translucent material. It is defined as CSS custom properties under the `LIQUID GLASS` comment in `index.html`: `--glass` (thin, for small controls) and `--glass-thick` (sheets and menus), plus edge and shadow tokens. Content itself (product cards, category panels, text) is solid on purpose; glass is never stacked on glass.
+
+- In browsers that support `backdrop-filter: url()` (Chromium), the nav and dock also refract what is behind them through the inline SVG filter `#lg`. Safari and Firefox fall back to blur only.
+- The nav bar stays on screen and slims down on scroll (`.top.is-compact`).
+- `prefers-reduced-transparency`, `prefers-contrast: more` and the lighter mode all swap the glass for solid surfaces.
+- The account pages carry the same tokens in `assets/auth.css`.
+
 ## Porting to a framework
 
 The live cardoramdv.com is a Next.js app, so this is most useful as a reference to rebuild from rather than files to copy in. A natural split into components:
